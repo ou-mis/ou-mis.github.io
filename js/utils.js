@@ -11,6 +11,12 @@ const Utils = (() => {
     });
   }
 
+  /** Format a policy lastUpdated ISO date for form UI (not exported). */
+  function formatPolicyLastUpdated(isoStr) {
+    if (!isoStr) return '';
+    return formatDate(parseISODate(isoStr));
+  }
+
   /** Format "2026-01-13" ISO string as a Date (local, no TZ shift) */
   function parseISODate(isoStr) {
     if (!isoStr) return null;
@@ -155,5 +161,5 @@ const Utils = (() => {
     return { sortedDays, weeks, finalRow };
   }
 
-  return { formatDate, parseISODate, shortDayName, toISODate, formatTime, debounce, toast, downloadFile, slugify, escapeHtml, mdToHtml, groupCalendarByWeek };
+  return { formatDate, formatPolicyLastUpdated, parseISODate, shortDayName, toISODate, formatTime, debounce, toast, downloadFile, slugify, escapeHtml, mdToHtml, groupCalendarByWeek };
 })();

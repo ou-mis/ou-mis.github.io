@@ -24,6 +24,13 @@ const S8 = (() => {
     });
   }
 
+  function _policyLastUpdatedHtml(policy) {
+    if (!policy.lastUpdated) return '';
+    const formatted = Utils.formatPolicyLastUpdated(policy.lastUpdated);
+    if (!formatted) return '';
+    return `<span class="policy-block__updated">Last updated ${Utils.escapeHtml(formatted)}</span>`;
+  }
+
   function _createBlock(policy, isRequired, isIncluded) {
     const block = document.createElement('div');
     block.className = `policy-block policy-block--${isRequired ? 'required' : 'optional'} ${!isRequired && !isIncluded ? 'policy-block--off' : ''}`;
@@ -34,7 +41,10 @@ const S8 = (() => {
 
     block.innerHTML = `
       <div class="policy-block__header" role="button" aria-expanded="false" aria-controls="${bodyId}" tabindex="0">
-        <span class="policy-block__label">${Utils.escapeHtml(policy.label)}</span>
+        <div class="policy-block__title">
+          <span class="policy-block__label">${Utils.escapeHtml(policy.label)}</span>
+          ${_policyLastUpdatedHtml(policy)}
+        </div>
         <span class="policy-block__badge policy-block__badge--${isRequired ? 'required' : 'optional'}">
           ${isRequired ? 'Required' : 'Optional'}
         </span>
