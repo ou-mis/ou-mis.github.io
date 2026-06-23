@@ -6,6 +6,7 @@ const S1 = (() => {
     _populateSemesterDropdown();
     _bindEvents();
     _restoreFromState();
+    _onFieldChange(); // sync DOM → state after restore (e.g. auto-filled dates)
   }
 
   function _populateSemesterDropdown() {

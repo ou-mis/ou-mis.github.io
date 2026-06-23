@@ -92,9 +92,9 @@ const Preview = (() => {
       parts.push('</ul>');
     }
 
-    /* ── Texts & Software ── */
+    /* ── Textbooks & Software ── */
     if (s.materials && s.materials.length) {
-      parts.push('<h2>Required Texts &amp; Software</h2>');
+      parts.push('<h2>Textbooks &amp; Software</h2>');
       parts.push('<table><thead><tr><th>Type</th><th>Title / Name</th><th>Where to Obtain</th><th>Status</th></tr></thead><tbody>');
       s.materials.forEach(m => {
         if (!m.title) return;
@@ -165,8 +165,9 @@ const Preview = (() => {
       s.assessments.forEach(a => {
         if (!a.name) return;
         const val = isPoints ? `${a.weight} pts` : `${a.weight}%`;
+        const name = a.optional ? `${Utils.escapeHtml(a.name)} (optional)` : Utils.escapeHtml(a.name);
         parts.push(`<tr>
-          <td>${Utils.escapeHtml(a.name)}</td>
+          <td>${name}</td>
           <td>${val}</td>
           <td>${Utils.escapeHtml(a.notes||'')}</td>
         </tr>`);

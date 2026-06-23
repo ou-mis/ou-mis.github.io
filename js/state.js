@@ -54,7 +54,7 @@ const State = (() => {
       { grade: 'D', min: 60, max: 69 },
       { grade: 'F', min: 0,  max: 59 },
     ],
-    assessments: [],           // [{ name, weight, notes }]
+    assessments: [],           // [{ name, weight, notes, optional }]
 
     // Section 7
     divisionPolicies: {},      // { policyId: { included, customText } }

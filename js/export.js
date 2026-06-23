@@ -142,7 +142,6 @@ const Export = (() => {
         calHeader:{ bold: true, fontSize: 9.5, fillColor: primary, color: '#ffffff' },
         calHoliday:{ italics: true, color: '#555' },
         calFinal: { bold: true },
-        bullet:   { marginLeft: 12 },
         small:    { fontSize: 9, color: '#444', italics: true },
       },
     };
@@ -211,9 +210,9 @@ const Export = (() => {
       });
     }
 
-    /* ── Required Materials ── */
+    /* ── Textbooks & Software ── */
     if (s.materials && s.materials.some(m => m.title)) {
-      push({ text: 'Required Texts & Software', style: 'h2' });
+      push({ text: 'Textbooks & Software', style: 'h2' });
       s.materials.forEach(m => {
         if (!m.title) return;
         push({ text: [
@@ -272,8 +271,9 @@ const Export = (() => {
       s.assessments.forEach(a => {
         if (!a.name) return;
         const val = isPoints ? `${a.weight} pts` : `${a.weight}%`;
+        const name = a.optional ? `${a.name} (optional)` : a.name;
         push({ text: [
-          { text: a.name, bold: true },
+          { text: name, bold: true },
           ` — ${val}`,
           a.notes ? `  (${a.notes})` : '',
         ], marginLeft: 10, marginBottom: 2 });
@@ -451,27 +451,25 @@ const Export = (() => {
   /* ── Markdown → pdfmake content ── */
   function _mdToPdf(content, md) {
     if (!md) return;
-    const lines = md.split('\n');
+    const lines = md.split('\n').map(l => l.replace(/\r$/, ''));
     let i = 0;
     let prevWasHeading = false;   // suppress blank lines immediately after headings
 
     while (i < lines.length) {
       const line = lines[i];
+      const trimmed = line.trimStart();
 
       // ── Markdown table: detect header row followed by separator ──────────
-      // A table block is consecutive lines starting with '|'
-      if (line.trim().startsWith('|')) {
+      if (trimmed.startsWith('|')) {
         const tableLines = [];
-        while (i < lines.length && lines[i].trim().startsWith('|')) {
+        while (i < lines.length && lines[i].trimStart().startsWith('|')) {
           tableLines.push(lines[i]);
           i++;
         }
-        // tableLines[0] = header row, tableLines[1] = separator (|---|), rest = data
         if (tableLines.length >= 2) {
           const parseRow = row =>
             row.replace(/^\||\|$/g, '').split('|').map(c => c.trim());
           const headers = parseRow(tableLines[0]);
-          // Skip separator row (index 1), gather data rows
           const dataRows = tableLines.slice(2).map(parseRow);
           const primary  = _themeColor();
           content.push({
@@ -495,32 +493,46 @@ const Export = (() => {
           });
         }
         prevWasHeading = false;
-        continue;   // i already advanced inside the while loop above
+        continue;
+      }
+
+      // ── Unordered list block ────────────────────────────────────────────
+      if (/^[-*]\s+/.test(trimmed)) {
+        const items = [];
+        while (i < lines.length && /^[-*]\s+/.test(lines[i].trimStart())) {
+          items.push(_runsToPdfItem(_parseInlinePdf(lines[i].trimStart().replace(/^[-*]\s+/, ''))));
+          i++;
+        }
+        content.push({ ul: items, marginBottom: 4 });
+        prevWasHeading = false;
+        continue;
+      }
+
+      // ── Ordered list block ────────────────────────────────────────────────
+      if (/^\d+\.\s/.test(trimmed)) {
+        const items = [];
+        while (i < lines.length && /^\d+\.\s/.test(lines[i].trimStart())) {
+          items.push(_runsToPdfItem(_parseInlinePdf(lines[i].trimStart().replace(/^\d+\.\s+/, ''))));
+          i++;
+        }
+        content.push({ ol: items, marginBottom: 4 });
+        prevWasHeading = false;
+        continue;
       }
 
       // ── Headings ──────────────────────────────────────────────────────────
-      if (line.startsWith('### ')) {
-        content.push({ text: line.slice(4), style: 'h3' });
+      if (trimmed.startsWith('### ')) {
+        content.push({ text: trimmed.slice(4), style: 'h3' });
         prevWasHeading = true;
-      } else if (line.startsWith('## ')) {
-        content.push({ text: line.slice(3), style: 'h3' });
+      } else if (trimmed.startsWith('## ')) {
+        content.push({ text: trimmed.slice(3), style: 'h3' });
         prevWasHeading = true;
-      } else if (line.startsWith('# ')) {
-        content.push({ text: line.slice(2), bold: true, marginTop: 8, marginBottom: 2 });
+      } else if (trimmed.startsWith('# ')) {
+        content.push({ text: trimmed.slice(2), bold: true, marginTop: 8, marginBottom: 2 });
         prevWasHeading = true;
-
-      // ── Bullets / numbered lists ──────────────────────────────────────────
-      } else if (line.startsWith('- ') || line.startsWith('* ')) {
-        content.push({ text: _parseInlinePdf(line.slice(2)), style: 'bullet', marginBottom: 1 });
-        prevWasHeading = false;
-      } else if (/^\d+\.\s/.test(line)) {
-        content.push({ text: _parseInlinePdf(line.replace(/^\d+\.\s/, '')), style: 'bullet', marginBottom: 1 });
-        prevWasHeading = false;
 
       // ── Blank line / horizontal rule ──────────────────────────────────────
-      } else if (line.trim() === '' || line.startsWith('---')) {
-        // Skip the blank line that immediately follows a heading — it only
-        // exists for readability in the source and produces ugly extra space.
+      } else if (trimmed === '' || trimmed.startsWith('---')) {
         if (!prevWasHeading) {
           content.push({ text: '', marginBottom: 3 });
         }
@@ -534,6 +546,15 @@ const Export = (() => {
 
       i++;
     }
+  }
+
+  /** Convert inline runs to a pdfmake ul/ol item (string or rich-text object). */
+  function _runsToPdfItem(runs) {
+    if (!runs || !runs.length) return '';
+    if (runs.length === 1 && !runs[0].bold && !runs[0].italics) {
+      return runs[0].text;
+    }
+    return { text: runs };
   }
 
   function _parseInlinePdf(text) {
@@ -634,9 +655,9 @@ const Export = (() => {
         });
       }
 
-      /* ── Texts & Software ── */
+      /* ── Textbooks & Software ── */
       if (s.materials && s.materials.length) {
-        children.push(_heading2('Required Texts & Software'));
+        children.push(_heading2('Textbooks & Software'));
         s.materials.forEach(m => {
           if (!m.title) return;
           children.push(new Paragraph({
@@ -708,7 +729,8 @@ const Export = (() => {
         s.assessments.forEach(a => {
           if (!a.name) return;
           const val  = isPoints ? `${a.weight} pts` : `${a.weight}%`;
-          const line = [a.name, val, a.notes].filter(Boolean).join(' — ');
+          const name = a.optional ? `${a.name} (optional)` : a.name;
+          const line = [name, val, a.notes].filter(Boolean).join(' — ');
           children.push(new Paragraph({ children: [new TextRun(line)], bullet: { level: 0 }, spacing: { after: 40 } }));
         });
         children.push(_heading3('Grading Scale'));
@@ -930,21 +952,22 @@ const Export = (() => {
   function _appendMarkdownToDocx(children, md, docxLib) {
     if (!md) return;
     const { Paragraph, TextRun, HeadingLevel } = docxLib;
-    const lines = md.split('\n');
+    const lines = md.split('\n').map(l => l.replace(/\r$/, ''));
     lines.forEach(line => {
-      if (line.startsWith('### ')) {
-        children.push(new Paragraph({ text: line.slice(4), heading: HeadingLevel.HEADING_3, spacing: { before: 120, after: 40 } }));
-      } else if (line.startsWith('## ')) {
-        children.push(new Paragraph({ text: line.slice(3), heading: HeadingLevel.HEADING_3, spacing: { before: 160, after: 60 } }));
-      } else if (line.startsWith('# ')) {
-        children.push(new Paragraph({ text: line.slice(2), heading: HeadingLevel.HEADING_2, spacing: { before: 160, after: 60 } }));
-      } else if (line.startsWith('- ') || line.startsWith('* ')) {
-        children.push(new Paragraph({ children: _parseInline(line.slice(2), TextRun), bullet: { level: 0 }, spacing: { after: 40 } }));
-      } else if (/^\d+\.\s/.test(line)) {
-        children.push(new Paragraph({ children: _parseInline(line.replace(/^\d+\.\s/, ''), TextRun), bullet: { level: 0 }, spacing: { after: 40 } }));
-      } else if (line.startsWith('---') || line.startsWith('***')) {
+      const trimmed = line.trimStart();
+      if (trimmed.startsWith('### ')) {
+        children.push(new Paragraph({ text: trimmed.slice(4), heading: HeadingLevel.HEADING_3, spacing: { before: 120, after: 40 } }));
+      } else if (trimmed.startsWith('## ')) {
+        children.push(new Paragraph({ text: trimmed.slice(3), heading: HeadingLevel.HEADING_3, spacing: { before: 160, after: 60 } }));
+      } else if (trimmed.startsWith('# ')) {
+        children.push(new Paragraph({ text: trimmed.slice(2), heading: HeadingLevel.HEADING_2, spacing: { before: 160, after: 60 } }));
+      } else if (/^[-*]\s+/.test(trimmed)) {
+        children.push(new Paragraph({ children: _parseInline(trimmed.replace(/^[-*]\s+/, ''), TextRun), bullet: { level: 0 }, spacing: { after: 40 } }));
+      } else if (/^\d+\.\s/.test(trimmed)) {
+        children.push(new Paragraph({ children: _parseInline(trimmed.replace(/^\d+\.\s+/, ''), TextRun), bullet: { level: 0 }, spacing: { after: 40 } }));
+      } else if (trimmed.startsWith('---') || trimmed.startsWith('***')) {
         children.push(new Paragraph({ text: '', spacing: { after: 40 } }));
-      } else if (line.trim() === '') {
+      } else if (trimmed === '') {
         children.push(new Paragraph({ text: '', spacing: { after: 40 } }));
       } else {
         children.push(new Paragraph({ children: _parseInline(line, TextRun), spacing: { after: 60 } }));

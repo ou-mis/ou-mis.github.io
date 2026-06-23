@@ -103,6 +103,14 @@ const S6 = (() => {
           <input type="number" id="asmnt-weight-${idx}" class="input asmnt-weight"
                  value="${data.weight||''}" min="0" ${isPoints ? '' : 'max="100"'} step="${isPoints ? 5 : 1}" placeholder="0" />
         </div>
+        <div class="field-group" style="min-width:130px;align-self:flex-end">
+          <label class="checkbox-label" for="asmnt-optional-${idx}" title="List in syllabus but exclude from weight total">
+            <input type="checkbox" id="asmnt-optional-${idx}" class="asmnt-optional"
+                   ${data.optional ? 'checked' : ''} />
+            Optional
+          </label>
+          <span class="field-hint">Not counted in total</span>
+        </div>
         <div class="field-group field-group--grow">
           <label class="field-label" for="asmnt-notes-${idx}">Notes <span class="field-label__optional">(optional)</span></label>
           <input type="text" id="asmnt-notes-${idx}" class="input asmnt-notes"
@@ -138,34 +146,46 @@ const S6 = (() => {
   function _syncAssessments() {
     const list = document.getElementById('assessments-list');
     const assessments = Array.from(list.querySelectorAll('.repeating-item')).map(item => ({
-      name:   item.querySelector('.asmnt-name').value.trim(),
-      weight: parseFloat(item.querySelector('.asmnt-weight').value) || 0,
-      notes:  item.querySelector('.asmnt-notes').value.trim(),
+      name:     item.querySelector('.asmnt-name').value.trim(),
+      weight:   parseFloat(item.querySelector('.asmnt-weight').value) || 0,
+      notes:    item.querySelector('.asmnt-notes').value.trim(),
+      optional: item.querySelector('.asmnt-optional').checked,
     }));
     State.set({ assessments });
     _updateWeightTotal();
   }
 
+  function _countedAssessments(assessments) {
+    return assessments.filter(a => a.name && !a.optional);
+  }
+
   function _updateWeightTotal() {
     const s         = State.get();
     const isPoints  = s.gradingType === 'points';
-    const total     = s.assessments.reduce((sum, a) => sum + (a.weight || 0), 0);
+    const counted   = _countedAssessments(s.assessments);
+    const optional  = s.assessments.filter(a => a.name && a.optional);
+    const total     = counted.reduce((sum, a) => sum + (a.weight || 0), 0);
+    const optTotal  = optional.reduce((sum, a) => sum + (a.weight || 0), 0);
     const totalEl   = document.getElementById('weight-total');
     const statusEl  = document.getElementById('weight-status');
     const labelEl   = document.getElementById('weight-total-label');
     if (!totalEl) return;
 
     if (isPoints) {
-      labelEl.textContent   = 'Total points:';
+      labelEl.textContent   = optional.length ? 'Total points (required):' : 'Total points:';
       totalEl.textContent   = `${total} pts`;
       totalEl.className     = 'weight-total weight-total--valid';
-      statusEl.textContent  = '';
+      statusEl.textContent  = optional.length ? `Optional: ${optTotal} pts (not counted)` : '';
     } else {
-      labelEl.textContent   = 'Total weight:';
+      labelEl.textContent   = optional.length ? 'Total weight (required):' : 'Total weight:';
       totalEl.textContent   = `${total}%`;
       const isValid         = Math.abs(total - 100) < 0.01;
       totalEl.className     = `weight-total ${isValid ? 'weight-total--valid' : 'weight-total--invalid'}`;
-      statusEl.textContent  = isValid ? '✓ Valid' : total > 100 ? '↑ Over 100%' : '↓ Under 100%';
+      let status = isValid ? '✓ Valid' : total > 100 ? '↑ Over 100%' : '↓ Under 100%';
+      if (optional.length) {
+        status += ` · Optional: ${optTotal}% (not counted)`;
+      }
+      statusEl.textContent  = status;
       statusEl.style.color  = isValid ? 'var(--color-success)' : 'var(--color-danger)';
     }
   }
@@ -182,8 +202,8 @@ const S6 = (() => {
     const s        = State.get();
     const hasItems = s.assessments.some(a => a.name);
     if (!hasItems) return false;
-    if (s.gradingType === 'points') return true;  // no % validation for points mode
-    const total = s.assessments.reduce((sum, a) => sum + (a.weight || 0), 0);
+    if (s.gradingType === 'points') return true;
+    const total = _countedAssessments(s.assessments).reduce((sum, a) => sum + (a.weight || 0), 0);
     return Math.abs(total - 100) < 0.01;
   }
 

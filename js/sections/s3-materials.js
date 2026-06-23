@@ -1,5 +1,5 @@
 /**
- * s3-materials.js — Section 3: Required Texts & Software
+ * s3-materials.js — Section 3: Textbooks & Software
  */
 const S3 = (() => {
   function init() {
