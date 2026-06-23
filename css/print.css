@@ -1,0 +1,140 @@
+/* ===================================================
+   PRINT / PDF STYLESHEET
+   Applied when window.print() is called.
+   Hides all app chrome; renders only the syllabus.
+   =================================================== */
+
+@media print {
+
+  /* Hide everything except the live preview */
+  .app-header,
+  .restore-banner,
+  .sidebar,
+  .form-pane,
+  .preview-pane__header,
+  .toast-container,
+  .modal {
+    display: none !important;
+  }
+
+  /* Reset layout to single column */
+  .app-layout {
+    display: block !important;
+  }
+
+  .preview-pane {
+    position: static !important;
+    height: auto !important;
+    width: 100% !important;
+    border: none !important;
+    overflow: visible !important;
+  }
+
+  .preview-content {
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  /* Syllabus document styling */
+  body {
+    font-family: "Times New Roman", Times, Georgia, serif;
+    font-size: 11pt;
+    color: #000;
+    background: #fff;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+
+  .syllabus-preview {
+    max-width: 7.5in;
+    margin: 0 auto;
+    padding: 0.5in;
+    font-size: 11pt;
+    color: #000;
+  }
+
+  .syllabus-preview h1 {
+    font-size: 16pt;
+    margin-bottom: 4pt;
+    color: #000;
+    border-bottom: 2pt solid #000;
+    padding-bottom: 4pt;
+  }
+
+  .syllabus-preview h2 {
+    font-size: 13pt;
+    margin-top: 18pt;
+    margin-bottom: 6pt;
+    color: #000;
+    border-bottom: 1pt solid #666;
+    padding-bottom: 2pt;
+    page-break-after: avoid;
+  }
+
+  .syllabus-preview h3 {
+    font-size: 11pt;
+    font-weight: bold;
+    margin-top: 12pt;
+    margin-bottom: 4pt;
+    page-break-after: avoid;
+  }
+
+  .syllabus-preview table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin: 8pt 0;
+    page-break-inside: avoid;
+  }
+
+  .syllabus-preview table th {
+    background: #eee !important;
+    color: #000 !important;
+    border: 1pt solid #999;
+    padding: 4pt 6pt;
+    font-weight: bold;
+    text-align: left;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .syllabus-preview table td {
+    border: 1pt solid #ccc;
+    padding: 3pt 6pt;
+    vertical-align: top;
+  }
+
+  .syllabus-preview .logistics-block {
+    border: 1pt solid #ccc;
+    padding: 8pt 10pt;
+    margin-bottom: 10pt;
+    font-size: 10.5pt;
+    background: #fafafa !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .syllabus-preview .clo-list li {
+    margin-bottom: 3pt;
+    font-size: 10.5pt;
+  }
+
+  /* Avoid page breaks inside policy blocks */
+  .policy-block-preview {
+    page-break-inside: avoid;
+  }
+
+  /* Calendar rows */
+  .calendar-table tr {
+    page-break-inside: avoid;
+  }
+
+  a { color: #000; text-decoration: underline; }
+
+  /* Page margins */
+  @page {
+    margin: 1in;
+    size: letter;
+  }
+}

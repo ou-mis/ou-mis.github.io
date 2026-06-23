@@ -1,14 +1,615 @@
-<!doctype html>
+<!--
+  Syllabus Generator — OU MIS
+  © 2025 Adam Ackerman. All Rights Reserved.
+
+  Third-party open-source attributions: THIRD-PARTY-LICENSES.md
+-->
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OU Syllabus Generator</title>
-    <script type="module" crossorigin src="/assets/index--71O5BmY.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DWgfZcVU.css">
-  </head>
-  <body>
-    <div id="app"></div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Syllabus Generator · OU MIS</title>
+  <meta name="author" content="Adam Ackerman" />
+  <meta name="copyright" content="© 2025 Adam Ackerman" />
+  <meta name="description" content="Course syllabus generator for MIS instructors at the University of Oklahoma Price College of Business." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="shortcut icon" href="favicon.svg" />
+  <meta name="theme-color" content="#841617" />
+
+  <!-- marked.js — markdown → HTML renderer used in preview -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
+
+  <!-- docx.js v8 UMD build — local copy for reliability -->
+  <script src="js/vendor/docx.umd.js"></script>
+
+  <!-- pdfmake — direct PDF generation (no print dialog) -->
+  <script src="js/vendor/pdfmake.min.js"></script>
+  <script src="js/vendor/vfs_fonts.js"></script>
+
+  <!-- FileSaver for triggering browser downloads -->
+  <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/print.css" media="print" />
+</head>
+<body>
+<!-- Apply saved theme immediately to prevent flash of default color -->
+<script>(function(){var t=localStorage.getItem('syllabusTheme')||'ou-crimson';if(t!=='steel')document.body.setAttribute('data-theme',t);})();</script>
+
+<!-- ===== TOP TOOLBAR ===== -->
+<header class="app-header" role="banner">
+  <!-- Brand -->
+  <div class="app-header__brand">
+    <!-- Inline SVG: document with folded corner + check badge -->
+    <svg class="app-header__svg-logo" viewBox="0 0 42 46" fill="none" aria-hidden="true" focusable="false">
+      <!-- Shadow page -->
+      <rect x="6" y="6" width="26" height="36" rx="3.5" fill="rgba(0,0,0,0.18)"/>
+      <!-- Main page -->
+      <rect x="3" y="2" width="26" height="36" rx="3.5"
+            fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.95)" stroke-width="1.6"/>
+      <!-- Folded corner -->
+      <path d="M19 2 L29 12 L19 12 Z"
+            fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.95)"
+            stroke-width="1.6" stroke-linejoin="round"/>
+      <!-- Text lines -->
+      <line x1="8" y1="19" x2="24" y2="19" stroke="rgba(255,255,255,0.9)" stroke-width="1.9" stroke-linecap="round"/>
+      <line x1="8" y1="23" x2="24" y2="23" stroke="rgba(255,255,255,0.9)" stroke-width="1.9" stroke-linecap="round"/>
+      <line x1="8" y1="27" x2="24" y2="27" stroke="rgba(255,255,255,0.9)" stroke-width="1.9" stroke-linecap="round"/>
+      <line x1="8" y1="31" x2="18" y2="31" stroke="rgba(255,255,255,0.65)" stroke-width="1.9" stroke-linecap="round"/>
+      <!-- Check badge circle -->
+      <circle cx="33" cy="37" r="8.5" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.95)" stroke-width="1.6"/>
+      <!-- Checkmark -->
+      <polyline points="29,37 32,40 37,33"
+                stroke="white" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+    <div class="app-header__brand-text">
+      <span class="app-header__title">Syllabus Generator</span>
+      <span class="app-header__subtitle">MIS · Price College of Business · University of Oklahoma</span>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="app-header__actions">
+    <!-- Theme Picker -->
+    <div class="theme-picker" role="group" aria-label="Color theme">
+      <span class="theme-picker__label">Theme:</span>
+      <button class="theme-swatch" data-theme="steel"
+              title="Steel Blue" aria-label="Steel Blue theme" aria-pressed="false"></button>
+      <button class="theme-swatch theme-swatch--active" data-theme="ou-crimson"
+              title="OU Crimson (default)" aria-label="OU Crimson theme" aria-pressed="true"></button>
+      <button class="theme-swatch" data-theme="ou-gold"
+              title="OU Gold" aria-label="OU Gold theme" aria-pressed="false"></button>
+      <button class="theme-swatch" data-theme="navy"
+              title="Navy Academic" aria-label="Navy Academic theme" aria-pressed="false"></button>
+    </div>
+
+    <button id="btn-load-form" class="btn btn--header-ghost btn--sm" title="Load a previously saved form (.form.json)">
+      &#8599; Load Form
+    </button>
+    <input type="file" id="input-load-form" accept=".json" hidden aria-label="Load saved form file" />
+    <button id="btn-save-form" class="btn btn--header-ghost btn--sm" title="Save current form state to a .form.json file">
+      &#8595; Save Progress
+    </button>
+
+    <!-- Export buttons — separated with a small gap -->
+    <div class="app-header__export-group" role="group" aria-label="Export syllabus">
+      <button id="btn-export-docx" class="btn btn--header-export btn--sm" disabled title="Export as Word document (.docx)">
+        ⬇ Word
+      </button>
+      <button id="btn-export-pdf" class="btn btn--header-export btn--sm" disabled title="Download syllabus as a PDF file">
+        ⬇ PDF
+      </button>
+    </div>
+
+    <button id="btn-reset" class="btn btn--header-danger btn--sm" title="Reset and start over">
+      &#8635; Reset
+    </button>
+  </div>
+</header>
+
+<!-- ===== RESTORE BANNER ===== -->
+<div id="restore-banner" class="restore-banner" hidden role="alert" aria-live="polite">
+  <span id="restore-message"></span>
+  <div class="restore-banner__actions">
+    <button id="btn-restore-yes" class="btn btn--primary btn--xs">Restore</button>
+    <button id="btn-restore-no" class="btn btn--ghost btn--xs">Discard</button>
+  </div>
+</div>
+
+<!-- ===== MAIN LAYOUT ===== -->
+<div class="app-layout">
+
+  <!-- SIDEBAR NAV -->
+  <nav class="sidebar" aria-label="Form sections">
+    <ul class="sidebar__list" role="list">
+      <li><a href="#s1" class="sidebar__link" data-section="s1">
+        <span class="sidebar__indicator" aria-hidden="true"></span>
+        <span>1. Semester &amp; Course</span>
+      </a></li>
+      <li><a href="#s2" class="sidebar__link" data-section="s2">
+        <span class="sidebar__indicator" aria-hidden="true"></span>
+        <span>2. Instructor / Logistics</span>
+      </a></li>
+      <li><a href="#s3" class="sidebar__link" data-section="s3">
+        <span class="sidebar__indicator" aria-hidden="true"></span>
+        <span>3. Texts &amp; Software</span>
+      </a></li>
+      <li><a href="#s4" class="sidebar__link" data-section="s4">
+        <span class="sidebar__indicator" aria-hidden="true"></span>
+        <span>4. Prerequisites</span>
+      </a></li>
+      <li><a href="#s5" class="sidebar__link" data-section="s5">
+        <span class="sidebar__indicator" aria-hidden="true"></span>
+        <span>5. Course Overview &amp; CLOs</span>
+      </a></li>
+      <li><a href="#s6" class="sidebar__link" data-section="s6">
+        <span class="sidebar__indicator" aria-hidden="true"></span>
+        <span>6. Grading &amp; Assessments</span>
+      </a></li>
+      <li><a href="#s7" class="sidebar__link" data-section="s7">
+        <span class="sidebar__indicator" aria-hidden="true"></span>
+        <span>7. Course Policies</span>
+      </a></li>
+      <li><a href="#s8" class="sidebar__link" data-section="s8">
+        <span class="sidebar__indicator" aria-hidden="true"></span>
+        <span>8. University Policies</span>
+      </a></li>
+      <li><a href="#s9" class="sidebar__link" data-section="s9">
+        <span class="sidebar__indicator" aria-hidden="true"></span>
+        <span>9. Generative AI Policy</span>
+      </a></li>
+      <li><a href="#s10" class="sidebar__link" data-section="s10">
+        <span class="sidebar__indicator" aria-hidden="true"></span>
+        <span>10. Course Calendar</span>
+      </a></li>
+    </ul>
+    <div class="sidebar__footer">
+      <div id="completion-summary" class="completion-summary" aria-live="polite">
+        <span id="completion-count">0</span> / 10 sections complete
+      </div>
+    </div>
+  </nav>
+
+  <!-- FORM PANE -->
+  <main class="form-pane" id="form-pane" role="main">
+    <form id="syllabus-form" novalidate>
+
+      <!-- ── SECTION 1 ── -->
+      <section id="s1" class="form-section" aria-labelledby="s1-heading">
+        <h2 id="s1-heading" class="section-heading">
+          <span class="section-number">1</span> Semester &amp; Course Header
+        </h2>
+        <div class="field-group">
+          <label for="semester" class="field-label field-label--required">Semester</label>
+          <select id="semester" name="semester" required aria-required="true" class="input input--select">
+            <option value="">— Select a semester —</option>
+          </select>
+          <span class="field-hint">Selecting a semester auto-fills the course dates and holidays. Adjust the dates for shortened terms (e.g., 4- or 8-week sessions).</span>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label for="startDate" class="field-label field-label--required">Course Start Date</label>
+            <input type="date" id="startDate" name="startDate" required aria-required="true"
+                   class="input" disabled />
+          </div>
+          <div class="field-group">
+            <label for="endDate" class="field-label field-label--required">Course End Date</label>
+            <input type="date" id="endDate" name="endDate" required aria-required="true"
+                   class="input" disabled />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label for="courseNumber" class="field-label field-label--required">Course Number</label>
+            <input type="text" id="courseNumber" name="courseNumber" required aria-required="true"
+                   class="input" placeholder="e.g., MIS 2113" />
+          </div>
+          <div class="field-group field-group--grow">
+            <label for="courseTitle" class="field-label field-label--required">Course Title</label>
+            <input type="text" id="courseTitle" name="courseTitle" required aria-required="true"
+                   class="input" placeholder="e.g., Computer-Based Information Systems" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label for="sectionNumber" class="field-label field-label--required">Section Number</label>
+            <input type="text" id="sectionNumber" name="sectionNumber" required aria-required="true"
+                   class="input" placeholder="e.g., 003" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 2 ── -->
+      <section id="s2" class="form-section" aria-labelledby="s2-heading">
+        <h2 id="s2-heading" class="section-heading">
+          <span class="section-number">2</span> Instructor / Logistics
+        </h2>
+        <div class="field-row">
+          <div class="field-group field-group--grow">
+            <label for="instructorName" class="field-label field-label--required">Instructor Name</label>
+            <input type="text" id="instructorName" name="instructorName" required aria-required="true" class="input" />
+          </div>
+          <div class="field-group field-group--grow">
+            <label for="officeLocation" class="field-label field-label--required">Office Location</label>
+            <input type="text" id="officeLocation" name="officeLocation" required aria-required="true"
+                   class="input" placeholder="e.g., Adams Hall 3213" />
+          </div>
+        </div>
+
+        <!-- Office Hours (repeating) -->
+        <div class="field-group">
+          <label class="field-label field-label--required">Office Hours</label>
+          <div id="office-hours-list" class="repeating-list" role="list"></div>
+          <button type="button" id="btn-add-office-hours" class="btn btn--ghost btn--sm btn--add">
+            + Add Time Slot
+          </button>
+        </div>
+
+        <div class="field-row">
+          <div class="field-group field-group--grow">
+            <label for="courseEmail" class="field-label">Course Email</label>
+            <input type="email" id="courseEmail" name="courseEmail" class="input"
+                   placeholder="e.g., mis2113_ackerman@ou.edu" />
+          </div>
+          <div class="field-group field-group--grow">
+            <label for="emailSubject" class="field-label">Email Subject Prefix <span class="field-label__optional">(optional)</span></label>
+            <input type="text" id="emailSubject" name="emailSubject" class="input"
+                   placeholder="e.g., [MIS 2113]" />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field-group field-group--grow">
+            <label for="classRoom" class="field-label field-label--required">Class Meeting Location</label>
+            <input type="text" id="classRoom" name="classRoom" required aria-required="true"
+                   class="input" placeholder="e.g., Adams Hall 0255" />
+          </div>
+          <div class="field-group">
+            <label for="lmsUrl" class="field-label">LMS URL</label>
+            <input type="url" id="lmsUrl" name="lmsUrl" class="input"
+                   value="https://canvas.ou.edu" placeholder="https://canvas.ou.edu" />
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label field-label--required">Meeting Days</label>
+          <div class="day-checkboxes" role="group" aria-label="Select meeting days">
+            <label class="day-label"><input type="checkbox" name="meetingDays" value="Mon" /> Mon</label>
+            <label class="day-label"><input type="checkbox" name="meetingDays" value="Tue" /> Tue</label>
+            <label class="day-label"><input type="checkbox" name="meetingDays" value="Wed" /> Wed</label>
+            <label class="day-label"><input type="checkbox" name="meetingDays" value="Thu" /> Thu</label>
+            <label class="day-label"><input type="checkbox" name="meetingDays" value="Fri" /> Fri</label>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label for="meetingStart" class="field-label field-label--required">Class Start Time</label>
+            <input type="time" id="meetingStart" name="meetingStart" required aria-required="true" class="input input--time" />
+          </div>
+          <div class="field-group">
+            <label for="meetingEnd" class="field-label field-label--required">Class End Time</label>
+            <input type="time" id="meetingEnd" name="meetingEnd" required aria-required="true" class="input input--time" />
+          </div>
+        </div>
+
+        <fieldset class="fieldset">
+          <legend class="fieldset__legend">Final Exam</legend>
+          <div class="field-row">
+            <div class="field-group">
+              <label for="finalExamDate" class="field-label">Date</label>
+              <input type="date" id="finalExamDate" name="finalExamDate" class="input" />
+            </div>
+            <div class="field-group">
+              <label for="finalExamStart" class="field-label">Start Time</label>
+              <input type="time" id="finalExamStart" name="finalExamStart" class="input input--time" />
+            </div>
+            <div class="field-group">
+              <label for="finalExamEnd" class="field-label">End Time</label>
+              <input type="time" id="finalExamEnd" name="finalExamEnd" class="input input--time" />
+            </div>
+            <div class="field-group field-group--grow">
+              <label for="finalExamRoom" class="field-label">Room</label>
+              <input type="text" id="finalExamRoom" name="finalExamRoom" class="input" />
+            </div>
+          </div>
+        </fieldset>
+      </section>
+
+      <!-- ── SECTION 3 ── -->
+      <section id="s3" class="form-section" aria-labelledby="s3-heading">
+        <h2 id="s3-heading" class="section-heading">
+          <span class="section-number">3</span> Required Texts &amp; Software
+        </h2>
+        <div id="materials-list" class="repeating-list" role="list"></div>
+        <button type="button" id="btn-add-material" class="btn btn--ghost btn--sm btn--add">
+          + Add Material
+        </button>
+      </section>
+
+      <!-- ── SECTION 4 ── -->
+      <section id="s4" class="form-section" aria-labelledby="s4-heading">
+        <h2 id="s4-heading" class="section-heading">
+          <span class="section-number">4</span> Prerequisites
+        </h2>
+        <p class="section-desc">List each prerequisite course with a brief note on why it is required. Leave empty if there are no prerequisites.</p>
+        <div id="prereqs-list" class="repeating-list" role="list"></div>
+        <button type="button" id="btn-add-prereq" class="btn btn--ghost btn--sm btn--add">
+          + Add Prerequisite
+        </button>
+      </section>
+
+      <!-- ── SECTION 5 ── -->
+      <section id="s5" class="form-section" aria-labelledby="s5-heading">
+        <h2 id="s5-heading" class="section-heading">
+          <span class="section-number">5</span> Course Overview &amp; Objectives
+        </h2>
+
+        <div class="field-group">
+          <label for="courseDescription" class="field-label field-label--required">Course Description</label>
+          <textarea id="courseDescription" name="courseDescription" required aria-required="true"
+                    class="input input--textarea" rows="5"
+                    placeholder="Describe the course, its purpose, and what students will gain."></textarea>
+        </div>
+
+        <div class="field-group">
+          <label for="coursePhilosophy" class="field-label">
+            Course Design / Teaching Philosophy
+            <span class="field-label__optional">(optional)</span>
+          </label>
+          <textarea id="coursePhilosophy" name="coursePhilosophy"
+                    class="input input--textarea" rows="4"
+                    placeholder="Optional: explain your pedagogical approach, learning-by-doing philosophy, etc."></textarea>
+        </div>
+
+        <div class="subsection">
+          <h3 class="subsection-heading">
+            Modules / Units
+            <span class="field-label__optional" style="font-size:0.8125rem;font-weight:400"> — optional</span>
+          </h3>
+          <p class="section-desc">Add course modules or units if your course is organized that way. Leave empty if not applicable.</p>
+          <div id="modules-list" class="repeating-list" role="list"></div>
+          <button type="button" id="btn-add-module" class="btn btn--ghost btn--sm btn--add">
+            + Add Module
+          </button>
+        </div>
+
+        <div class="subsection">
+          <h3 class="subsection-heading clo-heading">
+            Course Level Outcomes (CLOs)
+            <span class="required-badge" aria-label="Required">Required</span>
+          </h3>
+          <p class="section-desc">
+            Define the skills and knowledge students will demonstrate. For each CLO, optionally list the assignments that assess it (e.g., "Homework 1", "Quiz A", "Exam II").
+          </p>
+          <div id="clos-list" class="repeating-list clos-list" role="list"></div>
+          <button type="button" id="btn-add-clo" class="btn btn--ghost btn--sm btn--add">
+            + Add CLO
+          </button>
+        </div>
+      </section>
+
+      <!-- ── SECTION 6 ── -->
+      <section id="s6" class="form-section" aria-labelledby="s6-heading">
+        <h2 id="s6-heading" class="section-heading">
+          <span class="section-number">6</span> Grading &amp; Assessments
+        </h2>
+
+        <!-- Grading type toggle -->
+        <div class="field-row" style="margin-bottom:1rem">
+          <span class="field-label" style="margin-bottom:0;line-height:2">Scale Type</span>
+          <div class="calendar-view-toggle" role="radiogroup" aria-label="Grading scale type" style="margin-left:0.75rem">
+            <button type="button" id="gt-weighted" class="btn btn--ghost btn--sm btn--active"
+                    aria-pressed="true">Weighted %</button>
+            <button type="button" id="gt-points"   class="btn btn--ghost btn--sm"
+                    aria-pressed="false">Point Based</button>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3 class="subsection-heading">Grading Scale</h3>
+          <p id="grade-scale-hint" class="section-desc" style="margin-bottom:0.5rem">
+            Enter the minimum and maximum <strong>percentage</strong> for each letter grade.
+          </p>
+          <div id="grade-scale-list" class="grade-scale-list"></div>
+        </div>
+
+        <div class="subsection">
+          <h3 class="subsection-heading">Assessment Components</h3>
+          <div id="assessments-list" class="repeating-list" role="list"></div>
+          <button type="button" id="btn-add-assessment" class="btn btn--ghost btn--sm btn--add">
+            + Add Component
+          </button>
+          <div class="weight-total-row" aria-live="polite">
+            <span id="weight-total-label">Total weight:</span>
+            <span id="weight-total" class="weight-total">0%</span>
+            <span id="weight-status" class="weight-status" aria-label="Weight status"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 7 ── -->
+      <section id="s7" class="form-section" aria-labelledby="s7-heading">
+        <h2 id="s7-heading" class="section-heading">
+          <span class="section-number">7</span> Course Policies
+        </h2>
+
+        <div class="subsection">
+          <h3 class="subsection-heading">Division / College Policy Blocks</h3>
+          <p class="section-desc">
+            Required policies are always included. Optional policies can be toggled on or off;
+            when enabled, you may edit the text.
+          </p>
+          <div id="division-policies-list" class="policy-blocks-list" role="list"></div>
+        </div>
+
+        <div class="subsection">
+          <h3 class="subsection-heading">Custom Course Policies</h3>
+          <p class="section-desc">
+            Add your own course-specific policies. Each entry gets its own title and body, which
+            keeps formatting consistent throughout the document.
+          </p>
+          <div id="custom-policies-list" class="custom-policies-list" aria-live="polite"></div>
+          <button type="button" id="btn-add-custom-policy" class="btn btn--secondary btn--sm">
+            + Add Policy
+          </button>
+        </div>
+      </section>
+
+      <!-- ── SECTION 8 ── -->
+      <section id="s8" class="form-section" aria-labelledby="s8-heading">
+        <h2 id="s8-heading" class="section-heading">
+          <span class="section-number">8</span> University Policies
+        </h2>
+        <p class="section-desc">
+          Required university policies are always included in your syllabus and cannot be removed.
+          Optional policies can be toggled.
+        </p>
+        <div id="university-policies-list" class="policy-blocks-list" role="list"></div>
+      </section>
+
+      <!-- ── SECTION 9 ── -->
+      <section id="s9" class="form-section" aria-labelledby="s9-heading">
+        <h2 id="s9-heading" class="section-heading">
+          <span class="section-number">9</span> Generative AI Policy
+        </h2>
+        <div class="field-group">
+          <label for="genAiTier" class="field-label field-label--required">Policy Level</label>
+          <select id="genAiTier" name="genAiTier" required aria-required="true" class="input input--select">
+            <option value="">— Select a policy level —</option>
+            <option value="gen-ai-level-1">Level 1 — Restricted / No AI Use</option>
+            <option value="gen-ai-level-2">Level 2 — For Planning Only</option>
+            <option value="gen-ai-level-3">Level 3 — Collaborative (First Draft Must Be Your Own)</option>
+            <option value="gen-ai-level-4">Level 4 — Full Use with Citation</option>
+            <option value="gen-ai-level-5">Level 5 — Exploration (AI Use Required)</option>
+            <option value="gen-ai-level-6">Level 6 — Per-Assignment Policy</option>
+            <option value="gen-ai-custom-ackerman">Custom — MIS Permissive</option>
+            <option value="custom">Custom — Write My Own</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="genAiText" class="field-label">Policy Text</label>
+          <textarea id="genAiText" name="genAiText" class="input input--textarea" rows="10"
+                    placeholder="Select a level above to populate this field, or write your own policy."></textarea>
+        </div>
+      </section>
+
+      <!-- ── SECTION 10 ── -->
+      <section id="s10" class="form-section" aria-labelledby="s10-heading">
+        <h2 id="s10-heading" class="section-heading">
+          <span class="section-number">10</span> Course Calendar
+        </h2>
+
+        <div class="calendar-meta" aria-live="polite">
+          <div class="calendar-meta__item">
+            <strong>Semester:</strong> <span id="cal-semester-label">—</span>
+          </div>
+          <div class="calendar-meta__item">
+            <strong>Meeting Days:</strong> <span id="cal-meeting-days">—</span>
+          </div>
+          <div class="calendar-meta__item">
+            <strong>Holidays:</strong> <span id="cal-holidays-summary">—</span>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Custom No-Class Days</label>
+          <div id="no-class-days-list" class="repeating-list" role="list"></div>
+          <button type="button" id="btn-add-no-class" class="btn btn--ghost btn--sm btn--add">
+            + Add No-Class Day
+          </button>
+        </div>
+
+        <div class="calendar-actions">
+          <button type="button" id="btn-generate-calendar" class="btn btn--primary">
+            &#8635; Generate Calendar
+          </button>
+          <button type="button" id="btn-download-csv" class="btn btn--secondary" disabled>
+            &#8595; Download CSV Template
+          </button>
+          <label class="btn btn--secondary" id="label-import-csv" aria-disabled="true">
+            &#8593; Import CSV
+            <input type="file" id="input-import-csv" accept=".csv" hidden aria-label="Import calendar CSV" disabled />
+          </label>
+          <div class="calendar-view-toggle" role="group" aria-label="Calendar view">
+            <button type="button" id="btn-view-flat" class="btn btn--ghost btn--sm btn--active">List</button>
+            <button type="button" id="btn-view-week" class="btn btn--ghost btn--sm">By Week</button>
+            <button type="button" id="btn-view-grid" class="btn btn--ghost btn--sm">Grid</button>
+          </div>
+        </div>
+
+        <div id="calendar-table-wrapper" class="calendar-table-wrapper" role="region" aria-label="Course calendar">
+          <p class="calendar-placeholder">
+            Select a semester and meeting days (Sections 1 &amp; 2), then click <strong>Generate Calendar</strong>.
+          </p>
+        </div>
+      </section>
+
+    </form><!-- /syllabus-form -->
+  </main><!-- /form-pane -->
+
+  <!-- PREVIEW PANE -->
+  <aside class="preview-pane" aria-label="Syllabus preview">
+    <div class="preview-pane__header">
+      <h2 class="preview-pane__title">Live Preview</h2>
+      <button id="btn-toggle-preview" class="btn btn--ghost btn--sm" aria-expanded="true"
+              aria-controls="preview-content">Hide</button>
+    </div>
+    <div id="preview-content" class="preview-content" aria-live="polite">
+      <div id="syllabus-preview" class="syllabus-preview">
+        <p class="preview-empty">Fill out the form to see your syllabus preview here.</p>
+      </div>
+    </div>
+  </aside>
+
+</div><!-- /app-layout -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="app-footer">
+  <span class="app-footer__copy">© 2025 Adam Ackerman</span>
+  <span class="app-footer__sep" aria-hidden="true">·</span>
+  <a class="app-footer__link" href="THIRD-PARTY-LICENSES.md" target="_blank" rel="noopener noreferrer">Open-Source Licenses</a>
+</footer>
+
+<!-- ===== RESET MODAL ===== -->
+<div id="modal-reset" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-reset-title" hidden>
+  <div class="modal__backdrop"></div>
+  <div class="modal__box">
+    <h2 id="modal-reset-title" class="modal__title">Reset Form?</h2>
+    <p class="modal__body">This will permanently clear all form data. This action cannot be undone.</p>
+    <div class="modal__actions">
+      <button id="btn-reset-confirm" class="btn btn--danger">Yes, Reset Everything</button>
+      <button id="btn-reset-cancel" class="btn btn--ghost">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TOAST NOTIFICATIONS ===== -->
+<div id="toast-container" class="toast-container" aria-live="assertive" aria-atomic="true"></div>
+
+<!-- ===== SCRIPTS ===== -->
+<script src="js/state.js"></script>
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/sections/s1-semester.js"></script>
+<script src="js/sections/s2-logistics.js"></script>
+<script src="js/sections/s3-materials.js"></script>
+<script src="js/sections/s4-prereqs.js"></script>
+<script src="js/sections/s5-overview.js"></script>
+<script src="js/sections/s6-grading.js"></script>
+<script src="js/sections/s7-policies.js"></script>
+<script src="js/sections/s8-university.js"></script>
+<script src="js/sections/s9-genai.js"></script>
+<script src="js/sections/s10-calendar.js"></script>
+<script src="js/preview.js"></script>
+<script src="js/export.js"></script>
+<script src="js/persistence.js"></script>
+<script src="js/collapsible.js"></script>
+<script src="js/app.js"></script>
+
+</body>
 </html>

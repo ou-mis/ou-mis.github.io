@@ -1,0 +1,78 @@
+[
+  {
+    "termCode": "202470",
+    "label": "Fall 2025",
+    "startDate": "2025-08-26",
+    "endDate": "2025-12-12",
+    "finalExamStart": "2025-12-15",
+    "finalExamEnd": "2025-12-20",
+    "preFinalsWeekStart": "2025-12-08",
+    "holidays": [
+      { "date": "2025-09-01", "name": "Labor Day" },
+      { "date": "2025-11-26", "name": "Thanksgiving Break" },
+      { "date": "2025-11-27", "name": "Thanksgiving Break" },
+      { "date": "2025-11-28", "name": "Thanksgiving Break" }
+    ]
+  },
+  {
+    "termCode": "202510",
+    "label": "Spring 2026",
+    "startDate": "2026-01-12",
+    "endDate": "2026-05-08",
+    "finalExamStart": "2026-05-11",
+    "finalExamEnd": "2026-05-16",
+    "preFinalsWeekStart": "2026-05-04",
+    "holidays": [
+      { "date": "2026-01-19", "name": "Martin Luther King Jr. Day" },
+      { "date": "2026-03-16", "name": "Spring Break" },
+      { "date": "2026-03-17", "name": "Spring Break" },
+      { "date": "2026-03-18", "name": "Spring Break" },
+      { "date": "2026-03-19", "name": "Spring Break" },
+      { "date": "2026-03-20", "name": "Spring Break" }
+    ]
+  },
+  {
+    "termCode": "202610",
+    "label": "Spring 2027",
+    "startDate": "2027-01-11",
+    "endDate": "2027-05-07",
+    "finalExamStart": "2027-05-10",
+    "finalExamEnd": "2027-05-15",
+    "preFinalsWeekStart": "2027-05-03",
+    "holidays": [
+      { "date": "2027-01-18", "name": "Martin Luther King Jr. Day" },
+      { "date": "2027-03-15", "name": "Spring Break" },
+      { "date": "2027-03-16", "name": "Spring Break" },
+      { "date": "2027-03-17", "name": "Spring Break" },
+      { "date": "2027-03-18", "name": "Spring Break" },
+      { "date": "2027-03-19", "name": "Spring Break" }
+    ]
+  },
+  {
+    "termCode": "202530",
+    "label": "Summer 2026",
+    "startDate": "2026-06-01",
+    "endDate": "2026-08-07",
+    "finalExamStart": "2026-08-10",
+    "finalExamEnd": "2026-08-14",
+    "preFinalsWeekStart": "2026-08-03",
+    "holidays": [
+      { "date": "2026-07-03", "name": "Independence Day (observed)" }
+    ]
+  },
+  {
+    "termCode": "202570",
+    "label": "Fall 2026",
+    "startDate": "2026-08-24",
+    "endDate": "2026-12-11",
+    "finalExamStart": "2026-12-14",
+    "finalExamEnd": "2026-12-19",
+    "preFinalsWeekStart": "2026-12-07",
+    "holidays": [
+      { "date": "2026-09-07", "name": "Labor Day" },
+      { "date": "2026-11-25", "name": "Thanksgiving Break" },
+      { "date": "2026-11-26", "name": "Thanksgiving Break" },
+      { "date": "2026-11-27", "name": "Thanksgiving Break" }
+    ]
+  }
+]

@@ -1,0 +1,186 @@
+[
+  {
+    "id": "mental-health",
+    "category": "university",
+    "label": "Mental Health Support Services",
+    "status": "required",
+    "lastUpdated": "2025-08-01",
+    "content": "## Mental Health Support Services\n\nAs a university student, you may experience a range of issues that can cause barriers to learning, such as strained relationships, increased anxiety, alcohol/drug problems, feeling down, difficulty concentrating and/or lack of motivation. These mental health concerns or stressful events may diminish your academic performance and/or reduce your ability to participate in daily activities. OU offers services to assist you with addressing these and other concerns you may be experiencing. You can learn more about the broad range of confidential mental health services available on campus via the Counseling, Wellness, and Prevention Services (CWPS) at [https://www.ou.edu/health/cwps](https://www.ou.edu/health/cwps), (405) 325-2911 or at Goddard Health Center, 620 Elm Avenue. Additionally, you can also access TimelyCare, a virtual health and well-being platform that provides 24/7/365 access to medical care, mental health support, and wellness services. To connect with TimelyCare, visit [timelycare.com/OU](https://timelycare.com/OU) or download the app."
+  },
+  {
+    "id": "title-ix",
+    "category": "university",
+    "label": "Title IX / Sexual Misconduct",
+    "status": "required",
+    "lastUpdated": "2025-08-01",
+    "content": "## Title IX / Sexual Misconduct\n\nThe University of Oklahoma is committed to providing a safe learning environment for all members of our community. Title IX of the Education Amendments of 1972 prohibits sex discrimination in educational programs and activities. This includes sexual harassment, sexual assault, domestic violence, dating violence, and stalking.\n\nAs your instructor, I am a **mandatory reporter**. This means that if you share information about sexual misconduct or harassment with me — whether in person, in writing, in class discussions, on Canvas, or in any other setting — I am required to report that information to the OU Institutional Equity Office. If you need confidential support, you may contact **OU Advocates** at (405) 615-0013. You can also reach the Institutional Equity Office at (405) 325-3546 or visit [https://www.ou.edu/eoo](https://www.ou.edu/eoo)."
+  },
+  {
+    "id": "reasonable-accommodation",
+    "category": "university",
+    "label": "Reasonable Accommodation",
+    "status": "required",
+    "lastUpdated": "2025-08-01",
+    "content": "## Reasonable Accommodation\n\nThe University of Oklahoma is committed to making its activities accessible to all participants. If you have a disability and require accommodations in this course, please contact the **Accessibility and Disability Resource Center (ADRC)** through iAdvise to schedule an appointment at [https://www.ou.edu/adrc](https://www.ou.edu/adrc), by emailing adrc@ou.edu, or by calling (405) 325-3852. Accommodations are not retroactive. You must provide your accommodation letter to me as early as possible in the semester to ensure appropriate arrangements can be made."
+  },
+  {
+    "id": "religious-observance",
+    "category": "university",
+    "label": "Religious Observance",
+    "status": "required",
+    "lastUpdated": "2025-08-01",
+    "content": "## Religious Observance\n\nIt is the policy of the University to excuse the absences of students that result from religious observances and to provide without penalty for the rescheduling of examinations and additional required classwork that may fall on religious holidays [Faculty Handbook 3.15.2]. If a religious holiday conflicts with a class meeting, quiz, exam, or assignment deadline, please notify me at least one week in advance so that we can make appropriate arrangements."
+  },
+  {
+    "id": "pregnancy-adjustments",
+    "category": "university",
+    "label": "Pregnancy Adjustments",
+    "status": "required",
+    "lastUpdated": "2025-08-01",
+    "content": "## Pregnancy Adjustments\n\nTitle IX protects students from discrimination based on pregnancy, childbirth, or related conditions. Students who are pregnant or experiencing pregnancy-related conditions may request reasonable adjustments. For assistance, contact the **Institutional Equity Office** at (405) 325-3546 or visit [https://www.ou.edu/eoo](https://www.ou.edu/eoo)."
+  },
+  {
+    "id": "final-exam-prep",
+    "category": "university",
+    "label": "Final Exam Preparation Period",
+    "status": "required",
+    "lastUpdated": "2025-08-01",
+    "content": "## Final Exam Preparation Period\n\nThe 7 calendar days before the first day of the final exam period are designated as the final exam preparation period. During this time, no major homework, projects, presentations, or other graded work may be assigned that is due before the final exam period begins. Instructors may continue to cover new material during this period. Please refer to the Academic Calendar for the specific dates each semester."
+  },
+  {
+    "id": "emergency-severe-weather",
+    "category": "university",
+    "label": "Emergency Protocol — Severe Weather",
+    "status": "required",
+    "lastUpdated": "2025-08-01",
+    "content": "## Emergency Protocol — Severe Weather\n\nIn the event of severe weather, follow OU Alert instructions. If a tornado warning is issued while you are on campus:\n\n- **Get In** — Move to the nearest interior shelter location.\n- **Get Down** — Go to the lowest floor possible.\n- **Cover Up** — Protect your head and neck.\n\nBuilding-specific severe weather refuge maps are posted throughout campus. Sign up for **OU Alert** at [https://www.ou.edu/oupd/oualert](https://www.ou.edu/oupd/oualert) to receive emergency notifications."
+  },
+  {
+    "id": "emergency-active-threat",
+    "category": "university",
+    "label": "Emergency Protocol — Active Threat",
+    "status": "required",
+    "lastUpdated": "2025-08-01",
+    "content": "## Emergency Protocol — Active Threat (Run, Hide, Fight)\n\nIn the event of an active threat on campus:\n\n- **Run** — If there is a safe escape path, leave immediately and call 911.\n- **Hide** — If evacuation is not possible, find a secure location, lock/barricade the door, and silence your phone.\n- **Fight** — As a last resort, use whatever means necessary to disrupt and disarm the threat.\n\nOU Alerts are sent via the one.ou.edu system. Emergency contacts: OUPD Norman (405) 325-1717 / (405) 325-1911; OUPD Tulsa (918) 660-3900 / (918) 660-3333."
+  },
+  {
+    "id": "emergency-fire",
+    "category": "university",
+    "label": "Emergency Protocol — Fire Alarm",
+    "status": "required",
+    "lastUpdated": "2025-08-01",
+    "content": "## Emergency Protocol — Fire Alarm\n\nIn the event a fire alarm sounds:\n\n1. **Leave** the building immediately.\n2. **Know** your nearest exit route.\n3. **Assist** those who need help evacuating, if it is safe to do so.\n4. **Proceed** to the designated assembly area.\n5. **Notify** emergency personnel of anyone who could not evacuate.\n6. **Wait** for official clearance before re-entering the building."
+  },
+  {
+    "id": "belonging-statement",
+    "category": "university",
+    "label": "Belonging Statement",
+    "status": "optional",
+    "lastUpdated": "2025-08-01",
+    "content": "## Why You Belong at the University of Oklahoma\n\nThe University of Oklahoma is committed to creating a diverse and inclusive community where all students feel welcomed, valued, and supported. We recognize and respect the unique backgrounds, perspectives, and experiences that each student brings to our campus. Regardless of your race, ethnicity, gender identity, sexual orientation, religion, socioeconomic status, age, disability, or any other aspect of your identity, you belong here.\n\nWe strive to foster an environment that celebrates diversity and promotes understanding, empathy, and respect. We encourage you to embrace your own identity and to appreciate the richness that comes from engaging with others who are different from you. By learning from one another, we can collectively grow and create a more equitable and just world.\n\nIf you ever feel that you don't belong or experience any form of discrimination or harassment, please know that there are resources available to support you. You are not alone, and we are here to help you navigate any challenges you may encounter. Together, let's build a community where everyone can thrive and succeed."
+  },
+  {
+    "id": "course-reflection-survey",
+    "category": "university",
+    "label": "Course Reflection Survey",
+    "status": "optional",
+    "lastUpdated": "2025-08-01",
+    "content": "## Course Reflection Survey\n\nNear the end of the semester, the university will administer an online course reflection survey. Your feedback helps improve instruction and course design. Surveys are confidential; individual responses are not released to instructors until after final grades have been submitted. I encourage you to take a few minutes to share your honest perspective."
+  },
+  {
+    "id": "copyright",
+    "category": "university",
+    "label": "Copyright Statement",
+    "status": "optional",
+    "lastUpdated": "2025-08-01",
+    "content": "## Copyright Statement\n\nCourse materials prepared by the instructor are the intellectual property of the instructor. Students are expressly prohibited from selling notes or other course materials to any person or commercial firm without the express written permission of the instructor. Recording of lectures or class sessions is permitted only with the instructor's permission. Any approved recordings are for personal academic use only and may not be distributed, published, or posted publicly in any form."
+  },
+  {
+    "id": "academic-integrity-mis",
+    "category": "division",
+    "label": "Academic Integrity",
+    "status": "optional",
+    "lastUpdated": "2025-08-01",
+    "content": "## Academic Integrity\n\nAll work submitted for this course must be your own. The University of Oklahoma's Academic Integrity Code defines academic misconduct as \"any act that improperly affects the evaluation of a student's academic performance or achievement.\" This includes but is not limited to: plagiarism, cheating on exams, unauthorized collaboration, and submitting another student's work as your own."
+  },
+  {
+    "id": "laptop-policy",
+    "category": "division",
+    "label": "Laptop Requirements",
+    "status": "optional",
+    "lastUpdated": "2025-08-01",
+    "content": "## Laptop Requirements\n\nA laptop computer is required for every class meeting. The following specifications are the minimum requirements for the 2025–2026 academic year:\n\n| Component | Minimum Specification |\n|-----------|----------------------|\n| Processor | Intel Core i5 (12th gen or later), AMD Ryzen 5 5000 series or later, or Apple M1/M2 |\n| RAM | 16 GB |\n| Storage | 512 GB SSD |\n| Operating System | Windows 11 or macOS Ventura (13) or later |\n| Required Software | Microsoft Office 365 (free via OU), SQL Server Management Studio (Windows) or Azure Data Studio (Mac) |\n\n**Can I use a Mac?** Yes, with limitations. Some software (e.g., Microsoft SQL Server Management Studio) is Windows-only. Mac users must install Azure Data Studio as an alternative. Check with the instructor before the first day of class if you are unsure whether your Mac meets course requirements.\n\n**Can I use a tablet, iPad, or Chromebook?** No. These devices are not compatible with the required course software.\n\nIf you do not have a qualifying laptop, the Price College of Business and the OU Libraries offer Dell laptop kiosk rentals. Contact the IT Help Desk for availability."
+  },
+  {
+    "id": "attendance-policy",
+    "category": "division",
+    "label": "Excused Absence Policy",
+    "status": "optional",
+    "lastUpdated": "2026-06-22",
+    "content": "## Excused Absence Policy\nRegular attendance is required. Absences will be considered excused only under the circumstances outlined below and only when appropriate documentation is submitted in a timely manner. The instructor retains sole discretion to determine whether an absence and its documentation meet the standards of this policy.\n### 1. University-Recognized Excused Absences\n**A. Religious Observances**\nIn accordance with University policy, absences for the observance of major religious holidays will be excused. Students must provide written notice as early as possible and no later than the end of the second week of the semester, or as soon as the conflict becomes known.\n**B. Official University-Sponsored Activities**\nAbsences resulting from participation in official University-sponsored activities are excused. Written verification from the sponsoring University office is required. Advance notice is expected whenever practicable.\n### 2. Medical Emergency\nA medical emergency is a serious, acute condition requiring urgent or emergent medical treatment that renders the student unable to participate in academic activities.\nExamples include, but are not limited to:\n- Emergency room treatment\n- Hospitalization\n- Urgent surgical procedures\n- Serious injury requiring immediate medical care\n\n**Required Documentation**\n\nOfficial documentation from a licensed healthcare provider or medical facility must include:\n- Date(s) of treatment\n- A statement confirming the student was medically unable to attend class on specified date(s)\n- Provider signature or institutional verification\nDocumentation that merely confirms an appointment occurred, without stating incapacity to attend class, is insufficient.\nRoutine illness (e.g., cold, flu, minor viral illness, headache, fatigue, or similar conditions) does not qualify as a medical emergency and is not an excused absence under this policy, even with a doctor's note.\n### 3. Motor Vehicle Accident\nAn absence resulting from a motor vehicle accident may be excused if the incident directly prevents class attendance.\n\n**Required Documentation**\n\nStudents must provide a copy of the official police report documenting the accident. The report must clearly indicate the date and time of the incident and demonstrate that it coincided with the scheduled class time or otherwise made attendance not reasonably possible.\nIf medical treatment resulted from the accident, documentation meeting the requirements of the Medical Emergency section may also be required.\n### 4. Family Emergency\nA family emergency is a significant, unforeseen event involving an immediate family member that requires the student's presence.\nImmediate family member is defined as: spouse or domestic partner; child; parent or legal guardian; sibling; grandparent; grandchild; or corresponding in-law relationship.\nQualifying circumstances may include:\n- Death of an immediate family member\n- Serious medical emergency involving an immediate family member\n\n**Required Documentation**\n\nAppropriate third-party verification must be provided (e.g., obituary, funeral documentation, hospital verification, or written confirmation from a responsible official). Verification through the Dean of Students Office may be required.\n### 5. Court Appearance\nAn absence may be excused when a student is legally required to appear in court and the appearance directly conflicts with scheduled class time.\nExcused court appearances may include, but are not limited to:\n- Jury duty\n- Subpoenaed testimony\n- Required court hearings\nVoluntary legal meetings, consultations with attorneys, or court appearances scheduled at the student's discretion do not qualify.\n\n**Required Documentation**\n\nStudents must provide official court documentation that clearly indicates:\n- The date and time of the required appearance\n- Verification that the student's presence was mandatory\nAdvance notice is expected whenever practicable.\n### 6. Non-Qualifying Absences\nThe following do not constitute excused absences:\n- Routine/chronic illness\n- Personal travel\n- Employment conflicts\n- Oversleeping\n- Minor appointments\n- Technical difficulties\n- Failure to plan appropriately\n### 7. Notification and Timing\nStudents must notify the instructor as soon as reasonably possible. Required documentation must be submitted within one week of returning to class unless otherwise approved in writing. Failure to provide timely notice or adequate documentation may result in the absence being recorded as unexcused."
+  },
+  {
+    "id": "ta-help",
+    "category": "division",
+    "label": "TAs",
+    "status": "optional",
+    "lastUpdated": "2025-08-01",
+    "content": "## Getting Help from TAs\n\nIn addition to instructor office hours, teaching assistants (TAs) are available to help you with course material during their office hours."
+  },
+  {
+    "id": "gen-ai-level-1",
+    "category": "gen-ai",
+    "label": "Level 1 — Restricted / No AI Use",
+    "status": "optional",
+    "lastUpdated": "2025-08-01",
+    "content": "## Generative AI Policy — Level 1: Restricted Use\n\nThe use of generative artificial intelligence tools (including but not limited to ChatGPT, Microsoft Copilot, Google Gemini, Claude, and Grammarly's AI features) is **not permitted** in this course for any purpose.\n\nAll submitted work must reflect your own original thinking and writing. Use of AI tools to generate, revise, or assist with any coursework — including drafts, outlines, code, or research summaries — will be treated as a violation of the OU Academic Integrity Code.\n\n**Consequences:** Unauthorized use of AI tools will result in a grade of zero for the affected assignment and may be referred to the Academic Integrity office.\n\n**Instructor disclosure:** I do not use AI tools to generate course materials, grade your work, or provide feedback."
+  },
+  {
+    "id": "gen-ai-level-2",
+    "category": "gen-ai",
+    "label": "Level 2 — For Planning Only",
+    "status": "optional",
+    "lastUpdated": "2025-08-01",
+    "content": "## Generative AI Policy — Level 2: For Planning Only\n\nYou may use generative AI tools (e.g., ChatGPT, Goblin.tools, Microsoft Copilot) **for planning purposes only**. Permitted uses include:\n\n- Brainstorming ideas or approaches\n- Creating outlines or concept maps\n- Exploring background research topics\n\nYou may **not** use AI tools to draft, revise, or finalize any written content, code, or answers that will be submitted for a grade.\n\n**Required disclosure:** If you use AI for planning, you must include a brief note at the top of your submission stating what tool(s) you used and how. Include screenshots of the prompts you used as an appendix.\n\n**Consequences:** Use beyond these permitted purposes without disclosure will be treated as a violation of the OU Academic Integrity Code."
+  },
+  {
+    "id": "gen-ai-level-3",
+    "category": "gen-ai",
+    "label": "Level 3 — Collaborative (First Draft Must Be Your Own)",
+    "status": "optional",
+    "lastUpdated": "2025-08-01",
+    "content": "## Generative AI Policy — Level 3: Collaborative Use\n\nYou may use generative AI tools as a **collaborator after producing your own first draft**. Permitted uses include:\n\n- Brainstorming and outlining\n- Seeking AI feedback on a draft you have already written\n- Using AI to suggest improvements to grammar, clarity, or structure\n- Using AI as a study partner to explain or further explore concepts\n\nYour first draft must be entirely your own work, written before any AI assistance is sought.\n\n**Required disclosure:** Include an appendix in your submission listing the AI tool(s) used, the prompts you submitted, and a brief explanation of how you incorporated (or chose not to incorporate) the AI's suggestions.\n\n**Consequences:** Submitting AI-generated text as your own first draft, or failing to disclose AI use, will be treated as a violation of the OU Academic Integrity Code."
+  },
+  {
+    "id": "gen-ai-level-4",
+    "category": "gen-ai",
+    "label": "Level 4 — Full Use with Citation",
+    "status": "optional",
+    "lastUpdated": "2025-08-01",
+    "content": "## Generative AI Policy — Level 4: Full Use with Citation\n\nYou may use generative AI tools freely throughout the course for any academic purpose, including drafting, revising, researching, and generating code.\n\n**Required disclosure for all AI-assisted submissions:**\n\n1. A declaration at the top of the submission identifying which AI tool(s) were used.\n2. An appendix containing the prompts submitted and the AI responses received.\n3. A brief reflection statement (1–2 sentences) explaining how the AI output was verified, modified, or incorporated into your work.\n\nYou are responsible for the accuracy of all submitted content regardless of its origin. AI tools can hallucinate facts, generate incorrect code, and misrepresent sources. Always verify AI outputs before submitting.\n\n**Consequences:** Failure to disclose AI use when required will be treated as a violation of the OU Academic Integrity Code."
+  },
+  {
+    "id": "gen-ai-level-5",
+    "category": "gen-ai",
+    "label": "Level 5 — Exploration (AI Use Required)",
+    "status": "optional",
+    "lastUpdated": "2025-08-01",
+    "content": "## Generative AI Policy — Level 5: Exploration\n\nThis course actively incorporates generative AI tools as part of the learning experience. You will be assigned tasks that require you to use AI tools, evaluate their outputs, and reflect critically on their capabilities and limitations.\n\nAI use is **required** for designated assignments. Specific tools and instructions will be provided with each assignment.\n\nFor all AI-assisted work, you must document your process: the tool used, the prompts entered, the outputs received, and your own critical evaluation of those outputs.\n\nYou remain fully responsible for the accuracy, quality, and integrity of all submitted work."
+  },
+  {
+    "id": "gen-ai-level-6",
+    "category": "gen-ai",
+    "label": "Level 6 — Per-Assignment Policy",
+    "status": "optional",
+    "lastUpdated": "2025-08-01",
+    "content": "## Generative AI Policy — Per Assignment\n\nThe policy for generative AI use varies by assignment. Each assignment description will clearly state whether AI use is permitted, restricted, or required for that specific task, along with any disclosure requirements.\n\nBy default (unless an assignment explicitly states otherwise), AI use is **not permitted**.\n\nPlease read each assignment's AI policy carefully before beginning your work. If you are unsure whether a particular use of AI is allowed for a given assignment, ask the instructor before submitting."
+  },
+  {
+    "id": "gen-ai-custom-ackerman",
+    "category": "gen-ai",
+    "label": "Custom — MIS Permissive",
+    "status": "optional",
+    "lastUpdated": "2025-08-01",
+    "content": "## Generative AI Policy\n\nThe use of generative AI tools is permitted in this course for the following purposes:\n\n- Searching for and summarizing published academic or professional sources\n- Creating outlines, draft text, or speech notes for presentations\n- Receiving grammatical and stylistic feedback on your own drafts\n- Further study and exploration of course topics outside of class\n- Troubleshooting software errors (SQL, Python, Excel, etc.)\n- Generating initial ideas for projects or assignments\n\n**Required disclosure:** Any submission that includes AI-generated or AI-assisted content must include:\n\n1. A declaration at the top of the document stating that AI was used.\n2. An appendix containing the exact prompts submitted and the AI responses received.\n\nUse of AI tools for purposes not listed above without proper acknowledgment and disclosure constitutes a violation of the OU Academic Integrity Code and will be handled accordingly.\n\n**Note:** Regardless of the above, no AI tools of any kind are permitted during quizzes, exams, or any other timed in-class assessments unless the instructor explicitly states otherwise for a specific assessment."
+  }
+]
