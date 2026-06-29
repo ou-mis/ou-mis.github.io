@@ -3,6 +3,73 @@
  */
 const S10 = (() => {
   const DAY_ORDER = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const DEFAULT_VIEW = 'grid';
+  let _lastFinalExamKey = '';
+
+  function _getCalendarView() {
+    const view = State.get().calendarView || DEFAULT_VIEW;
+    return view === 'flat' || view === 'week' || view === 'grid' ? view : DEFAULT_VIEW;
+  }
+
+  function _syncViewButtons(view) {
+    document.getElementById('btn-view-flat').classList.toggle('btn--active', view === 'flat');
+    document.getElementById('btn-view-week').classList.toggle('btn--active', view === 'week');
+    document.getElementById('btn-view-grid').classList.toggle('btn--active', view === 'grid');
+  }
+
+  function _renderCalendar(view) {
+    const s = State.get();
+    const activeView = view || _getCalendarView();
+    const wrapper = document.getElementById('calendar-table-wrapper');
+
+    if (!s.calendarRows.length) {
+      wrapper.innerHTML = '<p class="calendar-placeholder">No calendar data to display. Click <strong>Generate Calendar</strong>.</p>';
+      return;
+    }
+
+    if (activeView === 'grid') {
+      _renderCalendarGrid(s);
+    } else {
+      _renderCalendarTable(s.calendarRows, activeView);
+    }
+  }
+
+  function _buildFinalExamRow(s) {
+    if (!s.finalExamDate) return null;
+    const fDate = Utils.parseISODate(s.finalExamDate);
+    if (!fDate) return null;
+    return {
+      date:     s.finalExamDate,
+      day:      Utils.shortDayName(fDate),
+      type:     'final-exam',
+      name:     'Final Exam',
+      topic:    s.finalExamRoom ? `Room: ${s.finalExamRoom}` : '',
+      readings: '',
+      due:      s.finalExamStart && s.finalExamEnd
+        ? `${Utils.formatTime(s.finalExamStart)} – ${Utils.formatTime(s.finalExamEnd)}`
+        : '',
+    };
+  }
+
+  function _resolveFinalExamRow(s, rows) {
+    return rows.find(r => r.type === 'final-exam') || _buildFinalExamRow(s);
+  }
+
+  function _upsertFinalExamRow() {
+    const s = State.get();
+    if (!s.calendarRows.length) return false;
+
+    const withoutFinal = s.calendarRows.filter(r => r.type !== 'final-exam');
+    const finalRow = _buildFinalExamRow(s);
+    const nextRows = finalRow ? [...withoutFinal, finalRow] : withoutFinal;
+
+    const changed = nextRows.length !== s.calendarRows.length
+      || nextRows.some((row, i) => JSON.stringify(row) !== JSON.stringify(s.calendarRows[i]));
+    if (!changed) return false;
+
+    State.set({ calendarRows: nextRows });
+    return true;
+  }
 
   function init() {
     document.getElementById('btn-generate-calendar').addEventListener('click', generateCalendar);
@@ -15,6 +82,13 @@ const S10 = (() => {
     document.getElementById('btn-view-flat').addEventListener('click', () => _setView('flat'));
     document.getElementById('btn-view-week').addEventListener('click', () => _setView('week'));
     document.getElementById('btn-view-grid').addEventListener('click', () => _setView('grid'));
+    State.subscribe(Utils.debounce((s) => {
+      if (!s.calendarRows.length) return;
+      const key = [s.finalExamDate, s.finalExamStart, s.finalExamEnd, s.finalExamRoom].join('|');
+      if (key === _lastFinalExamKey) return;
+      _lastFinalExamKey = key;
+      if (_upsertFinalExamRow()) _renderCalendar(_getCalendarView());
+    }, 400));
     _restoreFromState();
   }
 
@@ -87,12 +161,8 @@ const S10 = (() => {
     });
 
     State.set({ calendarRows: updatedRows });
-    const view = State.get().calendarView || 'flat';
-    if (view === 'grid') {
-      _renderCalendarGrid(State.get());
-    } else {
-      _renderCalendarTable(updatedRows, view);
-    }
+    _upsertFinalExamRow();
+    _renderCalendar(_getCalendarView());
   }
 
   /* ── Calendar Generation ── */
@@ -151,24 +221,10 @@ const S10 = (() => {
       cur.setDate(cur.getDate() + 1);
     }
 
-    // Add final exam row if date is set
-    if (s.finalExamDate) {
-      const fDate = Utils.parseISODate(s.finalExamDate);
-      rows.push({
-        date:     s.finalExamDate,
-        day:      Utils.shortDayName(fDate),
-        type:     'final-exam',
-        name:     'Final Exam',
-        topic:    s.finalExamRoom ? `Room: ${s.finalExamRoom}` : '',
-        readings: '',
-        due:      s.finalExamStart && s.finalExamEnd
-                    ? `${Utils.formatTime(s.finalExamStart)} – ${Utils.formatTime(s.finalExamEnd)}`
-                    : '',
-      });
-    }
-
     State.set({ calendarRows: rows });
-    _renderCalendarTable(rows, s.calendarView || 'flat');
+    _upsertFinalExamRow();
+    _renderCalendar(_getCalendarView());
+    _syncViewButtons(_getCalendarView());
 
     // Enable CSV buttons
     document.getElementById('btn-download-csv').disabled = false;
@@ -382,7 +438,9 @@ const S10 = (() => {
 
         const allRows = Object.values(rowMap).sort((a, b) => a.date.localeCompare(b.date));
         State.set({ calendarRows: allRows });
-        _renderCalendarTable(allRows, State.get().calendarView || 'flat');
+        _upsertFinalExamRow();
+        _renderCalendar(_getCalendarView());
+        _syncViewButtons(_getCalendarView());
 
         // Ensure import/download buttons are always enabled after a successful import
         document.getElementById('btn-download-csv').disabled = false;
@@ -464,22 +522,14 @@ const S10 = (() => {
   /* ── View Toggle ── */
   function _setView(view) {
     State.set({ calendarView: view });
-    document.getElementById('btn-view-flat').classList.toggle('btn--active', view === 'flat');
-    document.getElementById('btn-view-week').classList.toggle('btn--active', view === 'week');
-    document.getElementById('btn-view-grid').classList.toggle('btn--active', view === 'grid');
-    const s = State.get();
-    if (s.calendarRows.length) {
-      if (view === 'grid') {
-        _renderCalendarGrid(s);
-      } else {
-        _renderCalendarTable(s.calendarRows, view);
-      }
-    }
+    _syncViewButtons(view);
+    _renderCalendar(view);
   }
 
   /* ── Restore ── */
   function _restoreFromState() {
     const s = State.get();
+    _lastFinalExamKey = [s.finalExamDate, s.finalExamStart, s.finalExamEnd, s.finalExamRoom].join('|');
     s.noClassDays.forEach(d => _addNoClassRow(d));
     if (s.calendarRows.length) {
       document.getElementById('btn-download-csv').disabled = false;
@@ -487,17 +537,9 @@ const S10 = (() => {
       const importLabel = document.getElementById('label-import-csv');
       importLabel.setAttribute('aria-disabled', 'false');
       importLabel.style.opacity = '';
-      const view = s.calendarView || 'flat';
-      if (view === 'grid') {
-        _renderCalendarGrid(s);
-      } else {
-        _renderCalendarTable(s.calendarRows, view);
-      }
+      _renderCalendar(_getCalendarView());
     }
-    const view = s.calendarView || 'flat';
-    document.getElementById('btn-view-flat').classList.toggle('btn--active', view === 'flat');
-    document.getElementById('btn-view-week').classList.toggle('btn--active', view === 'week');
-    document.getElementById('btn-view-grid').classList.toggle('btn--active', view === 'grid');
+    _syncViewButtons(_getCalendarView());
   }
 
   /* ── Visual Calendar Grid ── */
@@ -531,20 +573,7 @@ const S10 = (() => {
       .sort(([a], [b]) => a.localeCompare(b))
       .map(([, v]) => v);
 
-    // Final exam: prefer the generated row, fall back to state fields
-    let finalRow = rows.find(r => r.type === 'final-exam');
-    if (!finalRow && s.finalExamDate) {
-      const fDate = Utils.parseISODate(s.finalExamDate);
-      finalRow = {
-        date:  s.finalExamDate,
-        day:   Utils.shortDayName(fDate),
-        type:  'final-exam',
-        topic: s.finalExamRoom ? `Room: ${s.finalExamRoom}` : '',
-        due:   s.finalExamStart && s.finalExamEnd
-                 ? `${Utils.formatTime(s.finalExamStart)} – ${Utils.formatTime(s.finalExamEnd)}`
-                 : '',
-      };
-    }
+    const finalRow = _resolveFinalExamRow(s, rows);
 
     // ── Table ──
     const table = document.createElement('table');
@@ -624,8 +653,11 @@ const S10 = (() => {
       tbody.appendChild(tr);
     });
 
-    // ── Final Exam row ──
+    table.appendChild(tbody);
+
+    // ── Final Exam footer ──
     if (finalRow) {
+      const tfoot = document.createElement('tfoot');
       const tr = document.createElement('tr');
       tr.className = 'cgrid-final-row';
 
@@ -638,23 +670,21 @@ const S10 = (() => {
       examTd.className = 'cgrid-cell cgrid-cell--exam';
       examTd.colSpan   = sortedDays.length;
 
-      const fd          = Utils.formatDate(Utils.parseISODate(finalRow.date));
-      const optionalTag = '';
-      const metaParts   = [
+      const fd = Utils.formatDate(Utils.parseISODate(finalRow.date));
+      const metaParts = [
         fd,
         finalRow.due   || '',
         finalRow.topic || '',
       ].filter(Boolean).join(' &nbsp;·&nbsp; ');
 
       examTd.innerHTML =
-        `<div class="cgrid-exam-label">FINAL EXAM${optionalTag}</div>` +
+        `<div class="cgrid-exam-label">FINAL EXAM</div>` +
         `<div class="cgrid-exam-meta">${metaParts}</div>`;
 
       tr.appendChild(examTd);
-      tbody.appendChild(tr);
+      tfoot.appendChild(tr);
+      table.appendChild(tfoot);
     }
-
-    table.appendChild(tbody);
     wrapper.innerHTML = '';
     wrapper.appendChild(table);
   }

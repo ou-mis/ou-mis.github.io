@@ -22,6 +22,10 @@
   <!-- marked.js — markdown → HTML renderer used in preview -->
   <script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
 
+  <!-- EasyMDE — markdown editor for policy and rich-text fields -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde@2.20.0/dist/easymde.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/easymde@2.20.0/dist/easymde.min.js"></script>
+
   <!-- docx.js v8 UMD build — local copy for reliability -->
   <script src="js/vendor/docx.umd.js"></script>
 
@@ -422,7 +426,9 @@
           <h3 class="subsection-heading">Assessment Components</h3>
           <p class="section-desc" style="margin-bottom:0.75rem">
             Check <strong>Optional</strong> for components listed in the syllabus but excluded from the weight total
-            (e.g., an optional final exam). Use <strong>Notes</strong> for drop rules (e.g., &ldquo;lowest exam dropped&rdquo;).
+            (e.g., an optional final exam). Use <strong>Notes</strong> for brief inline text in the breakdown table
+            (e.g., &ldquo;lowest exam dropped&rdquo;). Use <strong>Information</strong> for longer detailed explanations
+            that appear below the table when filled in.
           </p>
           <div id="assessments-list" class="repeating-list" role="list"></div>
           <button type="button" id="btn-add-assessment" class="btn btn--ghost btn--sm btn--add">
@@ -497,7 +503,7 @@
         </div>
         <div class="field-group">
           <label for="genAiText" class="field-label">Policy Text</label>
-          <textarea id="genAiText" name="genAiText" class="input input--textarea" rows="10"
+          <textarea id="genAiText" name="genAiText" class="input input--textarea input--markdown" rows="10"
                     placeholder="Select a level above to populate this field, or write your own policy."></textarea>
         </div>
       </section>
@@ -540,9 +546,9 @@
             <input type="file" id="input-import-csv" accept=".csv" hidden aria-label="Import calendar CSV" disabled />
           </label>
           <div class="calendar-view-toggle" role="group" aria-label="Calendar view">
-            <button type="button" id="btn-view-flat" class="btn btn--ghost btn--sm btn--active">List</button>
+            <button type="button" id="btn-view-flat" class="btn btn--ghost btn--sm">List</button>
             <button type="button" id="btn-view-week" class="btn btn--ghost btn--sm">By Week</button>
-            <button type="button" id="btn-view-grid" class="btn btn--ghost btn--sm">Grid</button>
+            <button type="button" id="btn-view-grid" class="btn btn--ghost btn--sm btn--active">Grid</button>
           </div>
         </div>
 
@@ -599,6 +605,7 @@
 <script src="js/state.js"></script>
 <script src="js/config.js"></script>
 <script src="js/utils.js"></script>
+<script src="js/markdown-editor.js"></script>
 <script src="js/sections/s1-semester.js"></script>
 <script src="js/sections/s2-logistics.js"></script>
 <script src="js/sections/s3-materials.js"></script>

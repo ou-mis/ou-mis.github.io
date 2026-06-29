@@ -173,6 +173,11 @@ const Preview = (() => {
         </tr>`);
       });
       parts.push('</tbody></table>');
+      s.assessments.forEach(a => {
+        if (!a.name || !a.information) return;
+        parts.push(`<h4>${Utils.escapeHtml(a.name)}</h4>`);
+        parts.push(`<div class="policy-block-preview">${Utils.mdToHtml(a.information)}</div>`);
+      });
     }
 
     /* ── Course Policies (division + custom) ── */

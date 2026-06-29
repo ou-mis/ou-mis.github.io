@@ -54,7 +54,7 @@ const State = (() => {
       { grade: 'D', min: 60, max: 69 },
       { grade: 'F', min: 0,  max: 59 },
     ],
-    assessments: [],           // [{ name, weight, notes, optional }]
+    assessments: [],           // [{ name, weight, notes, optional, information }]
 
     // Section 7
     divisionPolicies: {},      // { policyId: { included, customText } }
@@ -87,7 +87,7 @@ const State = (() => {
     // Section 10
     noClassDays: [],           // [{ date, reason }]
     calendarRows: [],          // [{ date, day, type, name, topic, readings, due }]
-    calendarView: 'flat',      // 'flat' | 'week'
+    calendarView: 'grid',      // 'flat' | 'week' | 'grid'
   };
 
   let _state = deepClone(DEFAULT_STATE);

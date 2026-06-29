@@ -484,6 +484,7 @@ a { color: var(--color-primary); }
 }
 
 .field-group--grow { flex: 1; }
+.field-group--full { flex-basis: 100%; }
 
 .field-row {
   display: flex;
@@ -1128,6 +1129,10 @@ a { color: var(--color-primary); }
   background: var(--color-white);
 }
 
+.calendar-grid tfoot td {
+  border: 1px solid var(--color-gray-200);
+}
+
 .cgrid-week-num {
   background: var(--color-primary-light);
   text-align: center;
@@ -1587,16 +1592,20 @@ a { color: var(--color-primary); }
 .toast--error   { background: var(--color-danger);  color: white; }
 .toast--info    { background: var(--color-primary);  color: white; }
 
-/* ── EasyMDE overrides ── */
+/* ── EasyMDE / Markdown editor ── */
 .EasyMDEContainer .CodeMirror {
   border-radius: 0 0 var(--radius-sm) var(--radius-sm);
   font-size: 0.875rem;
-  min-height: 220px;
+  min-height: 180px;
+  font-family: var(--font-sans);
+  color: var(--color-gray-800);
+  background: var(--color-white);
 }
 
 .editor-toolbar {
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   border: 1px solid var(--color-gray-300);
+  background: var(--color-gray-50);
 }
 
 .EasyMDEContainer .CodeMirror,
@@ -1607,6 +1616,58 @@ a { color: var(--color-primary); }
 .EasyMDEContainer .CodeMirror:focus-within {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(26,111,175,.15);
+}
+
+.editor-toolbar button {
+  color: var(--color-gray-700) !important;
+}
+
+.editor-toolbar button:hover,
+.editor-toolbar button.active {
+  background: var(--color-primary-light) !important;
+  border-color: var(--color-primary) !important;
+}
+
+.editor-preview-side,
+.editor-preview {
+  background: var(--color-white);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.markdown-editor--compact .CodeMirror {
+  min-height: 120px;
+  font-size: 0.8125rem;
+}
+
+.markdown-editor--compact .editor-toolbar {
+  padding: 0.25rem 0.35rem;
+}
+
+.markdown-editor--compact .editor-toolbar button {
+  height: 26px;
+  min-width: 26px;
+}
+
+.markdown-editor--disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.policy-block__body .EasyMDEContainer .CodeMirror,
+.policy-block__body .editor-toolbar {
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+}
+
+.custom-policy-card__body .EasyMDEContainer .editor-toolbar,
+.custom-policy-card__body .EasyMDEContainer .CodeMirror {
+  border-color: var(--color-gray-200);
+}
+
+.field-group--full .EasyMDEContainer {
+  width: 100%;
 }
 
 /* ── Responsive (screen only — never apply to print) ── */

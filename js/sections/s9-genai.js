@@ -5,8 +5,12 @@ const S9 = (() => {
   const EXAM_NOTE = '\n\n---\n\n**Note:** Regardless of the above policy, no AI tools of any kind are permitted during quizzes, exams, or any other timed in-class assessments unless the instructor explicitly states otherwise for a specific assessment.';
 
   function init() {
+    const genAiEl = document.getElementById('genAiText');
+    MarkdownEditor.init(genAiEl, {
+      onChange: Utils.debounce(_syncText, 400),
+    });
+
     document.getElementById('genAiTier').addEventListener('change', _onTierChange);
-    document.getElementById('genAiText').addEventListener('input', Utils.debounce(_syncText, 400));
     _restoreFromState();
   }
 
@@ -16,7 +20,7 @@ const S9 = (() => {
     State.set({ genAiTier: tier });
 
     if (!tier || tier === 'custom') {
-      document.getElementById('genAiText').value = '';
+      MarkdownEditor.setValue(document.getElementById('genAiText'), '');
       State.set({ genAiText: '' });
       return;
     }
@@ -29,19 +33,19 @@ const S9 = (() => {
       const text = tier.startsWith('gen-ai-level-') && tier !== 'gen-ai-level-5'
         ? stripped + EXAM_NOTE
         : stripped;
-      document.getElementById('genAiText').value = text;
+      MarkdownEditor.setValue(document.getElementById('genAiText'), text);
       State.set({ genAiText: text });
     }
   }
 
   function _syncText() {
-    State.set({ genAiText: document.getElementById('genAiText').value });
+    State.set({ genAiText: MarkdownEditor.getValue(document.getElementById('genAiText')) });
   }
 
   function _restoreFromState() {
     const s = State.get();
     if (s.genAiTier) document.getElementById('genAiTier').value = s.genAiTier;
-    if (s.genAiText) document.getElementById('genAiText').value = s.genAiText;
+    if (s.genAiText) MarkdownEditor.setValue(document.getElementById('genAiText'), s.genAiText);
   }
 
   function isComplete() {

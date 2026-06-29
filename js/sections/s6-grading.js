@@ -116,17 +116,29 @@ const S6 = (() => {
           <input type="text" id="asmnt-notes-${idx}" class="input asmnt-notes"
                  value="${Utils.escapeHtml(data.notes||'')}" placeholder="e.g., 2 lowest scores dropped" />
         </div>
+        <div class="field-group field-group--full">
+          <label class="field-label" for="asmnt-information-${idx}">Information <span class="field-label__optional">(optional)</span></label>
+          <textarea id="asmnt-information-${idx}" class="input input--textarea input--markdown asmnt-information" rows="4"
+                    placeholder="Detailed explanation of this component (format, expectations, drop rules, etc.)">${Utils.escapeHtml(data.information||'')}</textarea>
+          <span class="field-hint">Use the toolbar for formatting. Omitted from the syllabus when left blank.</span>
+        </div>
       </div>
       <button type="button" class="repeating-item__remove" aria-label="Remove assessment component" title="Remove">&#10005;</button>
     `;
     item.querySelector('.repeating-item__remove').addEventListener('click', () => {
+      const infoEl = item.querySelector('.asmnt-information');
+      if (infoEl) MarkdownEditor.destroy(infoEl);
       item.remove();
       _syncAssessments();
       _updateWeightTotal();
     });
-    item.querySelectorAll('input').forEach(el => {
+    item.querySelectorAll('input:not(.asmnt-information), textarea:not(.asmnt-information)').forEach(el => {
       el.addEventListener('change', () => { _syncAssessments(); _updateWeightTotal(); });
       el.addEventListener('input', Utils.debounce(() => { _syncAssessments(); _updateWeightTotal(); }, 400));
+    });
+    const infoEl = item.querySelector('.asmnt-information');
+    MarkdownEditor.init(infoEl, {
+      onChange: Utils.debounce(() => { _syncAssessments(); _updateWeightTotal(); }, 400),
     });
     list.appendChild(item);
     _updateWeightTotal();
@@ -146,10 +158,11 @@ const S6 = (() => {
   function _syncAssessments() {
     const list = document.getElementById('assessments-list');
     const assessments = Array.from(list.querySelectorAll('.repeating-item')).map(item => ({
-      name:     item.querySelector('.asmnt-name').value.trim(),
-      weight:   parseFloat(item.querySelector('.asmnt-weight').value) || 0,
-      notes:    item.querySelector('.asmnt-notes').value.trim(),
-      optional: item.querySelector('.asmnt-optional').checked,
+      name:        item.querySelector('.asmnt-name').value.trim(),
+      weight:      parseFloat(item.querySelector('.asmnt-weight').value) || 0,
+      notes:       item.querySelector('.asmnt-notes').value.trim(),
+      optional:    item.querySelector('.asmnt-optional').checked,
+      information: MarkdownEditor.getValue(item.querySelector('.asmnt-information')).trim(),
     }));
     State.set({ assessments });
     _updateWeightTotal();

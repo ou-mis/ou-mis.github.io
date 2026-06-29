@@ -2,8 +2,7 @@
  * s7-policies.js — Section 7: Course Policies
  *
  * Division/College policy blocks (toggle + inline editor)
- * Custom Course Policies — card-based list: each entry has a title input + content textarea.
- * No EasyMDE; plain textareas keep formatting consistent with the exported document.
+ * Custom Course Policies — card-based list: each entry has a title input + content editor.
  */
 const S7 = (() => {
 
@@ -65,7 +64,7 @@ const S7 = (() => {
       <div id="${bodyId}" class="policy-block__body" hidden>
         ${isRequired
           ? `<div class="policy-block__preview">${Utils.escapeHtml(customText).substring(0, 300)}${customText.length > 300 ? '…' : ''}</div>`
-          : `<textarea class="policy-block__editor" aria-label="Edit ${Utils.escapeHtml(policy.label)}" rows="8">${Utils.escapeHtml(customText)}</textarea>`
+          : `<textarea class="policy-block__editor input--markdown" aria-label="Edit ${Utils.escapeHtml(policy.label)}" rows="8">${Utils.escapeHtml(customText)}</textarea>`
         }
       </div>
     `;
@@ -79,6 +78,12 @@ const S7 = (() => {
       body.hidden  = isOpen;
       expandBtn.setAttribute('aria-expanded', String(!isOpen));
       header.setAttribute('aria-expanded', String(!isOpen));
+      if (!isOpen) {
+        requestAnimationFrame(() => {
+          const editorEl = block.querySelector('.policy-block__editor');
+          if (editorEl) MarkdownEditor.refresh(editorEl);
+        });
+      }
     }
 
     header.addEventListener('click', e => {
@@ -95,17 +100,19 @@ const S7 = (() => {
     if (!isRequired) {
       const toggleInput = block.querySelector(`#${toggleId}`);
       const editor      = block.querySelector('.policy-block__editor');
+      if (editor) {
+        MarkdownEditor.init(editor, {
+          onChange: Utils.debounce(_syncDivisionPolicies, 400),
+        });
+      }
       if (toggleInput) {
         toggleInput.addEventListener('change', () => {
           const included = toggleInput.checked;
           block.classList.toggle('policy-block--off', !included);
-          if (editor) editor.disabled = !included;
+          if (editor) MarkdownEditor.setDisabled(editor, !included);
           _syncDivisionPolicies();
         });
-        if (editor) {
-          editor.disabled = !isIncluded;
-          editor.addEventListener('input', Utils.debounce(_syncDivisionPolicies, 400));
-        }
+        if (editor) MarkdownEditor.setDisabled(editor, !isIncluded);
       }
     }
 
@@ -123,7 +130,7 @@ const S7 = (() => {
       const editor   = block.querySelector('.policy-block__editor');
       divisionPolicies[id] = {
         included:   isReq ? true : (toggle ? toggle.checked : false),
-        customText: editor ? editor.value : policy.content,
+        customText: editor ? MarkdownEditor.getValue(editor) : policy.content,
       };
     });
     State.set({ divisionPolicies });
@@ -158,9 +165,9 @@ const S7 = (() => {
       </div>
       <div class="custom-policy-card__body">
         <textarea
-          class="custom-policy-card__content-input"
+          class="custom-policy-card__content-input input--markdown"
           rows="4"
-          placeholder="Policy text… (supports **bold**, *italic*, and - bullet lists)"
+          placeholder="Policy text…"
           aria-label="Policy content"
         >${Utils.escapeHtml(policy.content || '')}</textarea>
       </div>
@@ -171,8 +178,12 @@ const S7 = (() => {
     const removeBtn    = card.querySelector('.custom-policy-card__remove');
 
     titleInput.addEventListener('input',   Utils.debounce(_syncCustomPolicies, 300));
-    contentInput.addEventListener('input', Utils.debounce(_syncCustomPolicies, 300));
+    MarkdownEditor.init(contentInput, {
+      compact: true,
+      onChange: Utils.debounce(_syncCustomPolicies, 300),
+    });
     removeBtn.addEventListener('click', () => {
+      MarkdownEditor.destroy(contentInput);
       card.remove();
       _syncCustomPolicies();
     });
@@ -184,7 +195,7 @@ const S7 = (() => {
     const policies = [];
     document.querySelectorAll('#custom-policies-list .custom-policy-card').forEach(card => {
       const title   = card.querySelector('.custom-policy-card__title-input').value.trim();
-      const content = card.querySelector('.custom-policy-card__content-input').value.trim();
+      const content = MarkdownEditor.getValue(card.querySelector('.custom-policy-card__content-input')).trim();
       if (title || content) policies.push({ title, content });
     });
     State.set({ customPolicies: policies });
@@ -248,9 +259,9 @@ const S7 = (() => {
       if (toggle) {
         toggle.checked = saved.included;
         block.classList.toggle('policy-block--off', !saved.included);
-        if (editor) editor.disabled = !saved.included;
+        if (editor) MarkdownEditor.setDisabled(editor, !saved.included);
       }
-      if (editor && saved.customText !== undefined) editor.value = saved.customText;
+      if (editor && saved.customText !== undefined) MarkdownEditor.setValue(editor, saved.customText);
     });
     // Custom policies are rendered directly from state in _renderCustomPolicies
   }

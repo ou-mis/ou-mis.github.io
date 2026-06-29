@@ -278,6 +278,11 @@ const Export = (() => {
           a.notes ? `  (${a.notes})` : '',
         ], marginLeft: 10, marginBottom: 2 });
       });
+      s.assessments.forEach(a => {
+        if (!a.name || !a.information) return;
+        push({ text: a.name, bold: true, marginTop: 6, marginBottom: 2 });
+        _mdToPdf(content, a.information);
+      });
       push({ text: 'Grading Scale', style: 'h3' });
       s.gradeScale.forEach(g => {
         const range = isPoints ? `${g.min} – ${g.max} pts` : `${g.min}–${g.max}%`;
@@ -732,6 +737,16 @@ const Export = (() => {
           const name = a.optional ? `${a.name} (optional)` : a.name;
           const line = [name, val, a.notes].filter(Boolean).join(' — ');
           children.push(new Paragraph({ children: [new TextRun(line)], bullet: { level: 0 }, spacing: { after: 40 } }));
+        });
+        s.assessments.forEach(a => {
+          if (!a.name || !a.information) return;
+          children.push(new Paragraph({
+            children: [new TextRun({ text: a.name, bold: true })],
+            spacing: { before: 120, after: 40 },
+          }));
+          const detailParas = [];
+          _appendMarkdownToDocx(detailParas, a.information, docx);
+          detailParas.forEach(p => children.push(p));
         });
         children.push(_heading3('Grading Scale'));
         s.gradeScale.forEach(g => {
