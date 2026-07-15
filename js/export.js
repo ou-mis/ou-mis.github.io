@@ -169,9 +169,7 @@ const Export = (() => {
     if (s.instructorName) logRows.push(['Instructor', s.instructorName]);
     if (s.officeLocation) logRows.push(['Office', s.officeLocation]);
     if (s.officeHours && s.officeHours.length) {
-      const oh = s.officeHours.map(o => [o.day, o.startTime && o.endTime
-        ? `${Utils.formatTime(o.startTime)}–${Utils.formatTime(o.endTime)}` : '', o.notes]
-        .filter(Boolean).join(' ')).join('; ');
+      const oh = Utils.formatOfficeHours(s.officeHours);
       if (oh) logRows.push(['Office Hours', oh]);
     }
     if (s.courseEmail) logRows.push(['Email',
@@ -615,9 +613,7 @@ const Export = (() => {
       if (s.instructorName) logRows.push(['Instructor', s.instructorName]);
       if (s.officeLocation) logRows.push(['Office', s.officeLocation]);
       if (s.officeHours && s.officeHours.length) {
-        const ohStr = s.officeHours
-          .map(oh => [oh.day, oh.startTime && oh.endTime ? `${Utils.formatTime(oh.startTime)}–${Utils.formatTime(oh.endTime)}` : '', oh.notes].filter(Boolean).join(' '))
-          .join('; ');
+        const ohStr = Utils.formatOfficeHours(s.officeHours);
         if (ohStr) logRows.push(['Office Hours', ohStr]);
       }
       if (s.courseEmail) logRows.push(['Email',

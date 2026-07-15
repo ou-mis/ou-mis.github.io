@@ -45,11 +45,18 @@
 
 /* ── Color Themes ── */
 
-/* OU Crimson — official University of Oklahoma brand colors */
+/* OU Crimson — official University of Oklahoma brand colors (default) */
 [data-theme="ou-crimson"] {
   --color-primary:       #841617;
   --color-primary-dark:  #681112;
   --color-primary-light: #fdf0f0;
+}
+
+/* Steel Blue */
+[data-theme="steel"] {
+  --color-primary:       #1a6faf;
+  --color-primary-dark:  #14568a;
+  --color-primary-light: #e8f2fa;
 }
 
 /* OU Gold — warm gold/amber, pairs with crimson */
@@ -65,8 +72,6 @@
   --color-primary-dark:  #122840;
   --color-primary-light: #e8f0f8;
 }
-
-/* Steel Blue — default, no data-theme attribute needed */
 
 /* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; }
@@ -238,8 +243,8 @@ a { color: var(--color-primary); }
   box-shadow: 0 0 0 1px rgba(0,0,0,.3);
 }
 
-.theme-swatch[data-theme="steel"]      { background: #1a6faf; }
 .theme-swatch[data-theme="ou-crimson"] { background: #841617; }
+.theme-swatch[data-theme="steel"]      { background: #1a6faf; }
 .theme-swatch[data-theme="ou-gold"]    { background: #8B6914; }
 .theme-swatch[data-theme="navy"]       { background: #1a3a5c; }
 
@@ -666,6 +671,44 @@ a { color: var(--color-primary); }
   border-left: 4px solid var(--color-primary);
 }
 
+.oh-day-group__fields {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.oh-times {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.oh-time-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.75rem;
+  padding: 0.5rem 0.625rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-sm);
+}
+
+.oh-time-row .field-group {
+  margin-bottom: 0;
+}
+
+.oh-remove-time {
+  margin-bottom: 0.1rem;
+  color: var(--color-gray-500);
+}
+
+.oh-add-time {
+  align-self: flex-start;
+  margin-top: 0.15rem;
+}
+
 /* ── Grade Scale ── */
 .grade-scale-list {
   display: flex;
@@ -1004,7 +1047,60 @@ a { color: var(--color-primary); }
   align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-hint {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-gray-600);
+  line-height: 1.45;
+}
+
+.calendar-table .cal-period,
+.cgrid-period {
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  white-space: nowrap;
+}
+
+.cal-drag-handle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.35rem;
+  padding: 0 0.2rem;
+  cursor: grab;
+  user-select: none;
+  color: var(--color-gray-500);
+  font-size: 0.95rem;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.cal-drag-handle:active {
+  cursor: grabbing;
+}
+
+.cal-draggable.cal-dragging {
+  opacity: 0.45;
+}
+
+.calendar-table tr.cal-drop-target td {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+  background: color-mix(in srgb, var(--color-primary-light) 55%, white) !important;
+}
+
+.cgrid-cell.cal-drop-target {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+  background: color-mix(in srgb, var(--color-primary-light) 55%, white) !important;
+}
+
+.calendar-table .cal-period {
+  width: 4.25rem;
+  text-align: left;
 }
 
 .calendar-view-toggle {

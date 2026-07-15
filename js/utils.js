@@ -46,6 +46,71 @@ const Utils = (() => {
     return `${h}:${String(mm).padStart(2, '0')} ${period}`;
   }
 
+  const OH_DAY_ORDER = [
+    'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
+    'By Appointment', 'Virtual',
+  ];
+
+  /**
+   * Normalize office hours to [{ day, notes, times: [{ startTime, endTime }] }].
+   * Accepts legacy flat entries: { day, startTime, endTime, notes }.
+   */
+  function normalizeOfficeHours(officeHours) {
+    if (!Array.isArray(officeHours) || !officeHours.length) return [];
+
+    const isLegacy = officeHours.some(oh =>
+      oh && (oh.startTime !== undefined || oh.endTime !== undefined) && !Array.isArray(oh.times)
+    );
+
+    if (!isLegacy) {
+      return officeHours
+        .filter(oh => oh && oh.day)
+        .map(oh => ({
+          day: oh.day,
+          notes: oh.notes || '',
+          times: (oh.times || [])
+            .filter(t => t && (t.startTime || t.endTime))
+            .map(t => ({ startTime: t.startTime || '', endTime: t.endTime || '' })),
+        }));
+    }
+
+    // Group flat legacy rows by day
+    const byDay = new Map();
+    officeHours.forEach(oh => {
+      if (!oh || !oh.day) return;
+      if (!byDay.has(oh.day)) {
+        byDay.set(oh.day, { day: oh.day, notes: '', times: [] });
+      }
+      const group = byDay.get(oh.day);
+      if (oh.notes && !group.notes) group.notes = oh.notes;
+      if (oh.startTime || oh.endTime) {
+        group.times.push({ startTime: oh.startTime || '', endTime: oh.endTime || '' });
+      }
+    });
+
+    return Array.from(byDay.values()).sort(
+      (a, b) => OH_DAY_ORDER.indexOf(a.day) - OH_DAY_ORDER.indexOf(b.day)
+    );
+  }
+
+  /**
+   * Format office hours for preview/export.
+   * Example: "Monday 9:00 AM–10:00 AM, 2:00 PM–3:00 PM; Tuesday 1:00 PM–2:00 PM (Zoom)"
+   */
+  function formatOfficeHours(officeHours) {
+    const groups = normalizeOfficeHours(officeHours);
+    return groups.map(oh => {
+      const times = (oh.times || [])
+        .filter(t => t.startTime && t.endTime)
+        .map(t => `${formatTime(t.startTime)}–${formatTime(t.endTime)}`)
+        .join(', ');
+      let str = oh.day || '';
+      if (times) str += ` ${times}`;
+      if (oh.notes) str += ` (${oh.notes})`;
+      return str.trim();
+    }).filter(Boolean).join('; ');
+  }
+
   /** Debounce a function */
   function debounce(fn, ms) {
     let timer;
@@ -161,5 +226,5 @@ const Utils = (() => {
     return { sortedDays, weeks, finalRow };
   }
 
-  return { formatDate, formatPolicyLastUpdated, parseISODate, shortDayName, toISODate, formatTime, debounce, toast, downloadFile, slugify, escapeHtml, mdToHtml, groupCalendarByWeek };
+  return { formatDate, formatPolicyLastUpdated, parseISODate, shortDayName, toISODate, formatTime, normalizeOfficeHours, formatOfficeHours, debounce, toast, downloadFile, slugify, escapeHtml, mdToHtml, groupCalendarByWeek };
 })();

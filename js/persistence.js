@@ -30,9 +30,13 @@ const Persistence = (() => {
       document.getElementById('modal-reset').hidden = true;
     });
 
-    // Keyboard: close modal on Escape
+    // Keyboard: close modals on Escape
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') document.getElementById('modal-reset').hidden = true;
+      if (e.key === 'Escape') {
+        document.getElementById('modal-reset').hidden = true;
+        const patternModal = document.getElementById('modal-pattern-convert');
+        if (patternModal) patternModal.hidden = true;
+      }
     });
   }
 
@@ -71,7 +75,11 @@ const Persistence = (() => {
       const saved = localStorage.getItem(LS_KEY);
       if (saved) {
         try {
-          State.set(JSON.parse(saved));
+          const parsed = CalendarEngine.migrateLoadedState(JSON.parse(saved));
+          if (parsed.officeHours) {
+            parsed.officeHours = Utils.normalizeOfficeHours(parsed.officeHours);
+          }
+          State.set(parsed);
           _reInitSections();
           Utils.toast('Work restored successfully.', 'success');
         } catch (_) {
@@ -106,10 +114,13 @@ const Persistence = (() => {
     const reader = new FileReader();
     reader.onload = ev => {
       try {
-        const parsed = JSON.parse(ev.target.result);
+        const parsed = CalendarEngine.migrateLoadedState(JSON.parse(ev.target.result));
+        if (parsed.officeHours) {
+          parsed.officeHours = Utils.normalizeOfficeHours(parsed.officeHours);
+        }
         State.set(parsed);
         _reInitSections();
-        Utils.toast('Form loaded successfully. Calendar will need to be regenerated if semester changed.', 'info', 5000);
+        Utils.toast('Form loaded. Calendar dates updated from session plan.', 'info', 5000);
       } catch (_) {
         Utils.toast('Failed to load form — invalid JSON file.', 'error');
       }
@@ -136,6 +147,7 @@ const Persistence = (() => {
   function _reInitSections() {
     _autoSave(State.get());
     sessionStorage.setItem('_syllabusRestore', '1');
+    sessionStorage.setItem('_syllabusCalendarRebuild', '1');
     window.location.reload();
   }
 

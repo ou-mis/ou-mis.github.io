@@ -66,22 +66,37 @@ const S2 = (() => {
       .map(cb => cb.value);
   }
 
-  /* ── Office Hours (repeating) ── */
+  function _restoreMeetingDays(days) {
+    document.querySelectorAll('input[name="meetingDays"]').forEach(cb => {
+      const checked = days.includes(cb.value);
+      cb.checked = checked;
+      cb.closest('.day-label').classList.toggle('checked', checked);
+    });
+    const daysEl = document.getElementById('cal-meeting-days');
+    if (daysEl) daysEl.textContent = days.join(', ') || '—';
+  }
+
+  function setMeetingDays(days) {
+    _restoreMeetingDays(days || []);
+    State.set({ meetingDays: days || [] });
+  }
+
+  /* ── Office Hours (day groups with multiple times) ── */
   function _initOfficeHours() {
     document.getElementById('btn-add-office-hours').addEventListener('click', () => {
-      _addOfficeHoursRow();
+      _addOfficeHoursDay();
       _syncOfficeHoursToState();
     });
   }
 
-  function _addOfficeHoursRow(data = {}) {
+  function _addOfficeHoursDay(data = {}) {
     const list = document.getElementById('office-hours-list');
-    const idx  = list.querySelectorAll('.repeating-item').length;
+    const idx  = list.querySelectorAll('.oh-day-group').length;
     const item = document.createElement('div');
-    item.className = 'repeating-item';
+    item.className = 'repeating-item oh-day-group';
     item.setAttribute('role', 'listitem');
     item.innerHTML = `
-      <div class="repeating-item__fields">
+      <div class="repeating-item__fields oh-day-group__fields">
         <div class="field-group">
           <label class="field-label" for="oh-day-${idx}">Day</label>
           <select id="oh-day-${idx}" class="input input--select oh-day">
@@ -92,46 +107,84 @@ const S2 = (() => {
             <option value="Thursday">Thursday</option>
             <option value="Friday">Friday</option>
             <option value="By Appointment">By Appointment</option>
-            <option value="Virtual">Virtual (Zoom)</option>
+            <option value="Virtual">Virtual</option>
           </select>
-        </div>
-        <div class="field-group">
-          <label class="field-label" for="oh-start-${idx}">Start</label>
-          <input type="time" id="oh-start-${idx}" class="input input--time oh-start" value="${data.startTime||''}" />
-        </div>
-        <div class="field-group">
-          <label class="field-label" for="oh-end-${idx}">End</label>
-          <input type="time" id="oh-end-${idx}" class="input input--time oh-end" value="${data.endTime||''}" />
         </div>
         <div class="field-group field-group--grow">
           <label class="field-label" for="oh-notes-${idx}">Notes</label>
           <input type="text" id="oh-notes-${idx}" class="input oh-notes"
-                 value="${Utils.escapeHtml(data.notes||'')}" placeholder="e.g., Room 3213, or Zoom link in Canvas" />
+                 value="${Utils.escapeHtml(data.notes || '')}"
+                 placeholder="e.g., Room 3213, or Zoom link in Canvas" />
         </div>
+        <div class="oh-times" role="list" aria-label="Times for this day"></div>
+        <button type="button" class="btn btn--ghost btn--sm btn--add oh-add-time">+ Add Time</button>
       </div>
-      <button type="button" class="repeating-item__remove" aria-label="Remove office hours slot" title="Remove">&#10005;</button>
+      <button type="button" class="repeating-item__remove oh-remove-day" aria-label="Remove office hours day" title="Remove">&#10005;</button>
     `;
-    // Set the day select value after insertion
+
     if (data.day) item.querySelector('.oh-day').value = data.day;
-    item.querySelector('.repeating-item__remove').addEventListener('click', () => {
+
+    const timesList = item.querySelector('.oh-times');
+    const times = (data.times && data.times.length) ? data.times : [{ startTime: '', endTime: '' }];
+    times.forEach(t => _addOfficeHoursTime(timesList, t));
+
+    item.querySelector('.oh-add-time').addEventListener('click', () => {
+      _addOfficeHoursTime(timesList);
+      _syncOfficeHoursToState();
+    });
+    item.querySelector('.oh-remove-day').addEventListener('click', () => {
       item.remove();
       _syncOfficeHoursToState();
     });
-    item.querySelectorAll('input, select').forEach(el => {
+    item.querySelectorAll('.oh-day, .oh-notes').forEach(el => {
       el.addEventListener('change', _syncOfficeHoursToState);
       el.addEventListener('input', Utils.debounce(_syncOfficeHoursToState, 400));
     });
+
     list.appendChild(item);
+  }
+
+  function _addOfficeHoursTime(timesList, data = {}) {
+    const row = document.createElement('div');
+    row.className = 'oh-time-row';
+    row.setAttribute('role', 'listitem');
+    row.innerHTML = `
+      <div class="field-group">
+        <label class="field-label">Start</label>
+        <input type="time" class="input input--time oh-start" value="${data.startTime || ''}" />
+      </div>
+      <div class="field-group">
+        <label class="field-label">End</label>
+        <input type="time" class="input input--time oh-end" value="${data.endTime || ''}" />
+      </div>
+      <button type="button" class="btn btn--ghost btn--sm oh-remove-time" aria-label="Remove time slot" title="Remove time">&#10005;</button>
+    `;
+    row.querySelector('.oh-remove-time').addEventListener('click', () => {
+      const parent = timesList;
+      row.remove();
+      // Keep at least one empty time row for convenience
+      if (!parent.querySelectorAll('.oh-time-row').length) {
+        _addOfficeHoursTime(parent);
+      }
+      _syncOfficeHoursToState();
+    });
+    row.querySelectorAll('input').forEach(el => {
+      el.addEventListener('change', _syncOfficeHoursToState);
+      el.addEventListener('input', Utils.debounce(_syncOfficeHoursToState, 400));
+    });
+    timesList.appendChild(row);
   }
 
   function _syncOfficeHoursToState() {
     const list = document.getElementById('office-hours-list');
-    const officeHours = Array.from(list.querySelectorAll('.repeating-item')).map(item => ({
-      day:       item.querySelector('.oh-day').value,
-      startTime: item.querySelector('.oh-start').value,
-      endTime:   item.querySelector('.oh-end').value,
-      notes:     item.querySelector('.oh-notes').value.trim(),
-    }));
+    const officeHours = Array.from(list.querySelectorAll('.oh-day-group')).map(item => ({
+      day:   item.querySelector('.oh-day').value,
+      notes: item.querySelector('.oh-notes').value.trim(),
+      times: Array.from(item.querySelectorAll('.oh-time-row')).map(row => ({
+        startTime: row.querySelector('.oh-start').value,
+        endTime:   row.querySelector('.oh-end').value,
+      })).filter(t => t.startTime || t.endTime),
+    })).filter(oh => oh.day);
     State.set({ officeHours });
   }
 
@@ -152,14 +205,18 @@ const S2 = (() => {
     setVal('finalExamEnd', s.finalExamEnd);
     setVal('finalExamRoom', s.finalExamRoom);
     // Days
-    s.meetingDays.forEach(day => {
+    (s.meetingDays || []).forEach(day => {
       const cb = document.querySelector(`input[name="meetingDays"][value="${day}"]`);
       if (cb) { cb.checked = true; cb.closest('.day-label').classList.add('checked'); }
     });
-    // Office hours
-    s.officeHours.forEach(oh => _addOfficeHoursRow(oh));
+    // Office hours (supports legacy flat entries)
+    Utils.normalizeOfficeHours(s.officeHours).forEach(oh => _addOfficeHoursDay(oh));
+    if (s.officeHours?.length && !document.querySelectorAll('.oh-day-group').length) {
+      // Absolute fallback: if normalize returned empty but data existed oddly
+      s.officeHours.forEach(oh => _addOfficeHoursDay(oh));
+    }
     const daysEl = document.getElementById('cal-meeting-days');
-    if (daysEl) daysEl.textContent = s.meetingDays.join(', ') || '—';
+    if (daysEl) daysEl.textContent = (s.meetingDays || []).join(', ') || '—';
   }
 
   function isComplete() {
@@ -168,5 +225,5 @@ const S2 = (() => {
               s.meetingDays.length && s.meetingStart && s.meetingEnd);
   }
 
-  return { init, isComplete };
+  return { init, isComplete, setMeetingDays };
 })();

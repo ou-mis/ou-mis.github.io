@@ -1,0 +1,10 @@
+{
+  "name": "syllabus-generator",
+  "private": true,
+  "version": "1.0.0",
+  "description": "OU MIS syllabus generator",
+  "scripts": {
+    "dev": "npx --yes serve . -l 3000",
+    "start": "npx --yes serve . -l 3000"
+  }
+}

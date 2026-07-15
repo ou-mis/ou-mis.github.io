@@ -52,12 +52,7 @@ const Preview = (() => {
       if (s.instructorName) rows.push(`<strong>Instructor:</strong> ${Utils.escapeHtml(s.instructorName)}`);
       if (s.officeLocation)  rows.push(`<strong>Office:</strong> ${Utils.escapeHtml(s.officeLocation)}`);
       if (s.officeHours && s.officeHours.length) {
-        const ohStr = s.officeHours.map(oh => {
-          let str = oh.day || '';
-          if (oh.startTime && oh.endTime) str += ` ${Utils.formatTime(oh.startTime)}–${Utils.formatTime(oh.endTime)}`;
-          if (oh.notes) str += ` (${oh.notes})`;
-          return str;
-        }).filter(Boolean).join('; ');
+        const ohStr = Utils.formatOfficeHours(s.officeHours);
         if (ohStr) rows.push(`<strong>Office Hours:</strong> ${Utils.escapeHtml(ohStr)}`);
       }
       if (s.courseEmail) {

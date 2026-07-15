@@ -17,12 +17,21 @@
   const restored = Persistence.checkForRestore();
 
   /* 3. Apply saved state before initializing sections */
-  if (_isComingFromRestore()) {
+  const comingFromRestore = _isComingFromRestore();
+  const shouldRebuildCalendar = sessionStorage.getItem('_syllabusCalendarRebuild') === '1';
+
+  if (comingFromRestore) {
     // Page reloaded after Load Form / Restore — apply silently, no banner
     sessionStorage.removeItem('_syllabusRestore');
     const saved = localStorage.getItem('syllabusGenerator_autosave');
     if (saved) {
-      try { State.set(JSON.parse(saved)); } catch (_) {}
+      try {
+        const parsed = CalendarEngine.migrateLoadedState(JSON.parse(saved));
+        if (parsed.officeHours) {
+          parsed.officeHours = Utils.normalizeOfficeHours(parsed.officeHours);
+        }
+        State.set(parsed);
+      } catch (_) {}
     }
   } else if (restored) {
     // Previous auto-save found on fresh load — ask the user
@@ -41,6 +50,10 @@
   S9.init();
   S10.init();
 
+  if (shouldRebuildCalendar) {
+    sessionStorage.removeItem('_syllabusCalendarRebuild');
+    S10.rebuildIfNeeded();
+  }
   /* 5. Initialize preview, export, persistence */
   Preview.init();
   Export.init();
@@ -121,11 +134,7 @@
     const STORAGE_KEY = 'syllabusTheme';
 
     function applyTheme(theme) {
-      if (theme === 'steel') {
-        document.body.removeAttribute('data-theme');
-      } else {
-        document.body.setAttribute('data-theme', theme);
-      }
+      document.body.setAttribute('data-theme', theme || 'ou-crimson');
       swatches.forEach(s => {
         const active = s.dataset.theme === theme;
         s.classList.toggle('theme-swatch--active', active);

@@ -20,7 +20,7 @@ const State = (() => {
     // Section 2
     instructorName: '',
     officeLocation: '',
-    officeHours: [],           // [{ day, startTime, endTime }]
+    officeHours: [],           // [{ day, notes, times: [{ startTime, endTime }] }]
     courseEmail: '',
     emailSubject: '',
     classRoom: '',
@@ -86,7 +86,9 @@ const State = (() => {
 
     // Section 10
     noClassDays: [],           // [{ date, reason }]
-    calendarRows: [],          // [{ date, day, type, name, topic, readings, due }]
+    sessionPlan: [],           // [{ period, topic, readings, due }] — portable content
+    lastMeetingDays: [],       // meeting pattern at last calendar build
+    calendarRows: [],          // [{ date, day, period?, type, name, topic, readings, due }]
     calendarView: 'grid',      // 'flat' | 'week' | 'grid'
   };
 

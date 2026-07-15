@@ -41,7 +41,7 @@
 </head>
 <body>
 <!-- Apply saved theme immediately to prevent flash of default color -->
-<script>(function(){var t=localStorage.getItem('syllabusTheme')||'ou-crimson';if(t!=='steel')document.body.setAttribute('data-theme',t);})();</script>
+<script>(function(){var t=localStorage.getItem('syllabusTheme')||'ou-crimson';document.body.setAttribute('data-theme',t);})();</script>
 
 <!-- ===== TOP TOOLBAR ===== -->
 <header class="app-header" role="banner">
@@ -81,10 +81,10 @@
     <!-- Theme Picker -->
     <div class="theme-picker" role="group" aria-label="Color theme">
       <span class="theme-picker__label">Theme:</span>
-      <button class="theme-swatch" data-theme="steel"
-              title="Steel Blue" aria-label="Steel Blue theme" aria-pressed="false"></button>
       <button class="theme-swatch theme-swatch--active" data-theme="ou-crimson"
               title="OU Crimson (default)" aria-label="OU Crimson theme" aria-pressed="true"></button>
+      <button class="theme-swatch" data-theme="steel"
+              title="Steel Blue" aria-label="Steel Blue theme" aria-pressed="false"></button>
       <button class="theme-swatch" data-theme="ou-gold"
               title="OU Gold" aria-label="OU Gold theme" aria-pressed="false"></button>
       <button class="theme-swatch" data-theme="navy"
@@ -249,7 +249,7 @@
           <label class="field-label field-label--required">Office Hours</label>
           <div id="office-hours-list" class="repeating-list" role="list"></div>
           <button type="button" id="btn-add-office-hours" class="btn btn--ghost btn--sm btn--add">
-            + Add Time Slot
+            + Add Office Day
           </button>
         </div>
 
@@ -538,6 +538,14 @@
           <button type="button" id="btn-generate-calendar" class="btn btn--primary">
             &#8635; Generate Calendar
           </button>
+          <button type="button" id="btn-convert-mwf" class="btn btn--secondary" disabled
+                  title="Convert Tue/Thu topics to Mon/Wed/Fri and update Section 2 meeting days">
+            Convert to Mon / Wed / Fri
+          </button>
+          <button type="button" id="btn-convert-tth" class="btn btn--secondary" disabled
+                  title="Convert Mon/Wed/Fri topics to Tue/Thu and update Section 2 meeting days">
+            Convert to Tue / Thu
+          </button>
           <button type="button" id="btn-download-csv" class="btn btn--secondary" disabled>
             &#8595; Download CSV Template
           </button>
@@ -551,6 +559,7 @@
             <button type="button" id="btn-view-grid" class="btn btn--ghost btn--sm btn--active">Grid</button>
           </div>
         </div>
+        <p class="calendar-hint">Convert buttons redistribute topics by week and update meeting days in Section 2 automatically. Expanding (2→3) leaves the extra day blank; compressing (3→2) merges the 2nd and 3rd topics into the 2nd day. Drag the <strong>⠿</strong> handle on a class period to reorder topics; dates stay fixed.</p>
 
         <div id="calendar-table-wrapper" class="calendar-table-wrapper" role="region" aria-label="Course calendar">
           <p class="calendar-placeholder">
@@ -585,6 +594,19 @@
   <a class="app-footer__link" href="THIRD-PARTY-LICENSES.md" target="_blank" rel="noopener noreferrer">Open-Source Licenses</a>
 </footer>
 
+<!-- ===== PATTERN CONVERT MODAL ===== -->
+<div id="modal-pattern-convert" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-pattern-title" hidden>
+  <div class="modal__backdrop"></div>
+  <div class="modal__box">
+    <h2 id="modal-pattern-title" class="modal__title">Convert Schedule Pattern?</h2>
+    <p id="modal-pattern-body" class="modal__body"></p>
+    <div class="modal__actions">
+      <button type="button" id="btn-pattern-convert" class="btn btn--primary">Convert</button>
+      <button type="button" id="btn-pattern-cancel" class="btn btn--ghost">Cancel</button>
+    </div>
+  </div>
+</div>
+
 <!-- ===== RESET MODAL ===== -->
 <div id="modal-reset" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-reset-title" hidden>
   <div class="modal__backdrop"></div>
@@ -605,6 +627,7 @@
 <script src="js/state.js"></script>
 <script src="js/config.js"></script>
 <script src="js/utils.js"></script>
+<script src="js/calendar-engine.js"></script>
 <script src="js/markdown-editor.js"></script>
 <script src="js/sections/s1-semester.js"></script>
 <script src="js/sections/s2-logistics.js"></script>
