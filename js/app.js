@@ -132,20 +132,30 @@
   function _initThemePicker() {
     const swatches = document.querySelectorAll('.theme-swatch');
     const STORAGE_KEY = 'syllabusTheme';
+    const MIGRATE_KEY = 'syllabusThemeDefaultV2';
+    const DEFAULT_THEME = 'ou-crimson';
+    const VALID_THEMES = new Set(['ou-crimson', 'steel', 'ou-gold', 'navy']);
 
     function applyTheme(theme) {
-      document.body.setAttribute('data-theme', theme || 'ou-crimson');
+      const next = VALID_THEMES.has(theme) ? theme : DEFAULT_THEME;
+      document.body.setAttribute('data-theme', next);
       swatches.forEach(s => {
-        const active = s.dataset.theme === theme;
+        const active = s.dataset.theme === next;
         s.classList.toggle('theme-swatch--active', active);
         s.setAttribute('aria-pressed', active ? 'true' : 'false');
       });
-      localStorage.setItem(STORAGE_KEY, theme);
+      localStorage.setItem(STORAGE_KEY, next);
     }
 
-    // Restore saved theme, defaulting to OU Crimson
-    const saved = localStorage.getItem(STORAGE_KEY) || 'ou-crimson';
-    applyTheme(saved);
+    // One-time: when Crimson became the default, reset old Steel saves from
+    // the previous default so the picker matches the new product default.
+    if (!localStorage.getItem(MIGRATE_KEY)) {
+      localStorage.setItem(STORAGE_KEY, DEFAULT_THEME);
+      localStorage.setItem(MIGRATE_KEY, '1');
+    }
+
+    const saved = localStorage.getItem(STORAGE_KEY);
+    applyTheme(VALID_THEMES.has(saved) ? saved : DEFAULT_THEME);
 
     swatches.forEach(swatch => {
       swatch.addEventListener('click', () => applyTheme(swatch.dataset.theme));

@@ -41,7 +41,13 @@
 </head>
 <body>
 <!-- Apply saved theme immediately to prevent flash of default color -->
-<script>(function(){var t=localStorage.getItem('syllabusTheme')||'ou-crimson';document.body.setAttribute('data-theme',t);})();</script>
+<script>(function(){
+  var KEY='syllabusTheme', MIG='syllabusThemeDefaultV2', DEF='ou-crimson';
+  var ok={ 'ou-crimson':1, steel:1, 'ou-gold':1, navy:1 };
+  if(!localStorage.getItem(MIG)){ localStorage.setItem(KEY,DEF); localStorage.setItem(MIG,'1'); }
+  var t=localStorage.getItem(KEY);
+  document.body.setAttribute('data-theme', ok[t]?t:DEF);
+})();</script>
 
 <!-- ===== TOP TOOLBAR ===== -->
 <header class="app-header" role="banner">
