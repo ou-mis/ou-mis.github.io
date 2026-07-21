@@ -544,6 +544,10 @@
           <button type="button" id="btn-generate-calendar" class="btn btn--primary">
             &#8635; Generate Calendar
           </button>
+          <button type="button" id="btn-clear-calendar" class="btn btn--danger" disabled
+                  title="Clear all calendar rows and topics">
+            Clear Calendar
+          </button>
           <button type="button" id="btn-convert-mwf" class="btn btn--secondary" disabled
                   title="Convert Tue/Thu topics to Mon/Wed/Fri and update Section 2 meeting days">
             Convert to Mon / Wed / Fri
@@ -622,6 +626,19 @@
     <div class="modal__actions">
       <button id="btn-reset-confirm" class="btn btn--danger">Yes, Reset Everything</button>
       <button id="btn-reset-cancel" class="btn btn--ghost">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CLEAR CALENDAR MODAL ===== -->
+<div id="modal-clear-calendar" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-clear-calendar-title" hidden>
+  <div class="modal__backdrop"></div>
+  <div class="modal__box">
+    <h2 id="modal-clear-calendar-title" class="modal__title">Clear Calendar?</h2>
+    <p class="modal__body">This will remove all calendar dates, topics, readings, and due items. Custom no-class days and other form sections are kept. This cannot be undone.</p>
+    <div class="modal__actions">
+      <button type="button" id="btn-clear-calendar-confirm" class="btn btn--danger">Yes, Clear Calendar</button>
+      <button type="button" id="btn-clear-calendar-cancel" class="btn btn--ghost">Cancel</button>
     </div>
   </div>
 </div>

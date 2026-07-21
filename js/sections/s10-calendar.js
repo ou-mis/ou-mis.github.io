@@ -81,6 +81,22 @@ const S10 = (() => {
     document.getElementById('input-import-csv').disabled = false;
     document.getElementById('label-import-csv').setAttribute('aria-disabled', 'false');
     document.getElementById('label-import-csv').style.opacity = '';
+    _syncClearButton();
+  }
+
+  function _disableCsvButtons() {
+    document.getElementById('btn-download-csv').disabled = true;
+    document.getElementById('input-import-csv').disabled = true;
+    document.getElementById('label-import-csv').setAttribute('aria-disabled', 'true');
+    document.getElementById('label-import-csv').style.opacity = '';
+    _syncClearButton();
+  }
+
+  function _syncClearButton() {
+    const btn = document.getElementById('btn-clear-calendar');
+    if (!btn) return;
+    const s = State.get();
+    btn.disabled = !(s.calendarRows?.length || s.sessionPlan?.length);
   }
 
   function _canBuildCalendar(s) {
@@ -195,6 +211,58 @@ const S10 = (() => {
 
   function generateCalendar() {
     buildCalendar({ silent: false, trimPlan: true });
+  }
+
+  function clearCalendar() {
+    const s = State.get();
+    if (!s.calendarRows?.length && !s.sessionPlan?.length) {
+      Utils.toast('Calendar is already empty.', 'info');
+      return;
+    }
+
+    _suppressAutoBuild = true;
+    State.set({
+      calendarRows: [],
+      sessionPlan: [],
+      lastMeetingDays: [],
+    });
+    _suppressAutoBuild = false;
+
+    _lastDateKey = _buildDateKey(State.get());
+    _lastFinalExamKey = '';
+    _disableCsvButtons();
+    _syncConvertButtons();
+    _syncViewButtons(_getCalendarView());
+    _renderCalendar(_getCalendarView());
+    Utils.toast('Calendar cleared.', 'success');
+  }
+
+  function _initClearCalendarModal() {
+    const modal = document.getElementById('modal-clear-calendar');
+    if (!modal) return;
+    const backdrop = modal.querySelector('.modal__backdrop');
+
+    document.getElementById('btn-clear-calendar').addEventListener('click', () => {
+      const s = State.get();
+      if (!s.calendarRows?.length && !s.sessionPlan?.length) {
+        Utils.toast('Calendar is already empty.', 'info');
+        return;
+      }
+      modal.hidden = false;
+    });
+
+    document.getElementById('btn-clear-calendar-confirm').addEventListener('click', () => {
+      modal.hidden = true;
+      clearCalendar();
+    });
+
+    document.getElementById('btn-clear-calendar-cancel').addEventListener('click', () => {
+      modal.hidden = true;
+    });
+
+    backdrop.addEventListener('click', () => {
+      modal.hidden = true;
+    });
   }
 
   function rebuildIfNeeded() {
@@ -408,6 +476,7 @@ const S10 = (() => {
     document.getElementById('btn-view-week').addEventListener('click', () => _setView('week'));
     document.getElementById('btn-view-grid').addEventListener('click', () => _setView('grid'));
     _initPatternConversionModal();
+    _initClearCalendarModal();
 
     State.subscribe(Utils.debounce((s) => {
       if (!s.calendarRows.length) return;
@@ -419,6 +488,7 @@ const S10 = (() => {
 
     State.subscribe(Utils.debounce(_handleStateCalendarChanges, 400));
     State.subscribe(Utils.debounce(_syncConvertButtons, 400));
+    State.subscribe(Utils.debounce(_syncClearButton, 400));
 
     _restoreFromState();
   }
@@ -793,6 +863,7 @@ const S10 = (() => {
     }
     _syncViewButtons(_getCalendarView());
     _syncConvertButtons();
+    _syncClearButton();
   }
 
   /* ── Visual Calendar Grid ── */
@@ -951,5 +1022,5 @@ const S10 = (() => {
     return rows.length > 0;
   }
 
-  return { init, isComplete, generateCalendar, buildCalendar, rebuildIfNeeded };
+  return { init, isComplete, generateCalendar, clearCalendar, buildCalendar, rebuildIfNeeded };
 })();

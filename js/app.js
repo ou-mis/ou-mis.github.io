@@ -109,23 +109,57 @@
     const formPane = document.getElementById('form-pane');
     const sectionEls = Array.from(document.querySelectorAll('.form-section'));
     const sidebarLinks = Array.from(document.querySelectorAll('.sidebar__link'));
+    const isMobileNav = () => window.matchMedia('(max-width: 768px)').matches;
+    let currentId = null;
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          sidebarLinks.forEach(link => {
-            link.classList.toggle('active', link.dataset.section === id);
-          });
+    function setActive(id) {
+      if (!id || id === currentId) return;
+      currentId = id;
+      sidebarLinks.forEach(link => {
+        const active = link.dataset.section === id;
+        link.classList.toggle('active', active);
+        if (active && isMobileNav()) {
+          link.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
         }
       });
-    }, {
-      root: formPane,
-      rootMargin: '-20% 0px -70% 0px',
-      threshold: 0,
+    }
+
+    function getActivationY() {
+      // Prefer form-pane when it is the actual scroll container
+      if (formPane && formPane.scrollHeight > formPane.clientHeight + 1) {
+        return formPane.getBoundingClientRect().top + Math.min(140, formPane.clientHeight * 0.22);
+      }
+      const headerH = parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue('--header-height')
+      ) || 62;
+      const sidebar = document.querySelector('.sidebar');
+      const sidebarH = isMobileNav() ? (sidebar?.offsetHeight || 0) : 0;
+      return headerH + sidebarH + 24;
+    }
+
+    function updateActiveSection() {
+      if (!sectionEls.length) return;
+      const marker = getActivationY();
+      let activeEl = sectionEls[0];
+      for (const el of sectionEls) {
+        if (el.getBoundingClientRect().top <= marker) activeEl = el;
+      }
+      setActive(activeEl.id);
+    }
+
+    const onScroll = Utils.debounce(updateActiveSection, 40);
+    formPane?.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const id = link.dataset.section;
+        if (id) setActive(id);
+      });
     });
 
-    sectionEls.forEach(el => observer.observe(el));
+    updateActiveSection();
   }
 
   /* ── Theme Picker ── */
