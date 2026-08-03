@@ -1,0 +1,205 @@
+{
+  "meta": {
+    "university": "The University of Oklahoma",
+    "college": "Michael F. Price College of Business",
+    "department": "Management Information Systems",
+    "pageTitle": "MIS Course Catalog"
+  },
+  "courses": [
+    {
+      "code": "B AD 1001",
+      "title": "Business Foundations",
+      "instructor": "Alexandra Durcikova",
+      "semesters": ["Fall", "Spring"],
+      "syllabus": "b-ad-1001.pdf",
+      "prerequisites": [],
+      "learningOutcomes": []
+    },
+    {
+      "code": "MIS 2113",
+      "title": "Computer-Based Info Systems",
+      "instructor": "Adam Ackerman & Sophie Zhai",
+      "semesters": ["Fall", "Spring"],
+      "syllabus": "mis-2113.pdf",
+      "prerequisites": ["B AD 1001"],
+      "learningOutcomes": [
+        "Manage and leverage data effectively through modern database systems",
+        "Transform raw data into strategic business intelligence using industry-standard tools",
+        "Automate business processes and harness the power of programming for real-world problem solving",
+        "Protect information assets in an increasingly digital world"
+      ]
+    },
+    {
+      "code": "MIS 3013",
+      "title": "Introduction to Programming",
+      "instructor": "Adam Ackerman",
+      "semesters": ["Fall", "Spring"],
+      "syllabus": "mis-3013.pdf",
+      "prerequisites": ["MIS 2113"],
+      "learningOutcomes": [
+        "Apply fundamental programming syntax and constructs",
+        "Design and implement structured applications",
+        "Translate written problem description plans and business requirements into working programs",
+        "Use an integrated development environment",
+        "Utilize cloud-based version control tools"
+      ]
+    },
+    {
+      "code": "MIS 3033",
+      "title": "Business Programming Languages",
+      "instructor": "Adam Ackerman",
+      "semesters": ["Fall", "Spring"],
+      "syllabus": "mis-3033.pdf",
+      "prerequisites": ["MIS 2113", "MIS 3013"],
+      "learningOutcomes": [
+        "Apply object-oriented programming principles to develop event-driven software applications.",
+        "Apply software architectural patterns and design principles to develop maintainable, modular, and scalable applications.",
+        "Design and implement data persistence solutions through relational databases and modern data access technologies.",
+        "Develop and integrate application programming interfaces (APIs), external services, and other data sources to enable communication between software systems.",
+        "Develop a comprehensive software application that integrates user interface design, data management, software architecture, and system integration to solve a real-world business problem."
+      ]
+    },
+    {
+      "code": "MIS 3213",
+      "title": "Business Data Analysis",
+      "instructor": "Tracy Zou",
+      "semesters": ["Fall", "Spring"],
+      "syllabus": "mis-3213.pdf",
+      "prerequisites": ["MIS 2113"],
+      "learningOutcomes": [
+        "Able to demonstrate strategic utilization of programming, data, and analytics skills to address complex business challenges and enhance decision-making processes.",
+        "Able to utilize Python's data structures, control structures, and functions to solve complex business problems.",
+        "Able to exhibit skills in data visualization to conduct meaningful business analyses and provide actionable insights.",
+        "Able to apply debugging techniques with generative AI tools such as ChatGPT to identify and fix errors in analytics programming.",
+        "Able to apply effective team collaboration skills, working within diverse groups to perform in-depth data analyses and make informed decisions."
+      ]
+    },
+    {
+      "code": "MIS 3353",
+      "title": "Databases",
+      "instructor": "John James",
+      "semesters": ["Fall", "Spring"],
+      "syllabus": "mis-3353.pdf",
+      "prerequisites": ["MIS 2113"],
+      "learningOutcomes": [
+        "Extract and analyze data using SQL",
+        "Design and model relational databases",
+        "Apply normalization and implement databases",
+        "Compare and utilize advanced data management systems",
+        "Integrate database knowledge for business decision-making"
+      ]
+    },
+    {
+      "code": "MIS 3373",
+      "title": "Systems Analysis and Design Theory",
+      "instructor": "John James",
+      "semesters": ["Fall", "Spring"],
+      "syllabus": "mis-3373.pdf",
+      "prerequisites": ["MIS 3353"],
+      "learningOutcomes": [
+        "Explain and apply the phases of the Systems Development Life Cycle (SDLC)",
+        "Utilize various methods to gather system requirements",
+        "Model data and processes using structured and object-oriented techniques",
+        "Evaluate alternative system solutions based on feasibility and risk",
+        "Develop and present a comprehensive system design proposal as part of a team project"
+      ]
+    },
+    {
+      "code": "MIS 3383",
+      "title": "Electronic Business",
+      "instructor": "Kee Kim & Luke Harris",
+      "semesters": ["Fall", "Spring"],
+      "syllabus": "mis-3383.pdf",
+      "prerequisites": ["MIS 2113"],
+      "learningOutcomes": [
+        "Understand SAP basics and ERP concepts from a functional, technical and implementation perspective with an emphasis on the process-centered organization",
+        "Learn Salesforce basics and CRM concepts to understand cross-functional business operations (object management, workflow automation, etc.) via the integrated cloud system.",
+        "Gain hands-on experience through labs covering essential SAP operations, Salesforce tools, and related applications.",
+        "Develop critical thinking skills by solving real-world business problems using SAP and Salesforce.",
+        "Explore industry resources to help prepare for future SAP and Salesforce certifications."
+      ]
+    },
+    {
+      "code": "MIS G4013",
+      "title": "E-Commerce Web Design",
+      "instructor": "Adam Ackerman",
+      "semesters": ["Fall", "Spring"],
+      "syllabus": "mis-g401.pdf",
+      "prerequisites": ["MIS 3013"],
+      "learningOutcomes": [
+        "Design and implement responsive front-end web interfaces using HTML, CSS, and Javascript.",
+        "Develop dynamic server-side applications and RESTful APIs using the MVC architecture.",
+        "Evaluate and implement hosting and deployment solutions for web applications.",
+        "Compare traditional coding platforms with low-code tools for web development use cases.",
+        "Construct a comprehensive web development project that demonstrates front-end, back-end, and hosting skills to address a real-world scenario."
+      ]
+    },
+    {
+      "code": "MIS G4363",
+      "title": "Business Infrastructure and Cyber Security",
+      "instructor": "Luke Harris",
+      "semesters": ["Fall", "Spring"],
+      "syllabus": "mis-g4363.pdf",
+      "prerequisites": ["MIS 2113"],
+      "learningOutcomes": [
+        "Explain how networks such as the Internet move messages from one computer to another through the hardware and software components",
+        "Design a network infrastructure (at a novice-level) using a variety of LAN, backbone, and WAN technologies and components",
+        "Recognize the major decisions needed in managing network infrastructure in organizations (e.g., network security) and understand which options are likely to lead to better performance",
+        "Identify components of cybersecurity relevant to any industry"
+      ]
+    },
+    {
+      "code": "MIS G4433",
+      "title": "Project Management",
+      "instructor": "Darin Purinten",
+      "semesters": ["Fall", "Spring"],
+      "syllabus": "mis-g4433.pdf",
+      "prerequisites": ["MIS 2113"],
+      "learningOutcomes": [
+        "Understands the best practices for project planning, execution, monitoring and closing.",
+        "Demonstrates knowledge of fundamental project management terms and techniques.",
+        "Develop skills identifying, communicating, and achieving defined business objectives.",
+        "Enhance teamwork and communication skills essential for working in a project environment.",
+        "Apply project management tools and techniques to a real-world scenario."
+      ]
+    },
+    {
+      "code": "MIS G4633",
+      "title": "Intelligent Robotic Automation",
+      "instructor": "Jonathan Ye",
+      "semesters": ["Fall", "Spring"],
+      "syllabus": "mis-g4693.pdf",
+      "prerequisites": ["MIS 2113"],
+      "learningOutcomes": [
+        "Develop bots for business tasks",
+        "Develop AI agents",
+        "Understand what tasks to automate and how to maintain AI agents",
+        "Deliver AI solutions to business needs"
+      ]
+    },
+    {
+      "code": "MIS 4970",
+      "title": "Bitcoin & Blockchain",
+      "instructor": "TBD",
+      "semesters": ["Fall", "Spring"],
+      "syllabus": "mis-4970.pdf",
+      "prerequisites": [],
+      "learningOutcomes": [
+        "Grasp Bitcoin and Blockchain Essentials",
+        "Understand Economic, Legal, and Ethical Landscapes of Bitcoin",
+        "Identify and Address Bitcoin's Technological Challenges",
+        "Compare Bitcoin with Conventional Financial Systems",
+        "Explore Industry Trends and Practical Bitcoin Applications"
+      ]
+    },
+    {
+      "code": "MIS G4723",
+      "title": "Information Security",
+      "instructor": "Luke Harris",
+      "semesters": ["Fall", "Spring"],
+      "syllabus": "mis-g4723.pdf",
+      "prerequisites": ["MIS 2113"],
+      "learningOutcomes": []
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="University of Oklahoma Price College of Business — Management Information Systems course catalog, syllabi, and prerequisites."
+    />
+    <title>MIS Course Catalog | Price College of Business | University of Oklahoma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="icon" href="./assets/ou-mark.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="./favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#catalog">Skip to courses</a>
+
+    <div class="page">
+      <header class="masthead" id="top">
+        <div class="masthead__glow" aria-hidden="true"></div>
+        <div class="masthead__inner">
+          <div class="masthead__brand">
+            <img class="masthead__mark" src="./assets/ou-mark.svg" alt="" width="48" height="48" />
+            <div class="masthead__titles">
+              <p class="masthead__college">Michael F. Price College of Business</p>
+              <h1 class="masthead__title">MIS Course Catalog</h1>
+            </div>
+          </div>
+          <p class="masthead__dept">Management Information Systems · University of Oklahoma</p>
+        </div>
+      </header>
+
+      <main id="catalog" class="catalog">
+        <section class="controls" aria-label="Search and filter courses">
+          <div class="controls__inner">
+            <div class="picker">
+              <label class="picker__label" for="course-select">Jump to course</label>
+              <div class="picker__field">
+                <select id="course-select" class="picker__select">
+                  <option value="">All courses</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="search">
+              <label class="search__label" for="course-search">Search</label>
+              <div class="search__field">
+                <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path
+                    fill="currentColor"
+                    d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                  />
+                </svg>
+                <input
+                  id="course-search"
+                  class="search__input"
+                  type="search"
+                  list="course-suggestions"
+                  placeholder="Or type code, title, instructor…"
+                  autocomplete="off"
+                  spellcheck="false"
+                />
+                <datalist id="course-suggestions"></datalist>
+                <button type="button" class="search__clear" id="clear-search" hidden>Clear</button>
+              </div>
+            </div>
+
+            <div class="filters" role="group" aria-label="Filter by semester">
+              <span class="filters__label">Semester</span>
+              <div class="filters__tabs">
+                <button type="button" class="filter-tab is-active" data-semester="all" aria-pressed="true">All</button>
+                <button type="button" class="filter-tab" data-semester="Fall" aria-pressed="false">Fall</button>
+                <button type="button" class="filter-tab" data-semester="Spring" aria-pressed="false">Spring</button>
+                <button type="button" class="filter-tab" data-semester="Summer" aria-pressed="false">Summer</button>
+              </div>
+            </div>
+
+            <p class="results-meta" id="results-meta" aria-live="polite">Loading courses…</p>
+          </div>
+        </section>
+
+        <section class="course-section" aria-labelledby="course-list-heading">
+          <h2 id="course-list-heading" class="visually-hidden">Course list</h2>
+          <div id="course-list" class="course-grid" role="list"></div>
+          <div id="empty-state" class="empty-state" hidden>
+            <p class="empty-state__title">No courses match</p>
+            <p class="empty-state__text">Try a different search or semester filter.</p>
+            <button type="button" class="btn btn--ghost" id="reset-filters">Reset filters</button>
+          </div>
+          <div id="error-state" class="empty-state" hidden>
+            <p class="empty-state__title">Unable to load courses</p>
+            <p class="empty-state__text">Check that <code>data/courses.json</code> is available, then refresh.</p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer__inner">
+          <p class="footer__brand">The University of Oklahoma · Price College of Business · MIS</p>
+          <p class="footer__note">Course information is maintained in <code>data/courses.json</code>.</p>
+        </div>
+      </footer>
+    </div>
+
+    <div
+      id="syllabus-modal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="syllabus-modal-title"
+      hidden
+    >
+      <div class="modal__backdrop" data-close-modal></div>
+      <div class="modal__panel">
+        <header class="modal__header">
+          <div>
+            <p class="modal__eyebrow" id="syllabus-modal-code"></p>
+            <h2 class="modal__title" id="syllabus-modal-title">Syllabus</h2>
+          </div>
+          <div class="modal__actions">
+            <a id="syllabus-download" class="btn btn--primary" href="#" download>Download PDF</a>
+            <a
+              id="syllabus-open-tab"
+              class="btn btn--ghost"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open in new tab</a
+            >
+            <button type="button" class="modal__close" data-close-modal aria-label="Close syllabus viewer">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </header>
+        <div class="modal__body">
+          <iframe id="syllabus-frame" class="modal__frame" title="Syllabus PDF viewer"></iframe>
+          <div id="syllabus-fallback" class="modal__fallback" hidden>
+            <p>This PDF could not be previewed in the browser.</p>
+            <p>Use <strong>Download PDF</strong> or <strong>Open in new tab</strong> to view it.</p>
+          </div>
+          <div id="syllabus-loading" class="modal__loading" hidden>Loading preview…</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/app.js" type="module"></script>
+  </body>
+</html>

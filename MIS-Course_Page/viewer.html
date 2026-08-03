@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Syllabus Viewer</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #525659;
+        font-family: system-ui, sans-serif;
+      }
+      #status {
+        display: grid;
+        place-content: center;
+        height: 100%;
+        margin: 0;
+        color: #f2f2f2;
+        font-weight: 600;
+        padding: 1.5rem;
+        text-align: center;
+      }
+      #status[hidden] {
+        display: none !important;
+      }
+      #pages {
+        min-height: 100%;
+        padding: 1rem;
+      }
+      #pages[hidden] {
+        display: none !important;
+      }
+      #pages canvas {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto 1rem;
+        background: #fff;
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+      }
+      .error {
+        color: #ffd0d0;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="status">Loading syllabus…</p>
+    <div id="pages" hidden></div>
+    <script type="module">
+      import * as pdfjsLib from "./js/vendor/pdfjs/pdf.min.js";
+
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "./js/vendor/pdfjs/pdf.worker.min.js";
+
+      const statusEl = document.getElementById("status");
+      const pagesEl = document.getElementById("pages");
+      const file = new URLSearchParams(window.location.search).get("file");
+
+      function fail(message) {
+        statusEl.textContent = message;
+        statusEl.classList.add("error");
+        pagesEl.hidden = true;
+      }
+
+      async function render() {
+        if (!file) {
+          fail("No syllabus file was specified.");
+          return;
+        }
+
+        let url;
+        try {
+          url = new URL(file, window.location.href);
+        } catch {
+          fail("Invalid syllabus path.");
+          return;
+        }
+
+        if (url.origin !== window.location.origin || !url.pathname.includes("/syllabi/")) {
+          fail("Syllabus path is not allowed.");
+          return;
+        }
+
+        try {
+          const pdf = await pdfjsLib.getDocument(url.href).promise;
+          pagesEl.innerHTML = "";
+
+          const cssWidth = Math.min(900, Math.max(280, window.innerWidth - 32));
+
+          for (let pageNum = 1; pageNum <= pdf.numPages; pageNum += 1) {
+            const page = await pdf.getPage(pageNum);
+            const unscaled = page.getViewport({ scale: 1 });
+            const scale = cssWidth / unscaled.width;
+            const viewport = page.getViewport({ scale });
+
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d", { alpha: false });
+            canvas.width = Math.ceil(viewport.width);
+            canvas.height = Math.ceil(viewport.height);
+            canvas.style.width = `${Math.floor(viewport.width)}px`;
+            canvas.style.height = `${Math.floor(viewport.height)}px`;
+            canvas.setAttribute("aria-label", `Page ${pageNum} of ${pdf.numPages}`);
+
+            await page.render({
+              canvasContext: context,
+              viewport,
+            }).promise;
+
+            pagesEl.appendChild(canvas);
+          }
+
+          statusEl.hidden = true;
+          pagesEl.hidden = false;
+        } catch (err) {
+          console.error(err);
+          fail("Could not render this PDF in the preview.");
+        }
+      }
+
+      render();
+    </script>
+  </body>
+</html>

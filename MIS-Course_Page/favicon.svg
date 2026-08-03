@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="OU mark">
+  <rect width="120" height="120" rx="8" fill="#841617"/>
+  <text x="60" y="72" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700" fill="#ffffff" letter-spacing="2">OU</text>
+  <rect x="28" y="84" width="64" height="3" fill="#ffffff" opacity="0.85"/>
+</svg>
