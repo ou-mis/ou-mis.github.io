@@ -1,0 +1,1011 @@
+{
+  "semester": "202570",
+  "startDate": "2026-08-24",
+  "endDate": "2026-12-11",
+  "courseNumber": "MIS 3033",
+  "courseTitle": "Computer-Based Information Systems",
+  "sectionNumber": "001",
+  "instructorName": "Adam Ackerman",
+  "officeLocation": "Adams Hall 3213",
+  "officeHours": [
+    {
+      "day": "Tuesday",
+      "notes": "",
+      "times": [
+        {
+          "startTime": "13:15",
+          "endTime": "14:15"
+        }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "notes": "",
+      "times": [
+        {
+          "startTime": "13:15",
+          "endTime": "14:15"
+        }
+      ]
+    }
+  ],
+  "courseEmail": "adam@ou.edu",
+  "emailSubject": "MIS 3033",
+  "classRoom": "MFPH 3065",
+  "meetingDays": [
+    "Mon",
+    "Wed",
+    "Fri"
+  ],
+  "meetingStart": "09:00",
+  "meetingEnd": "10:15",
+  "lmsUrl": "https://canvas.ou.edu",
+  "finalExamDate": "2026-12-14",
+  "finalExamStart": "08:00",
+  "finalExamEnd": "10:00",
+  "finalExamRoom": "MFPH 3065",
+  "materials": [
+    {
+      "type": "Software",
+      "title": "Visual Studio Community - Latest Version",
+      "obtain": "https://visualstudio.microsoft.com/downloads/",
+      "required": "Required"
+    },
+    {
+      "type": "Software",
+      "title": "Git",
+      "obtain": "https://git-scm.com/",
+      "required": "Recommended"
+    },
+    {
+      "type": "Software",
+      "title": "Video recording software (zoom, kaltura, etc.)",
+      "obtain": "https://mymedia.ou.edu/",
+      "required": "Optional"
+    }
+  ],
+  "prereqs": [
+    {
+      "courseNum": "MIS 3013",
+      "courseName": "Introduction to Programming",
+      "reason": "Students must complete MIS 3013 as a prerequisite because it provides essential foundational programming skills, which are necessary for applying object-oriented principles and developing desktop applications in this course. Additionally, MIS 3013 introduces Git, a version control tool that students will use to manage their code effectively throughout the data-driven project development process."
+    }
+  ],
+  "courseDescription": "This intermediate-level course focuses on the design and development of data-driven desktop applications. Building on foundational programming skills, students will explore user interface design, adopt the Model-View-ViewModel (MVVM) architectural pattern (optional with bonus points), and integrate relational databases using both SQL and Entity Framework. Emphasis is placed on clean architecture, responsive user interfaces, and robust data handling. Through a mix of exams and a final project, students will gain the experience and confidence to develop scalable, maintainable, and user-friendly applications.",
+  "coursePhilosophy": "Skills in MIS 3033 are acquired through hands-on practice rather than rote memorization. Students will engage in repeated application of concepts in diverse contexts, fostering creative problem-solving. While some students may adapt quickly, others new to this approach may need time to develop this mindset—support from the professor and TAs is encouraged. Assessments will evaluate practical abilities (e.g., building UIs, managing databases) rather than memorized solutions, with exams and projects reflecting real-world challenges.\n\nThis course combines lectures, hands-on exercises, and discussions to build a foundation for future coursework and careers. Active participation is essential, and students may use AI tools for brainstorming or troubleshooting with proper citation.",
+  "modules": [
+    {
+      "number": "1",
+      "title": "Application Development Fundamentals",
+      "description": "This module introduces the core principles of modern software development, including object-oriented programming, event-driven programming, and graphical user interface development. Students build desktop applications while developing proficiency with professional .NET development tools and practices."
+    },
+    {
+      "number": "2",
+      "title": "Software Architecture & APIs",
+      "description": "This module focuses on designing maintainable software using architectural patterns and integrating applications through APIs and external data sources. Students learn how to create modular applications that communicate with other systems using modern software development practices."
+    },
+    {
+      "number": "3",
+      "title": "Data Persistence & Enterprise Development",
+      "description": "This module explores data persistence, database integration, and enterprise application development using modern data access technologies. Students apply the concepts learned throughout the course by developing a comprehensive software application that solves a real-world business problem."
+    }
+  ],
+  "clos": [
+    {
+      "number": 1,
+      "text": "Apply object-oriented programming principles to develop event-driven software applications.",
+      "assignments": [
+        "Homework 1",
+        "Homework 2",
+        "Exam 1",
+        "Group Project"
+      ]
+    },
+    {
+      "number": 2,
+      "text": "Apply software architectural patterns and design principles to develop maintainable, modular, and scalable applications.",
+      "assignments": [
+        "Homework 3",
+        "Homework 5",
+        "Exam 2",
+        "Group Project"
+      ]
+    },
+    {
+      "number": 3,
+      "text": "Design and implement data persistence solutions through relational databases and modern data access technologies.",
+      "assignments": [
+        "Homework 6",
+        "Exam 3",
+        "Group Project"
+      ]
+    },
+    {
+      "number": 4,
+      "text": "Develop and integrate application programming interfaces (APIs), external services, and other data sources to enable communication between software systems.",
+      "assignments": [
+        "Homework 2",
+        "Homework 4",
+        "Homework 5",
+        "Exam 2",
+        "Group Project"
+      ]
+    },
+    {
+      "number": 5,
+      "text": "Develop a comprehensive software application that integrates user interface design, data management, software architecture, and system integration to solve a real-world business problem.",
+      "assignments": [
+        "Group Project"
+      ]
+    }
+  ],
+  "gradingType": "weighted",
+  "gradeScale": [
+    {
+      "grade": "A",
+      "min": 90,
+      "max": 100
+    },
+    {
+      "grade": "B",
+      "min": 80,
+      "max": 89
+    },
+    {
+      "grade": "C",
+      "min": 70,
+      "max": 79
+    },
+    {
+      "grade": "D",
+      "min": 60,
+      "max": 69
+    },
+    {
+      "grade": "F",
+      "min": 0,
+      "max": 59
+    }
+  ],
+  "assessments": [
+    {
+      "name": "Attendance",
+      "weight": 10,
+      "notes": "Sign-in sheet.  Will drop two lowest scores (i.e. absences).",
+      "optional": false,
+      "information": ""
+    },
+    {
+      "name": "Participation",
+      "weight": 20,
+      "notes": "Two lowest scores dropped",
+      "optional": false,
+      "information": ""
+    },
+    {
+      "name": "Homework",
+      "weight": 20,
+      "notes": "Lowest score dropped",
+      "optional": false,
+      "information": ""
+    },
+    {
+      "name": "Exams",
+      "weight": 30,
+      "notes": "Three exams all weighted the same",
+      "optional": false,
+      "information": ""
+    },
+    {
+      "name": "Group Project",
+      "weight": 20,
+      "notes": "",
+      "optional": false,
+      "information": ""
+    }
+  ],
+  "divisionPolicies": {
+    "academic-integrity-mis": {
+      "included": true,
+      "customText": "## Academic Integrity\n\nThe University of Oklahoma has an Academic Misconduct Code that governs student academic performance in and out of the classroom. The Academic Misconduct Code can be reviewed online at http://www.ou.edu/integrity\n\nAcademic misconduct is defined as \"any act that improperly affects the evaluation of a student's academic performance or achievement\". All work assigned in this course is to be completed individually (unless otherwise stated). The steps and procedures as outlined in the Academic Misconduct Code will be followed in all cases of academic misconduct in this class.\n\n**MIS Division Guidelines for Academic Misconduct:**\n\n- All academic misconduct will be reported at: http://www.ou.edu/content/dam/integrity/docs/academic-misconduct-report.pdf\n- The instructor will decide whether the misconduct is an Admonition or Violation of the Academic Integrity Code.\n- When misconduct occurs on labs/similar assignments and is categorized as Admonition: a grade of zero will be recorded and a deduction equal to the value of the assignment will be applied.\n- When misconduct occurs on an exam and is categorized as Admonition: a grade of zero will be recorded.\n- When misconduct occurs on an exam and is categorized as a Violation: no grade penalty is imposed until the student is officially found responsible. Until then, \"N\" is filed as the final course grade. If established, a violation results in a grade penalty and a University penalty.\n- Faculty may impose greater grade penalties than those recommended above."
+    },
+    "laptop-policy": {
+      "included": true,
+      "customText": "## Laptop Requirements\n\nA laptop computer is required for every class meeting. The following specifications are the minimum requirements:\n\n| Component | Minimum Specification |\n|-----------|----------------------|\n| Processor | Intel Core i5 (12th gen or later), AMD Ryzen 5 5000 series or later, or Apple M1/M2 |\n| RAM | 8 GB |\n| Storage | 512 GB SSD |\n| Operating System | Windows 11|\n| Required Software | Microsoft Office 365 (free via OU), SQL Server Management Studio (Windows) or Azure Data Studio (Mac) |"
+    },
+    "attendance-policy": {
+      "included": true,
+      "customText": "## Excused Absence Policy\nRegular attendance is required. Absences will be considered excused only under the circumstances outlined below and only when appropriate documentation is submitted in a timely manner. The instructor retains sole discretion to determine whether an absence and its documentation meet the standards of this policy.\n### 1. University-Recognized Excused Absences\n**A. Religious Observances**\nIn accordance with University policy, absences for the observance of major religious holidays will be excused. Students must provide written notice as early as possible and no later than the end of the second week of the semester, or as soon as the conflict becomes known.\n**B. Official University-Sponsored Activities**\nAbsences resulting from participation in official University-sponsored activities are excused. Written verification from the sponsoring University office is required. Advance notice is expected whenever practicable.\n### 2. Medical Emergency\nA medical emergency is a serious, acute condition requiring urgent or emergent medical treatment that renders the student unable to participate in academic activities.\nExamples include, but are not limited to:\n- Emergency room treatment\n- Hospitalization\n- Urgent surgical procedures\n- Serious injury requiring immediate medical care\n\n**Required Documentation**\n\nOfficial documentation from a licensed healthcare provider or medical facility must include:\n- Date(s) of treatment\n- A statement confirming the student was medically unable to attend class on specified date(s)\n- Provider signature or institutional verification\nDocumentation that merely confirms an appointment occurred, without stating incapacity to attend class, is insufficient.\nRoutine illness (e.g., cold, flu, minor viral illness, headache, fatigue, or similar conditions) does not qualify as a medical emergency and is not an excused absence under this policy, even with a doctor's note.\n### 3. Motor Vehicle Accident\nAn absence resulting from a motor vehicle accident may be excused if the incident directly prevents class attendance.\n\n**Required Documentation**\n\nStudents must provide a copy of the official police report documenting the accident. The report must clearly indicate the date and time of the incident and demonstrate that it coincided with the scheduled class time or otherwise made attendance not reasonably possible.\nIf medical treatment resulted from the accident, documentation meeting the requirements of the Medical Emergency section may also be required.\n### 4. Family Emergency\nA family emergency is a significant, unforeseen event involving an immediate family member that requires the student's presence.\nImmediate family member is defined as: spouse or domestic partner; child; parent or legal guardian; sibling; grandparent; grandchild; or corresponding in-law relationship.\nQualifying circumstances may include:\n- Death of an immediate family member\n- Serious medical emergency involving an immediate family member\n\n**Required Documentation**\n\nAppropriate third-party verification must be provided (e.g., obituary, funeral documentation, hospital verification, or written confirmation from a responsible official). Verification through the Dean of Students Office may be required.\n### 5. Court Appearance\nAn absence may be excused when a student is legally required to appear in court and the appearance directly conflicts with scheduled class time.\nExcused court appearances may include, but are not limited to:\n- Jury duty\n- Subpoenaed testimony\n- Required court hearings\nVoluntary legal meetings, consultations with attorneys, or court appearances scheduled at the student's discretion do not qualify.\n\n**Required Documentation**\n\nStudents must provide official court documentation that clearly indicates:\n- The date and time of the required appearance\n- Verification that the student's presence was mandatory\nAdvance notice is expected whenever practicable.\n### 6. Non-Qualifying Absences\nThe following do not constitute excused absences:\n- Routine/chronic illness\n- Personal travel\n- Employment conflicts\n- Oversleeping\n- Minor appointments\n- Technical difficulties\n- Failure to plan appropriately\n### 7. Notification and Timing\nStudents must notify the instructor as soon as reasonably possible. Required documentation must be submitted within one week of returning to class unless otherwise approved in writing. Failure to provide timely notice or adequate documentation may result in the absence being recorded as unexcused."
+    },
+    "ta-help": {
+      "included": true,
+      "customText": "## Getting Help from TAs\n\nStudents are strongly advised to get help from the TAs when having problems with the class material. Their job is to help you when you get stuck, so feel free to approach them. They recently took this class and now really understand the problems you may run into."
+    }
+  },
+  "customPolicies": [
+    {
+      "title": "Grade / Score Appeals",
+      "content": "Students wishing to appeal a grade or score must submit the appeal to the instructor **in writing within 48 hours** of receiving the graded work. Score changes are at the discretion of the instructor, not the TAs.\n\nIt is important to understand that your score may go up or down based on a complete review of the work in question. It is usually the case that changing a few points on an assignment rarely makes a difference in the final grade."
+    },
+    {
+      "title": "Missed Exams / Make-Up Policy",
+      "content": "Make-up exams will be given only in extraordinary circumstances. If you expect to miss an exam or are unable to meet another requirement, please discuss this with the instructor **before the scheduled date, no later than 48 hours before the due date**."
+    },
+    {
+      "title": "Incomplete Grades",
+      "content": "A grade of Incomplete may be awarded to students who have a legitimate reason for needing additional time to complete a course. Legitimate reasons include emergencies or extenuating circumstances that prevent a student from completing course requirements within the normal time frame.\n\nStudents must initiate the request for an incomplete **prior to the end of the semester**, and must be in good standing in the course. In no case will a grade of Incomplete be awarded to someone seeking more time to master the course material in order to improve their grade."
+    }
+  ],
+  "universityPolicies": {},
+  "genAiTier": "gen-ai-custom-ackerman",
+  "genAiText": "The use of generative AI tools is permitted in this course for the following purposes:\n\n- Searching for and summarizing published academic or professional sources\n- Creating outlines, draft text, or speech notes for presentations\n- Receiving grammatical and stylistic feedback on your own drafts\n- Further study and exploration of course topics outside of class\n- Troubleshooting software errors (SQL, Python, Excel, etc.)\n- Generating initial ideas for projects or assignments\n\n**Required disclosure:** Any submission that includes AI-generated or AI-assisted content must include:\n\n1. A declaration at the top of the document stating that AI was used.\n2. An appendix containing the exact prompts submitted and the AI responses received.\n\nUse of AI tools for purposes not listed above without proper acknowledgment and disclosure constitutes a violation of the OU Academic Integrity Code and will be handled accordingly.\n\n**Note:** Regardless of the above, no AI tools of any kind are permitted during quizzes, exams, or any other timed in-class assessments unless the instructor explicitly states otherwise for a specific assessment.",
+  "noClassDays": [],
+  "sessionPlan": [
+    {
+      "period": 1,
+      "topic": "Course Overview + Environment Setup",
+      "readings": "GitHub, Visual Studio",
+      "due": ""
+    },
+    {
+      "period": 2,
+      "topic": "3013 Review",
+      "readings": "Git",
+      "due": ""
+    },
+    {
+      "period": 3,
+      "topic": "3013 Review",
+      "readings": "Conditionals, Loops",
+      "due": ""
+    },
+    {
+      "period": 4,
+      "topic": "3013 Review",
+      "readings": "Functions, Classes",
+      "due": ""
+    },
+    {
+      "period": 5,
+      "topic": "WPF",
+      "readings": "Lecture, In class example",
+      "due": "Homework 1"
+    },
+    {
+      "period": 6,
+      "topic": "WPF",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 7,
+      "topic": "WPF",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 8,
+      "topic": "File I/O + NuGet",
+      "readings": "Lecture, In class example",
+      "due": "Homework 2"
+    },
+    {
+      "period": 9,
+      "topic": "File I/O + NuGet",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 10,
+      "topic": "File I/O + NuGet",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 11,
+      "topic": "File I/O + NuGet",
+      "readings": "Participation",
+      "due": "Homework 3"
+    },
+    {
+      "period": 12,
+      "topic": "Module 1 Participation",
+      "readings": "Lecture, In class example",
+      "due": ""
+    },
+    {
+      "period": 13,
+      "topic": "Module 1 Review",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 14,
+      "topic": "Exam 1",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 15,
+      "topic": "JSON",
+      "readings": "Lecture, In class example",
+      "due": ""
+    },
+    {
+      "period": 16,
+      "topic": "JSON",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 17,
+      "topic": "Consuming RESTful APIs",
+      "readings": "Lecture, In class example; Group Formation",
+      "due": ""
+    },
+    {
+      "period": 18,
+      "topic": "Consuming RESTful APIs",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 19,
+      "topic": "Consuming RESTful APIs",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 20,
+      "topic": "Project Work Day",
+      "readings": "",
+      "due": "Homework 4; Data for Project due and initial"
+    },
+    {
+      "period": 21,
+      "topic": "Consuming RESTful APIs",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 22,
+      "topic": "Consuming RESTful APIs",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 23,
+      "topic": "Consuming RESTful APIs",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 24,
+      "topic": "Entity Framework (EF)",
+      "readings": "Lecture, In class example",
+      "due": ""
+    },
+    {
+      "period": 25,
+      "topic": "Entity Framework (EF)",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 26,
+      "topic": "Entity Framework (EF)",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 27,
+      "topic": "Entity Framework (EF)",
+      "readings": "Participation",
+      "due": "Homework 5"
+    },
+    {
+      "period": 28,
+      "topic": "Entity Framework (EF)",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 29,
+      "topic": "Project Workday",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 30,
+      "topic": "Module 2 Participation",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 31,
+      "topic": "Module 2 Review",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 32,
+      "topic": "Exam 2",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 33,
+      "topic": "Creating RESTful APIs",
+      "readings": "Lecture, In class example",
+      "due": ""
+    },
+    {
+      "period": 34,
+      "topic": "Creating RESTful APIs",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 35,
+      "topic": "Project Workday",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 36,
+      "topic": "Creating RESTful APIs",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 37,
+      "topic": "Creating RESTful APIs",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 38,
+      "topic": "Module 3 Review",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 39,
+      "topic": "Project Workday",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 40,
+      "topic": "Project Workday",
+      "readings": "",
+      "due": "Homework 6"
+    },
+    {
+      "period": 41,
+      "topic": "Exam 3",
+      "readings": "",
+      "due": "Project due; Homework 7"
+    },
+    {
+      "period": 42,
+      "topic": "Presentations",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 43,
+      "topic": "Presentations",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 44,
+      "topic": "Presentations",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 45,
+      "topic": "Presentations / Course Wrap-up",
+      "readings": "",
+      "due": "Self Reflection due at final exam"
+    }
+  ],
+  "lastMeetingDays": [
+    "Mon",
+    "Wed",
+    "Fri"
+  ],
+  "calendarRows": [
+    {
+      "date": "2026-08-24",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Course Overview + Environment Setup",
+      "readings": "GitHub, Visual Studio",
+      "due": "",
+      "period": 1
+    },
+    {
+      "date": "2026-08-26",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "3013 Review",
+      "readings": "Git",
+      "due": "",
+      "period": 2
+    },
+    {
+      "date": "2026-08-28",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "3013 Review",
+      "readings": "Conditionals, Loops",
+      "due": "",
+      "period": 3
+    },
+    {
+      "date": "2026-08-31",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "3013 Review",
+      "readings": "Functions, Classes",
+      "due": "",
+      "period": 4
+    },
+    {
+      "date": "2026-09-02",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "WPF",
+      "readings": "Lecture, In class example",
+      "due": "Homework 1",
+      "period": 5
+    },
+    {
+      "date": "2026-09-04",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "WPF",
+      "readings": "Participation",
+      "due": "",
+      "period": 6
+    },
+    {
+      "date": "2026-09-07",
+      "day": "Mon",
+      "type": "holiday",
+      "name": "Labor Day",
+      "topic": "",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "date": "2026-09-09",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "WPF",
+      "readings": "Participation",
+      "due": "",
+      "period": 7
+    },
+    {
+      "date": "2026-09-11",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "File I/O + NuGet",
+      "readings": "Lecture, In class example",
+      "due": "Homework 2",
+      "period": 8
+    },
+    {
+      "date": "2026-09-14",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "File I/O + NuGet",
+      "readings": "Participation",
+      "due": "",
+      "period": 9
+    },
+    {
+      "date": "2026-09-16",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "File I/O + NuGet",
+      "readings": "Participation",
+      "due": "",
+      "period": 10
+    },
+    {
+      "date": "2026-09-18",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "File I/O + NuGet",
+      "readings": "Participation",
+      "due": "Homework 3",
+      "period": 11
+    },
+    {
+      "date": "2026-09-21",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Module 1 Participation",
+      "readings": "Lecture, In class example",
+      "due": "",
+      "period": 12
+    },
+    {
+      "date": "2026-09-23",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Module 1 Review",
+      "readings": "",
+      "due": "",
+      "period": 13
+    },
+    {
+      "date": "2026-09-25",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Exam 1",
+      "readings": "",
+      "due": "",
+      "period": 14
+    },
+    {
+      "date": "2026-09-28",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "JSON",
+      "readings": "Lecture, In class example",
+      "due": "",
+      "period": 15
+    },
+    {
+      "date": "2026-09-30",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "JSON",
+      "readings": "Participation",
+      "due": "",
+      "period": 16
+    },
+    {
+      "date": "2026-10-02",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Consuming RESTful APIs",
+      "readings": "Lecture, In class example; Group Formation",
+      "due": "",
+      "period": 17
+    },
+    {
+      "date": "2026-10-05",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Consuming RESTful APIs",
+      "readings": "Participation",
+      "due": "",
+      "period": 18
+    },
+    {
+      "date": "2026-10-07",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Consuming RESTful APIs",
+      "readings": "Participation",
+      "due": "",
+      "period": 19
+    },
+    {
+      "date": "2026-10-09",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Project Work Day",
+      "readings": "",
+      "due": "Homework 4; Data for Project due and initial",
+      "period": 20
+    },
+    {
+      "date": "2026-10-12",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Consuming RESTful APIs",
+      "readings": "",
+      "due": "",
+      "period": 21
+    },
+    {
+      "date": "2026-10-14",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Consuming RESTful APIs",
+      "readings": "",
+      "due": "",
+      "period": 22
+    },
+    {
+      "date": "2026-10-16",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Consuming RESTful APIs",
+      "readings": "",
+      "due": "",
+      "period": 23
+    },
+    {
+      "date": "2026-10-19",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Entity Framework (EF)",
+      "readings": "Lecture, In class example",
+      "due": "",
+      "period": 24
+    },
+    {
+      "date": "2026-10-21",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Entity Framework (EF)",
+      "readings": "Participation",
+      "due": "",
+      "period": 25
+    },
+    {
+      "date": "2026-10-23",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Entity Framework (EF)",
+      "readings": "Participation",
+      "due": "",
+      "period": 26
+    },
+    {
+      "date": "2026-10-26",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Entity Framework (EF)",
+      "readings": "Participation",
+      "due": "Homework 5",
+      "period": 27
+    },
+    {
+      "date": "2026-10-28",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Entity Framework (EF)",
+      "readings": "Participation",
+      "due": "",
+      "period": 28
+    },
+    {
+      "date": "2026-10-30",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Project Workday",
+      "readings": "",
+      "due": "",
+      "period": 29
+    },
+    {
+      "date": "2026-11-02",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Module 2 Participation",
+      "readings": "",
+      "due": "",
+      "period": 30
+    },
+    {
+      "date": "2026-11-04",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Module 2 Review",
+      "readings": "",
+      "due": "",
+      "period": 31
+    },
+    {
+      "date": "2026-11-06",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Exam 2",
+      "readings": "",
+      "due": "",
+      "period": 32
+    },
+    {
+      "date": "2026-11-09",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Creating RESTful APIs",
+      "readings": "Lecture, In class example",
+      "due": "",
+      "period": 33
+    },
+    {
+      "date": "2026-11-11",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Creating RESTful APIs",
+      "readings": "Participation",
+      "due": "",
+      "period": 34
+    },
+    {
+      "date": "2026-11-13",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Project Workday",
+      "readings": "",
+      "due": "",
+      "period": 35
+    },
+    {
+      "date": "2026-11-16",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Creating RESTful APIs",
+      "readings": "Participation",
+      "due": "",
+      "period": 36
+    },
+    {
+      "date": "2026-11-18",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Creating RESTful APIs",
+      "readings": "Participation",
+      "due": "",
+      "period": 37
+    },
+    {
+      "date": "2026-11-20",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Module 3 Review",
+      "readings": "",
+      "due": "",
+      "period": 38
+    },
+    {
+      "date": "2026-11-23",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Project Workday",
+      "readings": "",
+      "due": "",
+      "period": 39
+    },
+    {
+      "date": "2026-11-25",
+      "day": "Wed",
+      "type": "holiday",
+      "name": "Thanksgiving Break",
+      "topic": "",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "date": "2026-11-27",
+      "day": "Fri",
+      "type": "holiday",
+      "name": "Thanksgiving Break",
+      "topic": "",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "date": "2026-11-30",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Project Workday",
+      "readings": "",
+      "due": "Homework 6",
+      "period": 40
+    },
+    {
+      "date": "2026-12-02",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Exam 3",
+      "readings": "",
+      "due": "Project due; Homework 7",
+      "period": 41
+    },
+    {
+      "date": "2026-12-04",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Presentations",
+      "readings": "",
+      "due": "",
+      "period": 42
+    },
+    {
+      "date": "2026-12-07",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Presentations",
+      "readings": "",
+      "due": "",
+      "period": 43
+    },
+    {
+      "date": "2026-12-09",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Presentations",
+      "readings": "",
+      "due": "",
+      "period": 44
+    },
+    {
+      "date": "2026-12-11",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Presentations / Course Wrap-up",
+      "readings": "",
+      "due": "Self Reflection due at final exam",
+      "period": 45
+    },
+    {
+      "date": "2026-12-14",
+      "day": "Mon",
+      "type": "final-exam",
+      "name": "Final Exam",
+      "topic": "Room: MFPH 3065 — Self Reflection Due",
+      "readings": "",
+      "due": "8:00 AM – 10:00 AM"
+    }
+  ],
+  "calendarView": "grid",
+  "creditHours": 3,
+  "_comment": "Imported from: Syllabus MIS 2113 Ackerman Fall 2025 002.docx"
+}

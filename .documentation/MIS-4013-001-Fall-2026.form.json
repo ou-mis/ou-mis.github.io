@@ -1,0 +1,797 @@
+{
+  "semester": "202570",
+  "startDate": "2026-08-24",
+  "endDate": "2026-12-11",
+  "courseNumber": "MIS 4013",
+  "courseTitle": "E-Commerce Web Design",
+  "sectionNumber": "001",
+  "instructorName": "Adam Ackerman",
+  "officeLocation": "Adams Hall 3213",
+  "officeHours": [
+    {
+      "day": "Tuesday",
+      "notes": "",
+      "times": [
+        {
+          "startTime": "08:30",
+          "endTime": "09:00"
+        },
+        {
+          "startTime": "13:15",
+          "endTime": "13:45"
+        }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "notes": "",
+      "times": [
+        {
+          "startTime": "08:30",
+          "endTime": "09:00"
+        },
+        {
+          "startTime": "13:15",
+          "endTime": "13:45"
+        }
+      ]
+    }
+  ],
+  "courseEmail": "adam@ou.edu",
+  "emailSubject": "MIS 4013",
+  "classRoom": "AH 3210",
+  "meetingDays": [
+    "Tue",
+    "Thu"
+  ],
+  "meetingStart": "12:00",
+  "meetingEnd": "13:15",
+  "lmsUrl": "https://canvas.ou.edu",
+  "finalExamDate": "2026-12-16",
+  "finalExamStart": "13:30",
+  "finalExamEnd": "15:30",
+  "finalExamRoom": "AH 3210",
+  "materials": [
+    {
+      "type": "Supplemental",
+      "title": "Supplemental Reading — posted on Canvas (HTML, CSS, JavaScript, C# MVC, and AWS Academy modules)",
+      "obtain": "https://canvas.ou.edu",
+      "required": "Required"
+    },
+    {
+      "type": "Software",
+      "title": "Modern web browser (e.g., Chrome)",
+      "obtain": "https://www.google.com/chrome/",
+      "required": "Required"
+    },
+    {
+      "type": "Software",
+      "title": "Visual Studio Community Edition",
+      "obtain": "https://visualstudio.microsoft.com/downloads/",
+      "required": "Required"
+    },
+    {
+      "type": "Software",
+      "title": "GitHub account",
+      "obtain": "https://github.com/",
+      "required": "Required"
+    },
+    {
+      "type": "Software",
+      "title": "AWS Academy — Cloud Foundations (access through Canvas)",
+      "obtain": "https://canvas.ou.edu",
+      "required": "Required"
+    },
+    {
+      "type": "Software",
+      "title": "VS Code",
+      "obtain": "https://code.visualstudio.com/",
+      "required": "Optional"
+    }
+  ],
+  "prereqs": [
+    {
+      "courseNum": "MIS 3013",
+      "courseName": "Introduction to Programming",
+      "reason": "Students must complete MIS 3013 as a prerequisite because it equips them with fundamental programming concepts, which are critical for designing web interfaces and building dynamic applications in this course. Furthermore, MIS 3013's introduction to Git will enable students to manage their web development projects and collaborate on code using version control throughout the semester."
+    }
+  ],
+  "courseDescription": "This course introduces students to the development of modern web applications from front-end design to back-end development and deployment. Students will gain hands-on experience with HTML, CSS, JavaScript, and front-end frameworks. They will build dynamic web applications using RESTful APIs and MVC and explore hosting strategies ranging from traditional cloud environments to low-code solutions. The course culminates in a final project that challenges students to create and deploy a full-featured website, justifying platform decisions and demonstrating their proficiency across the web development stack.",
+  "coursePhilosophy": "Many of the skills you will learn in MIS 4013 will not come from reading about web design. Rather, skills come from \"doing\" web design. You need to practice everything you see in class repeatedly and in various contexts. Some people are naturally inclined to learning by doing unstructured problem-solving. They enjoy using their creativity and aren't afraid to try something they have not been formally taught to solve a problem. Those types of people typically thrive in MIS 4013. However, most students begin MIS 4013 without much experience in this type of learning. That is okay! This type of mindset can be learned. However, for some people, unstructured problem-solving is so entirely new and different that it takes a little more practice than others. That is also okay! Don't hesitate to ask your professor and TAs any questions you may have about the material as the course progresses.\n\nSo, what does this mean for how I teach the class? It means I will not give you a single, memorizable solution to every problem, nor will I tell you the exact form of the exam questions. That would be a disservice to you, as it teaches you to memorize a solution instead of learning how to use tools to solve problems. Instead, I will teach you the tools required to solve a problem you've never seen before in a creative but structured way. As a result, the way I assess your performance in class will be based not only on traditional exams with multiple choice questions, but mostly on your ability to \"do\" things like build web pages, integrate frameworks, deploy sites, and collaborate on a group project.\n\nThis class combines a variety of techniques to capture student interests from several possible angles. The readings and lectures provide a base of knowledge that students can use in other components of the course, future coursework, and future careers. In-class exercises provide an avenue for applying the knowledge base. Guest lectures provide further opportunity for the discovery of how the material covered in class applies in everyday business life. This approach only works when students complete the readings before class and then participate in the exercises and discussions in class.\n\nStudents are welcome to use AI tools for brainstorming, research, and refining ideas as long as they properly cite any AI-generated content.",
+  "modules": [
+    {
+      "number": "1",
+      "title": "Front-End Web Development",
+      "description": "Covers the design and implementation of responsive web pages using HTML, CSS, and JavaScript, including DOM manipulation and event handling. Utilizes front-end frameworks like Bootstrap or Tailwind CSS to streamline UI development. Reviews foundational programming concepts (e.g., variables, control flow, functions, data types) to support web design."
+    },
+    {
+      "number": "2",
+      "title": "Dynamic Web & RESTful Web Services",
+      "description": "Focuses on developing web applications using C# MVC, emphasizing MVC architecture and routing. Explores key concepts of REST architecture and web service communication, including developing and testing RESTful APIs with tools like Postman or Swagger. Integrates APIs into web projects for dynamic data handling."
+    },
+    {
+      "number": "3",
+      "title": "Hosting and Final Project",
+      "description": "Explains cloud hosting principles and includes completion of selected AWS Academy modules. Involves deploying static and dynamic web applications to cloud or platform-specific environments. Culminates in a comprehensive website project that evaluates traditional coding versus low-code platforms, documenting deployment rationale, and demonstrating front-end, back-end, and hosting skills to address a real-world scenario."
+    }
+  ],
+  "clos": [
+    {
+      "number": 1,
+      "text": "Design and implement responsive front-end web interfaces using HTML, CSS, and JavaScript.",
+      "assignments": [
+        "Homework 1",
+        "Homework 2",
+        "Exam 1",
+        "Project"
+      ]
+    },
+    {
+      "number": 2,
+      "text": "Develop dynamic server-side applications and RESTful APIs using the MVC architecture.",
+      "assignments": [
+        "Homework 4",
+        "Homework 5",
+        "Exam 2",
+        "Project"
+      ]
+    },
+    {
+      "number": 3,
+      "text": "Evaluate and implement hosting and deployment solutions for web applications.",
+      "assignments": [
+        "Homework 6",
+        "AWS Academy Cloud Foundations",
+        "Project"
+      ]
+    },
+    {
+      "number": 4,
+      "text": "Compare traditional coding platforms with low-code tools for web development use cases.",
+      "assignments": [
+        "Project"
+      ]
+    },
+    {
+      "number": 5,
+      "text": "Construct a comprehensive web development project that demonstrates front-end, back-end, and hosting skills to address a real-world scenario.",
+      "assignments": [
+        "Project"
+      ]
+    }
+  ],
+  "gradingType": "weighted",
+  "gradeScale": [
+    {
+      "grade": "A",
+      "min": 90,
+      "max": 100
+    },
+    {
+      "grade": "B",
+      "min": 80,
+      "max": 89
+    },
+    {
+      "grade": "C",
+      "min": 70,
+      "max": 79
+    },
+    {
+      "grade": "D",
+      "min": 60,
+      "max": 69
+    },
+    {
+      "grade": "F",
+      "min": 0,
+      "max": 59
+    }
+  ],
+  "assessments": [
+    {
+      "name": "Class Participation",
+      "weight": 15,
+      "notes": "In-class surveys with participation code. Full credit for participating regardless of answer.",
+      "optional": false,
+      "information": "For the design of this class to work, students must be actively involved in the class and attend the lecture. Short surveys are provided during class to gauge learning. These surveys will be locked down, and a participation code will be given to those attending the class."
+    },
+    {
+      "name": "Homework Assignments",
+      "weight": 20,
+      "notes": "Completed independently. Late work not accepted.",
+      "optional": false,
+      "information": "Homework assignments reinforce course concepts. Students may discuss general approaches with classmates, TAs, or the instructor, but submissions with identical wording, errors, or unusual similarities will be treated as academic dishonesty."
+    },
+    {
+      "name": "Exams",
+      "weight": 15,
+      "notes": "Two non-cumulative exams",
+      "optional": false,
+      "information": "Each exam consists of short questions and problems similar to assigned homework and assesses comprehension and application of course concepts."
+    },
+    {
+      "name": "AWS Academy Cloud Foundations",
+      "weight": 20,
+      "notes": "10 modules with knowledge checks; each module worth 100 points",
+      "optional": false,
+      "information": "Students must complete the AWS Academy Cloud Foundations course. Completion is required for credit in this category."
+    },
+    {
+      "name": "Project",
+      "weight": 30,
+      "notes": "Initial Idea 10%; Initial Design 20%; Website Deliverable 40%; Final Presentation 20%; Individual Reflection 5%; Peer Evaluations 5%",
+      "optional": false,
+      "information": "The group project involves designing and building a website. Detailed instructions for each deliverable are provided in a separate project outline on Canvas."
+    }
+  ],
+  "divisionPolicies": {
+    "academic-integrity-mis": {
+      "included": true,
+      "customText": "## Academic Integrity\n\nThe University of Oklahoma has an Academic Misconduct Code that governs student academic performance in and out of the classroom. The Academic Misconduct Code can be reviewed online at http://www.ou.edu/integrity\n\nAcademic misconduct is defined as \"any act that improperly affects the evaluation of a student's academic performance or achievement\". All work assigned in this course is to be completed individually (unless otherwise stated). The steps and procedures as outlined in the Academic Misconduct Code will be followed in all cases of academic misconduct in this class.\n\n**MIS Division Guidelines for Academic Misconduct:**\n\n- All academic misconduct will be reported at: http://www.ou.edu/content/dam/integrity/docs/academic-misconduct-report.pdf\n- The instructor will decide whether the misconduct is an Admonition or Violation of the Academic Integrity Code.\n- When misconduct occurs on labs/similar assignments and is categorized as Admonition: a grade of zero will be recorded and a deduction equal to the value of the assignment will be applied.\n- When misconduct occurs on an exam and is categorized as Admonition: a grade of zero will be recorded.\n- When misconduct occurs on an exam and is categorized as a Violation: no grade penalty is imposed until the student is officially found responsible. Until then, \"N\" is filed as the final course grade. If established, a violation results in a grade penalty and a University penalty.\n- Faculty may impose greater grade penalties than those recommended above."
+    },
+    "laptop-policy": {
+      "included": true,
+      "customText": "## Laptop Requirements\n\nStudents must bring a laptop (PC or Mac) to every class. iPads, Chromebooks, and tablets are not compatible with the required course software and cannot be used for assignments.\n\n**Mac Users:** MacBooks older than 2 years often have issues with required software and grading tools. If you experience problems, you must rent a laptop from an OU IT kiosk to complete your work.\n\nIt is your responsibility to ensure your device is fully functional and compatible with course requirements.\n\nAll students majoring or minoring in MIS are expected to have a laptop computer that meets the minimum hardware and software criteria established by the MIS faculty. Recommended minimum laptop specifications for 2025–2026:\n\n| Hardware | Software |\n|----------|----------|\n| Processor: Intel Core i5 (12th gen or newer) / AMD Ryzen 5 (5000 series or newer) / Apple M1 or M2 equivalent | Operating System: Windows 11 (or higher) / macOS Ventura (or higher) |\n| Memory (RAM): Minimum 16 GB | Productivity Suite: Microsoft Office 365 (student license provided by OU) |\n| Storage: 512 GB SSD or higher | Database Tools: SQL Server Management Studio (SSMS) for Windows; Azure Data Studio for macOS/Linux |\n| Wireless: Wi-Fi 6 (802.11ax) recommended; Wi-Fi 5 (802.11ac) acceptable | Browsers: Latest versions of Chrome |\n| Ports: At least 2 USB ports | Antivirus (Windows Defender/McAfee free version) |\n| Screen Size: 13\" or larger recommended (1080p minimum) | |\n| Battery Life: At least 6 hours on a single charge recommended | |\n\nWe recommend that students purchase a PC/Windows laptop. Price College and the Library also have Dell laptops available to borrow from kiosks for class time and homework assignments."
+    },
+    "ta-help": {
+      "included": true,
+      "customText": "## Getting Help from TAs\n\nStudents are strongly advised to get help from the TAs when having problems with the class material. TAs are available during class and have office hours in the MIS Minute Clinic (see Canvas for details). Their job is to help you when you get stuck, so feel free to approach them. They recently took this class and now really understand the problems you may run into."
+    }
+  },
+  "customPolicies": [
+    {
+      "title": "Timeliness",
+      "content": "To receive full credit for a written assignment, the assignment must be turned in at the beginning of the class period on the day it is due. Late work will not be accepted for quizzes and homework assignments. Participation scores will be given only to those who come to class. If you have obligations that conflict with exam or assignment due dates, you should make arrangements with the instructor as soon as possible to complete these ahead of time, but no later than 48 hours before the due date. Feel free to submit homework assignments early."
+    },
+    {
+      "title": "Grade / Score Appeals",
+      "content": "Students wishing to appeal a grade or score must submit the appeal to the instructor **in writing within 48 hours** of receiving the graded work. Score changes are at the discretion of the instructor, not the TAs.\n\nIt is important to understand that your score may go up or down based on a complete review of the work in question. It is usually the case that changing a few points on an assignment rarely makes a difference in the final grade. As such, student (and instructor) time is generally much better spent discussing and clarifying the information content presented in the course."
+    },
+    {
+      "title": "Missed Exams / Make-Up Policy",
+      "content": "Make-up exams will be given only in extraordinary circumstances. If you expect to miss an exam or are unable to meet another requirement, please discuss this with the instructor **before the scheduled date, no later than 48 hours before the due date**."
+    },
+    {
+      "title": "Incomplete Grades",
+      "content": "A grade of Incomplete may be awarded to students who have a legitimate reason for needing additional time to complete a course. Legitimate reasons include emergencies or extenuating circumstances that prevent a student from completing the course requirements within the normal time frame.\n\nStudents must initiate the request for an incomplete **prior to the end of the semester**, and must be in good standing in the course. In no case will a grade of Incomplete be awarded to someone seeking more time to master the course material in order to improve their grade."
+    }
+  ],
+  "universityPolicies": {
+    "belonging-statement": {
+      "included": true
+    },
+    "course-reflection-survey": {
+      "included": true
+    },
+    "copyright": {
+      "included": true
+    }
+  },
+  "genAiTier": "gen-ai-custom-ackerman",
+  "genAiText": "I permit the use of standalone Generative AI tools like ChatGPT, Copilot, Claude, etc., for the following:\n\n- Searching for publications on your research topic\n- Creating an outline, text, or speech for presentations and writeups\n- Providing grammatical feedback on drafts\n- Further study on concepts outside of class\n- Troubleshooting problems with software\n- Creating initial ideas for projects\n\nWhenever you use Generative AI for any of these, you are required to make a declaration acknowledging how and to what extent you used it. Please include an appendix that details the prompts you used and the responses you obtained. Usage of Generative AI outside of the clearly defined scope, and without acknowledgment as required, will be considered a violation of the academic integrity policy for this course.\n\n**Note:** Regardless of the above, no AI tools of any kind are permitted during quizzes, exams, or any other timed in-class assessments unless the instructor explicitly states otherwise for a specific assessment.",
+  "noClassDays": [],
+  "sessionPlan": [
+    {
+      "period": 1,
+      "topic": "Course Overview",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 2,
+      "topic": "3013 Review",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 3,
+      "topic": "3013 Review",
+      "readings": "Git",
+      "due": ""
+    },
+    {
+      "period": 4,
+      "topic": "Project Workday",
+      "readings": "Go over AWS Assignment; Come up with ideas and create designs for Project",
+      "due": ""
+    },
+    {
+      "period": 5,
+      "topic": "HTML",
+      "readings": "Basics, structure, tags",
+      "due": ""
+    },
+    {
+      "period": 6,
+      "topic": "HTML",
+      "readings": "Basics, structure, tags",
+      "due": "Pitched ideas due"
+    },
+    {
+      "period": 7,
+      "topic": "CSS",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 8,
+      "topic": "CSS",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 9,
+      "topic": "JavaScript",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 10,
+      "topic": "JavaScript",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 11,
+      "topic": "Front-End Frameworks (Bootstrap)",
+      "readings": "",
+      "due": "Homework 1"
+    },
+    {
+      "period": 12,
+      "topic": "Front-End Frameworks (Bootstrap)",
+      "readings": "Homework 3 Assigned",
+      "due": ""
+    },
+    {
+      "period": 13,
+      "topic": "Review",
+      "readings": "",
+      "due": "Homework 2"
+    },
+    {
+      "period": 14,
+      "topic": "Exam 1",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 15,
+      "topic": "Introduction to MVC",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 16,
+      "topic": "Introduction to MVC",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 17,
+      "topic": "REST Architecture",
+      "readings": "Concepts, web service communication",
+      "due": ""
+    },
+    {
+      "period": 18,
+      "topic": "Project Workday",
+      "readings": "Low-Code Platforms: WP, Google, Power, …",
+      "due": "Designs due"
+    },
+    {
+      "period": 19,
+      "topic": "Developing RESTful APIs",
+      "readings": "",
+      "due": "Homework 4"
+    },
+    {
+      "period": 20,
+      "topic": "Developing RESTful APIs",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 21,
+      "topic": "API Testing and Documentation",
+      "readings": "Postman, Swagger",
+      "due": ""
+    },
+    {
+      "period": 22,
+      "topic": "API Testing and Documentation",
+      "readings": "Postman, Swagger",
+      "due": ""
+    },
+    {
+      "period": 23,
+      "topic": "Review",
+      "readings": "",
+      "due": "Homework 5"
+    },
+    {
+      "period": 24,
+      "topic": "Exam 2",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 25,
+      "topic": "Deploying Sites",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 26,
+      "topic": "Cloud Concepts + AWS Academy",
+      "readings": "Go over AWS content",
+      "due": ""
+    },
+    {
+      "period": 27,
+      "topic": "Project Workday",
+      "readings": "",
+      "due": "Homework 6"
+    },
+    {
+      "period": 28,
+      "topic": "Project Workday",
+      "readings": "",
+      "due": "AWS Cloud Foundations Due"
+    },
+    {
+      "period": 29,
+      "topic": "Project Workday",
+      "readings": "",
+      "due": "Project due; Homework 3"
+    },
+    {
+      "period": 30,
+      "topic": "Presentations",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 31,
+      "topic": "Presentations",
+      "readings": "",
+      "due": ""
+    }
+  ],
+  "lastMeetingDays": [
+    "Tue",
+    "Thu"
+  ],
+  "calendarRows": [
+    {
+      "date": "2026-08-25",
+      "day": "Tue",
+      "type": "class",
+      "name": "",
+      "topic": "Course Overview",
+      "readings": "",
+      "due": "",
+      "period": 1
+    },
+    {
+      "date": "2026-08-27",
+      "day": "Thu",
+      "type": "class",
+      "name": "",
+      "topic": "3013 Review",
+      "readings": "",
+      "due": "",
+      "period": 2
+    },
+    {
+      "date": "2026-09-01",
+      "day": "Tue",
+      "type": "class",
+      "name": "",
+      "topic": "3013 Review",
+      "readings": "Git",
+      "due": "",
+      "period": 3
+    },
+    {
+      "date": "2026-09-03",
+      "day": "Thu",
+      "type": "class",
+      "name": "",
+      "topic": "Project Workday",
+      "readings": "Go over AWS Assignment; Come up with ideas and create designs for Project",
+      "due": "",
+      "period": 4
+    },
+    {
+      "date": "2026-09-08",
+      "day": "Tue",
+      "type": "class",
+      "name": "",
+      "topic": "HTML",
+      "readings": "Basics, structure, tags",
+      "due": "",
+      "period": 5
+    },
+    {
+      "date": "2026-09-10",
+      "day": "Thu",
+      "type": "class",
+      "name": "",
+      "topic": "HTML",
+      "readings": "Basics, structure, tags",
+      "due": "Pitched ideas due",
+      "period": 6
+    },
+    {
+      "date": "2026-09-15",
+      "day": "Tue",
+      "type": "class",
+      "name": "",
+      "topic": "CSS",
+      "readings": "",
+      "due": "",
+      "period": 7
+    },
+    {
+      "date": "2026-09-17",
+      "day": "Thu",
+      "type": "class",
+      "name": "",
+      "topic": "CSS",
+      "readings": "",
+      "due": "",
+      "period": 8
+    },
+    {
+      "date": "2026-09-22",
+      "day": "Tue",
+      "type": "class",
+      "name": "",
+      "topic": "JavaScript",
+      "readings": "",
+      "due": "",
+      "period": 9
+    },
+    {
+      "date": "2026-09-24",
+      "day": "Thu",
+      "type": "class",
+      "name": "",
+      "topic": "JavaScript",
+      "readings": "",
+      "due": "",
+      "period": 10
+    },
+    {
+      "date": "2026-09-29",
+      "day": "Tue",
+      "type": "class",
+      "name": "",
+      "topic": "Front-End Frameworks (Bootstrap)",
+      "readings": "",
+      "due": "Homework 1",
+      "period": 11
+    },
+    {
+      "date": "2026-10-01",
+      "day": "Thu",
+      "type": "class",
+      "name": "",
+      "topic": "Front-End Frameworks (Bootstrap)",
+      "readings": "Homework 3 Assigned",
+      "due": "",
+      "period": 12
+    },
+    {
+      "date": "2026-10-06",
+      "day": "Tue",
+      "type": "class",
+      "name": "",
+      "topic": "Review",
+      "readings": "",
+      "due": "Homework 2",
+      "period": 13
+    },
+    {
+      "date": "2026-10-08",
+      "day": "Thu",
+      "type": "class",
+      "name": "",
+      "topic": "Exam 1",
+      "readings": "",
+      "due": "",
+      "period": 14
+    },
+    {
+      "date": "2026-10-13",
+      "day": "Tue",
+      "type": "class",
+      "name": "",
+      "topic": "Introduction to MVC",
+      "readings": "",
+      "due": "",
+      "period": 15
+    },
+    {
+      "date": "2026-10-15",
+      "day": "Thu",
+      "type": "class",
+      "name": "",
+      "topic": "Introduction to MVC",
+      "readings": "",
+      "due": "",
+      "period": 16
+    },
+    {
+      "date": "2026-10-20",
+      "day": "Tue",
+      "type": "class",
+      "name": "",
+      "topic": "REST Architecture",
+      "readings": "Concepts, web service communication",
+      "due": "",
+      "period": 17
+    },
+    {
+      "date": "2026-10-22",
+      "day": "Thu",
+      "type": "class",
+      "name": "",
+      "topic": "Project Workday",
+      "readings": "Low-Code Platforms: WP, Google, Power, …",
+      "due": "Designs due",
+      "period": 18
+    },
+    {
+      "date": "2026-10-27",
+      "day": "Tue",
+      "type": "class",
+      "name": "",
+      "topic": "Developing RESTful APIs",
+      "readings": "",
+      "due": "Homework 4",
+      "period": 19
+    },
+    {
+      "date": "2026-10-29",
+      "day": "Thu",
+      "type": "class",
+      "name": "",
+      "topic": "Developing RESTful APIs",
+      "readings": "",
+      "due": "",
+      "period": 20
+    },
+    {
+      "date": "2026-11-03",
+      "day": "Tue",
+      "type": "class",
+      "name": "",
+      "topic": "API Testing and Documentation",
+      "readings": "Postman, Swagger",
+      "due": "",
+      "period": 21
+    },
+    {
+      "date": "2026-11-05",
+      "day": "Thu",
+      "type": "class",
+      "name": "",
+      "topic": "API Testing and Documentation",
+      "readings": "Postman, Swagger",
+      "due": "",
+      "period": 22
+    },
+    {
+      "date": "2026-11-10",
+      "day": "Tue",
+      "type": "class",
+      "name": "",
+      "topic": "Review",
+      "readings": "",
+      "due": "Homework 5",
+      "period": 23
+    },
+    {
+      "date": "2026-11-12",
+      "day": "Thu",
+      "type": "class",
+      "name": "",
+      "topic": "Exam 2",
+      "readings": "",
+      "due": "",
+      "period": 24
+    },
+    {
+      "date": "2026-11-17",
+      "day": "Tue",
+      "type": "class",
+      "name": "",
+      "topic": "Deploying Sites",
+      "readings": "",
+      "due": "",
+      "period": 25
+    },
+    {
+      "date": "2026-11-19",
+      "day": "Thu",
+      "type": "class",
+      "name": "",
+      "topic": "Cloud Concepts + AWS Academy",
+      "readings": "Go over AWS content",
+      "due": "",
+      "period": 26
+    },
+    {
+      "date": "2026-11-24",
+      "day": "Tue",
+      "type": "class",
+      "name": "",
+      "topic": "Project Workday",
+      "readings": "",
+      "due": "Homework 6",
+      "period": 27
+    },
+    {
+      "date": "2026-11-26",
+      "day": "Thu",
+      "type": "holiday",
+      "name": "Thanksgiving Break",
+      "topic": "",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "date": "2026-12-01",
+      "day": "Tue",
+      "type": "class",
+      "name": "",
+      "topic": "Project Workday",
+      "readings": "",
+      "due": "AWS Cloud Foundations Due",
+      "period": 28
+    },
+    {
+      "date": "2026-12-03",
+      "day": "Thu",
+      "type": "class",
+      "name": "",
+      "topic": "Project Workday",
+      "readings": "",
+      "due": "Project due; Homework 3",
+      "period": 29
+    },
+    {
+      "date": "2026-12-08",
+      "day": "Tue",
+      "type": "class",
+      "name": "",
+      "topic": "Presentations",
+      "readings": "",
+      "due": "",
+      "period": 30
+    },
+    {
+      "date": "2026-12-10",
+      "day": "Thu",
+      "type": "class",
+      "name": "",
+      "topic": "Presentations",
+      "readings": "",
+      "due": "",
+      "period": 31
+    },
+    {
+      "date": "2026-12-16",
+      "day": "Wed",
+      "type": "final-exam",
+      "name": "Final Exam",
+      "topic": "Room: AH 3210 — Reflection & Peer Eval Due",
+      "readings": "",
+      "due": "1:30 PM – 3:30 PM"
+    }
+  ],
+  "calendarView": "grid"
+}

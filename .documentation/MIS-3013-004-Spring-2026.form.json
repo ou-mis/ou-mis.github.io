@@ -1,0 +1,1038 @@
+{
+  "semester": "202510",
+  "startDate": "2026-01-19",
+  "endDate": "2026-05-08",
+  "courseNumber": "MIS 3013",
+  "courseTitle": "Introduction to Programming",
+  "sectionNumber": "004",
+  "instructorName": "Adam Ackerman",
+  "officeLocation": "Adams Hall 3213",
+  "officeHours": [
+    {
+      "day": "Monday",
+      "notes": "",
+      "times": [
+        {
+          "startTime": "09:15",
+          "endTime": "10:00"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "notes": "",
+      "times": [
+        {
+          "startTime": "09:15",
+          "endTime": "10:00"
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "notes": "",
+      "times": [
+        {
+          "startTime": "09:15",
+          "endTime": "10:00"
+        }
+      ]
+    }
+  ],
+  "courseEmail": "adam@ou.edu",
+  "emailSubject": "MIS-3013",
+  "classRoom": "MFPH 3065",
+  "meetingDays": [
+    "Mon",
+    "Wed",
+    "Fri"
+  ],
+  "meetingStart": "10:00",
+  "meetingEnd": "10:50",
+  "lmsUrl": "https://canvas.ou.edu",
+  "finalExamDate": "2026-05-12",
+  "finalExamStart": "08:00",
+  "finalExamEnd": "10:00",
+  "finalExamRoom": "MFPH 3065",
+  "materials": [
+    {
+      "type": "Textbook",
+      "title": "Beginning C# 7 Programming with Visual Studio 2017, 1st Edition",
+      "obtain": "",
+      "required": "Optional"
+    },
+    {
+      "type": "Textbook",
+      "title": "C# 10 and .NET 6 \u2014 Modern Cross-Platform Development (or C# 11 and .NET 7)",
+      "obtain": "",
+      "required": "Optional"
+    },
+    {
+      "type": "Software",
+      "title": "Microsoft Visual Studio (Windows). Mac users must use Parallels and/or Boot Camp \u2014 a Windows environment is required for all programming work.",
+      "obtain": "https://visualstudio.microsoft.com/",
+      "required": "Required"
+    },
+    {
+      "type": "Software",
+      "title": "GitHub account",
+      "obtain": "https://github.com/",
+      "required": "Required"
+    }
+  ],
+  "prereqs": [
+    {
+      "courseNum": "MIS 2113",
+      "courseName": "Computer-Based Information Systems",
+      "reason": "It is expected that students have completed MIS 2113. We expect students to have a basic level of skill and experience with the Windows OS. We will not be spending class time reviewing basic use of these technologies."
+    }
+  ],
+  "courseDescription": "This course introduces students to the fundamentals of computer programming with an emphasis on problem solving, logical thinking, and program design. Students learn how to analyze written problem descriptions and translate them into working programs using a structured development process. Core topics include programming syntax, control structures, methods, collections, and introductory object-oriented concepts. Through hands-on assignments, students gain experience writing, testing, and debugging programs using real-world integrated development environments and professional development tools, including cloud-based repositories for managing and submitting code. By the end of the course, students will be able to design and implement basic software solutions that meet given requirements and follow accepted programming practices.",
+  "coursePhilosophy": "This class combines a variety of techniques to capture student interests from several possible angles. The readings and lectures provide a base of knowledge that students can use in other components of the course, future course work, and future career. In-class exercises provide an avenue for applying the knowledge base. Guest lectures provide further opportunities for discovery of how the material covered in class applies in everyday business life. This approach only works when students complete the readings prior to class and then participate in the exercises and discussions in class.",
+  "modules": [
+    {
+      "number": "1",
+      "title": "Programming Fundamentals",
+      "description": "Covers variables, assignments and expressions, conditionals, loops, string manipulation, and collections. Students write, test, and debug programs using Visual Studio and GitHub."
+    },
+    {
+      "number": "2",
+      "title": "Functions & Classes",
+      "description": "Introduces functions and object-oriented programming with classes. Students apply these concepts to design and implement structured applications."
+    },
+    {
+      "number": "3",
+      "title": "File I/O, JSON & APIs",
+      "description": "Explores file input/output, working with JSON data, and consuming APIs. Students apply professional development practices culminating in the Module 3 / final exam."
+    }
+  ],
+  "clos": [
+    {
+      "number": 1,
+      "text": "Apply fundamental programming syntax and constructs to analyze and solve basic business and computational problems.",
+      "assignments": [
+        "Homework 1",
+        "Homework 2",
+        "Homework 3",
+        "Module 1 Exam"
+      ]
+    },
+    {
+      "number": 2,
+      "text": "Design and implement structured applications using core programming concepts including variables, control structures, methods, collections, and basic object-oriented principles.",
+      "assignments": [
+        "Homework 4",
+        "Homework 5",
+        "Homework 6",
+        "Module 2 Exam",
+        "Module 3 Exam"
+      ]
+    },
+    {
+      "number": 3,
+      "text": "Translate written problem descriptions and business requirements into working programs by following a systematic problem-solving and program development process.",
+      "assignments": [
+        "Homework 1",
+        "Homework 2",
+        "Homework 3",
+        "Homework 4",
+        "Homework 5",
+        "Homework 6",
+        "Homework 7",
+        "Homework 8",
+        "Module 1 Exam",
+        "Module 2 Exam",
+        "Module 3 Exam"
+      ]
+    },
+    {
+      "number": 4,
+      "text": "Use an integrated development environment to write, test, debug, and document programs effectively.",
+      "assignments": [
+        "Class Participation",
+        "Homework Assignments",
+        "Module 1 Exam",
+        "Module 2 Exam",
+        "Module 3 Exam"
+      ]
+    },
+    {
+      "number": 5,
+      "text": "Utilize cloud-based version control tools (e.g., GitHub) to manage source code, submit programming assignments, and demonstrate professional development practices.",
+      "assignments": [
+        "Homework Assignments",
+        "Module 3 Exam"
+      ]
+    }
+  ],
+  "gradingType": "weighted",
+  "gradeScale": [
+    {
+      "grade": "A",
+      "min": 90,
+      "max": 100
+    },
+    {
+      "grade": "B",
+      "min": 80,
+      "max": 89
+    },
+    {
+      "grade": "C",
+      "min": 70,
+      "max": 79
+    },
+    {
+      "grade": "D",
+      "min": 60,
+      "max": 69
+    },
+    {
+      "grade": "F",
+      "min": 0,
+      "max": 59
+    }
+  ],
+  "assessments": [
+    {
+      "name": "Class Participation",
+      "weight": 20,
+      "notes": "In-class problems used to gauge learning",
+      "optional": false,
+      "information": "For the design of this class to work, students must be actively involved in the class and attend lectures. To ensure that active learning is happening, short problems will be provided during class and will be used to gauge learning and make sure that teaching is effectively being received and understood by the class. The answers to the problems will be evaluated in class and any concepts that are not understood will be explained."
+    },
+    {
+      "name": "Homework Assignments",
+      "weight": 20,
+      "notes": "Multiple assignments (see calendar); submit zipped to Canvas or to the appropriate GitHub repository",
+      "optional": false,
+      "information": "Homework assignments for this course are designed to encourage students to work actively with the course material and thereby master course materials. Further, homework enables students and the professor to recognize any points that are not yet fully understood. Students are expected to complete each of the homework problems. If, after considerable effort, you are stuck on a problem, note (on the homework) the specific difficulty you are having and ask one of the TAs for help.\n\nStudents may discuss the homework problems and approaches to answering them with their classmates, TAs, and the professor. More importantly, it is essential that you understand the homework assignments to do well on the exams.\n\nAll assignments must be zipped and submitted to the appropriate assignment on Canvas by the due date or to the appropriate GitHub repository."
+    },
+    {
+      "name": "Module 1 Exam",
+      "weight": 20,
+      "notes": "",
+      "optional": false,
+      "information": "All exams will consist of programming problems like those assigned for homework, participation, as well as in-class problems. These exams are designed to assess your basic understanding of the concepts and their application as covered in class."
+    },
+    {
+      "name": "Module 2 Exam",
+      "weight": 20,
+      "notes": "",
+      "optional": false,
+      "information": "All exams will consist of programming problems like those assigned for homework, participation, as well as in-class problems. These exams are designed to assess your basic understanding of the concepts and their application as covered in class."
+    },
+    {
+      "name": "Module 3 Exam",
+      "weight": 20,
+      "notes": "Held during the final exam period (Tuesday May 12, 8:00\u201310:00 AM)",
+      "optional": false,
+      "information": "All exams will consist of programming problems like those assigned for homework, participation, as well as in-class problems. These exams are designed to assess your basic understanding of the concepts and their application as covered in class."
+    }
+  ],
+  "divisionPolicies": {
+    "academic-integrity-mis": {
+      "included": true,
+      "customText": "## Academic Integrity\n\nThe University of Oklahoma has an Academic Misconduct Code that governs student academic performance in and out of the classroom. The Academic Misconduct Code can be reviewed online at http://www.ou.edu/integrity\n\nAcademic misconduct is defined as \"any act that improperly affects the evaluation of a student's academic performance or achievement\". All work assigned in this course is to be completed individually (unless otherwise stated). The steps and procedures as outlined in the Academic Misconduct Code will be followed in all cases of academic misconduct in this class.\n\n**MIS Division Guidelines for Academic Misconduct:**\n\n- All academic misconduct will be reported at: http://www.ou.edu/content/dam/integrity/docs/academic-misconduct-report.pdf\n- The instructor will decide whether the misconduct is an Admonition or Violation of the Academic Integrity Code.\n- When misconduct occurs on labs/similar assignments and is categorized as Admonition: a grade of zero will be recorded and a deduction equal to the value of the assignment will be applied.\n- When misconduct occurs on an exam and is categorized as Admonition: a grade of zero will be recorded.\n- When misconduct occurs on an exam and is categorized as a Violation: no grade penalty is imposed until the student is officially found responsible. Until then, \"N\" is filed as the final course grade. If established, a violation results in a grade penalty and a University penalty.\n- Faculty may impose greater grade penalties than those recommended above."
+    },
+    "laptop-policy": {
+      "included": true,
+      "customText": "## Laptop Requirements\n\nStudents must bring a laptop to every class. iPads, Chromebooks, and tablets are not compatible with the required course software and cannot be used for assignments.\n\n**Mac Users:** This course requires a Windows environment for all programming work. Mac users must install Parallels and/or Boot Camp. MacBooks older than 2 years often have issues with required software and grading tools. If you experience problems, you must rent a laptop from an OU IT kiosk to complete your work.\n\nIt is your responsibility to ensure your device is fully functional and compatible with course requirements.\n\nAll students majoring or minoring in MIS are expected to have a laptop computer that meets the minimum hardware and software criteria established by the MIS faculty. Recommended minimum laptop specifications for 2025\u20132026:\n\n| Hardware | Software |\n|----------|----------|\n| Processor: Intel Core i5 (12th gen or newer) / AMD Ryzen 5 (5000 series or newer) / Apple M1 or M2 equivalent | Operating System: Windows 11 (or higher) / macOS Ventura (or higher) |\n| Memory (RAM): Minimum 16 GB | Productivity Suite: Microsoft Office 365 (student license provided by OU) |\n| Storage: 512 GB SSD or higher | Database Tools: SQL Server Management Studio (SSMS) for Windows; Azure Data Studio for macOS/Linux |\n| Wireless: Wi-Fi 6 (802.11ax) recommended; Wi-Fi 5 (802.11ac) acceptable | Browsers: Latest versions of Chrome |\n| Ports: At least 2 USB ports | Antivirus (Windows Defender/McAfee free version) |\n| Screen Size: 13\" or larger recommended (1080p minimum) | |\n| Battery Life: At least 6 hours on a single charge recommended | |\n\nWe recommend that students purchase a PC/Windows laptop. Price College and the Library also have Dell laptops available to borrow from kiosks for class time and homework assignments."
+    },
+    "ta-help": {
+      "included": true,
+      "customText": "## Getting Help from TAs\n\nStudents are strongly advised to get help from the TAs when having problems with the class material. TAs are available during class and have office hours (see Canvas for details). Their job is to help you when you get stuck, so feel free to approach them. They took this class recently and understand the problems you may run into well."
+    }
+  },
+  "customPolicies": [
+    {
+      "title": "Timeliness",
+      "content": "To receive full credit for a written assignment, the assignment must be turned in at the beginning of the class period on the day it is due. Late work will not be accepted for quizzes and homework assignments. Participation scores will be given only to those who come to class. If you have obligations that conflict with exam or assignment due dates, you should make arrangements with the instructor as soon as possible to complete these ahead of time, but no later than 48 hours before the due date. Feel free to submit homework assignments early."
+    },
+    {
+      "title": "Grade / Score Appeals",
+      "content": "Students wishing to appeal a grade or score must submit the appeal to the instructor **in writing within 48 hours** of receiving the graded work. Score changes are at the discretion of the instructor, not the TAs.\n\nIt is important to understand that your score may go up or down based on a complete review of the work in question. It is usually the case that changing a few points on an assignment rarely makes a difference in the final grade. As such, student (and instructor) time is generally much better spent discussing and clarifying the information content presented in the course."
+    },
+    {
+      "title": "Missed Exams / Make-Up Policy",
+      "content": "Make-up exams will be given only in extraordinary circumstances. If you expect to miss an exam or are unable to meet another requirement, please discuss this with the instructor **before the scheduled date, no later than 48 hours before the due date**."
+    },
+    {
+      "title": "Incomplete Grades",
+      "content": "A grade of Incomplete may be awarded to students who have a legitimate reason for needing additional time to complete a course. Legitimate reasons include emergencies or extenuating circumstances that prevent a student from completing the course requirements within the normal time frame.\n\nStudents must initiate the request for an incomplete **prior to the end of the semester**, and must be in good standing in the course. In no case will a grade of Incomplete be awarded to someone seeking more time to master the course material in order to improve their grade."
+    }
+  ],
+  "universityPolicies": {
+    "belonging-statement": {
+      "included": true
+    },
+    "course-reflection-survey": {
+      "included": true
+    },
+    "copyright": {
+      "included": true
+    }
+  },
+  "genAiTier": "gen-ai-custom-ackerman",
+  "genAiText": "I permit the use of standalone Generative AI tools like ChatGPT, Copilot, Claude, etc., for the following:\n\n- Searching for publications on your research topic\n- Creating an outline, text, or speech for presentations and writeups\n- Providing grammatical feedback on drafts\n- Further study on concepts outside of class\n- Troubleshooting problems with software\n- Creating initial ideas for projects\n\nWhenever you use Generative AI for any of these, you are required to make a declaration acknowledging how and to what extent you used it. Please include an appendix that details the prompts you used and the responses you obtained. Usage of Generative AI outside of the clearly defined scope, and without acknowledgment as required, will be considered a violation of the academic integrity policy for this course.\n\n**Note:** Regardless of the above, no AI tools of any kind are permitted during quizzes, exams, or any other timed in-class assessments unless the instructor explicitly states otherwise for a specific assessment.",
+  "noClassDays": [],
+  "sessionPlan": [
+    {
+      "period": 1,
+      "topic": "Introduction, Environment Setup",
+      "readings": "Visual Studio, GitHub",
+      "due": ""
+    },
+    {
+      "period": 2,
+      "topic": "Variables, Assignments & Expressions",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 3,
+      "topic": "Conditionals",
+      "readings": "Lecture, In-class Example",
+      "due": ""
+    },
+    {
+      "period": 4,
+      "topic": "Conditionals",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 5,
+      "topic": "Conditionals",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 6,
+      "topic": "Loops",
+      "readings": "Lecture, In-class Example",
+      "due": ""
+    },
+    {
+      "period": 7,
+      "topic": "Loops",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 8,
+      "topic": "Loops",
+      "readings": "Participation",
+      "due": "Homework 1"
+    },
+    {
+      "period": 9,
+      "topic": "Loops",
+      "readings": "Lecture, In-class Example",
+      "due": ""
+    },
+    {
+      "period": 10,
+      "topic": "Loops",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 11,
+      "topic": "Loops",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 12,
+      "topic": "String Manipulation",
+      "readings": "Lecture, In-class Example",
+      "due": ""
+    },
+    {
+      "period": 13,
+      "topic": "String Manipulation",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 14,
+      "topic": "String Manipulation",
+      "readings": "Participation",
+      "due": "Homework 2"
+    },
+    {
+      "period": 15,
+      "topic": "Collections",
+      "readings": "Lecture, In-class Example",
+      "due": ""
+    },
+    {
+      "period": 16,
+      "topic": "Collections",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 17,
+      "topic": "Collections",
+      "readings": "Participation",
+      "due": "Homework 3"
+    },
+    {
+      "period": 18,
+      "topic": "Intro to Module II",
+      "readings": "Setup accounts + Participation over Module 1",
+      "due": ""
+    },
+    {
+      "period": 19,
+      "topic": "Module 1 Review",
+      "readings": "Variables, String, Loops, Collections",
+      "due": "Homework 4"
+    },
+    {
+      "period": 20,
+      "topic": "Module 1 Exam",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 21,
+      "topic": "Functions",
+      "readings": "Lecture, In-class Example",
+      "due": ""
+    },
+    {
+      "period": 22,
+      "topic": "Functions",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 23,
+      "topic": "Functions",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 24,
+      "topic": "Classes",
+      "readings": "Lecture, In-class Example",
+      "due": ""
+    },
+    {
+      "period": 25,
+      "topic": "Classes",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 26,
+      "topic": "Classes",
+      "readings": "Participation",
+      "due": "Homework 5"
+    },
+    {
+      "period": 27,
+      "topic": "Classes",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 28,
+      "topic": "Classes",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 29,
+      "topic": "Classes",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 30,
+      "topic": "Classes",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 31,
+      "topic": "Module 2 Review",
+      "readings": "Functions, Classes",
+      "due": "Homework 6"
+    },
+    {
+      "period": 32,
+      "topic": "Module 2 Exam",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "period": 33,
+      "topic": "File I/O",
+      "readings": "Lecture, In-class Example",
+      "due": ""
+    },
+    {
+      "period": 34,
+      "topic": "File I/O",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 35,
+      "topic": "File I/O",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 36,
+      "topic": "JSON",
+      "readings": "Lecture, In-class Example",
+      "due": ""
+    },
+    {
+      "period": 37,
+      "topic": "JSON",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 38,
+      "topic": "JSON",
+      "readings": "Participation",
+      "due": "Homework 7"
+    },
+    {
+      "period": 39,
+      "topic": "API",
+      "readings": "Lecture, In-class Example",
+      "due": ""
+    },
+    {
+      "period": 40,
+      "topic": "API",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 41,
+      "topic": "API",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 42,
+      "topic": "API",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 43,
+      "topic": "API",
+      "readings": "Participation",
+      "due": ""
+    },
+    {
+      "period": 44,
+      "topic": "Module 3 Review",
+      "readings": "File I/O, API",
+      "due": "Homework 8 & 9"
+    }
+  ],
+  "lastMeetingDays": [
+    "Mon",
+    "Wed",
+    "Fri"
+  ],
+  "calendarRows": [
+    {
+      "date": "2026-01-19",
+      "day": "Mon",
+      "type": "holiday",
+      "name": "Martin Luther King Jr. Day",
+      "topic": "",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "date": "2026-01-21",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Introduction, Environment Setup",
+      "readings": "Visual Studio, GitHub",
+      "due": "",
+      "period": 1
+    },
+    {
+      "date": "2026-01-23",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Variables, Assignments & Expressions",
+      "readings": "",
+      "due": "",
+      "period": 2
+    },
+    {
+      "date": "2026-01-26",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Conditionals",
+      "readings": "Lecture, In-class Example",
+      "due": "",
+      "period": 3
+    },
+    {
+      "date": "2026-01-28",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Conditionals",
+      "readings": "Participation",
+      "due": "",
+      "period": 4
+    },
+    {
+      "date": "2026-01-30",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Conditionals",
+      "readings": "Participation",
+      "due": "",
+      "period": 5
+    },
+    {
+      "date": "2026-02-02",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Loops",
+      "readings": "Lecture, In-class Example",
+      "due": "",
+      "period": 6
+    },
+    {
+      "date": "2026-02-04",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Loops",
+      "readings": "Participation",
+      "due": "",
+      "period": 7
+    },
+    {
+      "date": "2026-02-06",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Loops",
+      "readings": "Participation",
+      "due": "Homework 1",
+      "period": 8
+    },
+    {
+      "date": "2026-02-09",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Loops",
+      "readings": "Lecture, In-class Example",
+      "due": "",
+      "period": 9
+    },
+    {
+      "date": "2026-02-11",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Loops",
+      "readings": "Participation",
+      "due": "",
+      "period": 10
+    },
+    {
+      "date": "2026-02-13",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Loops",
+      "readings": "Participation",
+      "due": "",
+      "period": 11
+    },
+    {
+      "date": "2026-02-16",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "String Manipulation",
+      "readings": "Lecture, In-class Example",
+      "due": "",
+      "period": 12
+    },
+    {
+      "date": "2026-02-18",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "String Manipulation",
+      "readings": "Participation",
+      "due": "",
+      "period": 13
+    },
+    {
+      "date": "2026-02-20",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "String Manipulation",
+      "readings": "Participation",
+      "due": "Homework 2",
+      "period": 14
+    },
+    {
+      "date": "2026-02-23",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Collections",
+      "readings": "Lecture, In-class Example",
+      "due": "",
+      "period": 15
+    },
+    {
+      "date": "2026-02-25",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Collections",
+      "readings": "Participation",
+      "due": "",
+      "period": 16
+    },
+    {
+      "date": "2026-02-27",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Collections",
+      "readings": "Participation",
+      "due": "Homework 3",
+      "period": 17
+    },
+    {
+      "date": "2026-03-02",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Intro to Module II",
+      "readings": "Setup accounts + Participation over Module 1",
+      "due": "",
+      "period": 18
+    },
+    {
+      "date": "2026-03-04",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Module 1 Review",
+      "readings": "Variables, String, Loops, Collections",
+      "due": "Homework 4",
+      "period": 19
+    },
+    {
+      "date": "2026-03-06",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Module 1 Exam",
+      "readings": "",
+      "due": "",
+      "period": 20
+    },
+    {
+      "date": "2026-03-09",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Functions",
+      "readings": "Lecture, In-class Example",
+      "due": "",
+      "period": 21
+    },
+    {
+      "date": "2026-03-11",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Functions",
+      "readings": "Participation",
+      "due": "",
+      "period": 22
+    },
+    {
+      "date": "2026-03-13",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Functions",
+      "readings": "Participation",
+      "due": "",
+      "period": 23
+    },
+    {
+      "date": "2026-03-16",
+      "day": "Mon",
+      "type": "holiday",
+      "name": "Spring Break",
+      "topic": "",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "date": "2026-03-18",
+      "day": "Wed",
+      "type": "holiday",
+      "name": "Spring Break",
+      "topic": "",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "date": "2026-03-20",
+      "day": "Fri",
+      "type": "holiday",
+      "name": "Spring Break",
+      "topic": "",
+      "readings": "",
+      "due": ""
+    },
+    {
+      "date": "2026-03-23",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Classes",
+      "readings": "Lecture, In-class Example",
+      "due": "",
+      "period": 24
+    },
+    {
+      "date": "2026-03-25",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Classes",
+      "readings": "Participation",
+      "due": "",
+      "period": 25
+    },
+    {
+      "date": "2026-03-27",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Classes",
+      "readings": "Participation",
+      "due": "Homework 5",
+      "period": 26
+    },
+    {
+      "date": "2026-03-30",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Classes",
+      "readings": "Participation",
+      "due": "",
+      "period": 27
+    },
+    {
+      "date": "2026-04-01",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Classes",
+      "readings": "Participation",
+      "due": "",
+      "period": 28
+    },
+    {
+      "date": "2026-04-03",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Classes",
+      "readings": "Participation",
+      "due": "",
+      "period": 29
+    },
+    {
+      "date": "2026-04-06",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "Classes",
+      "readings": "Participation",
+      "due": "",
+      "period": 30
+    },
+    {
+      "date": "2026-04-08",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "Module 2 Review",
+      "readings": "Functions, Classes",
+      "due": "Homework 6",
+      "period": 31
+    },
+    {
+      "date": "2026-04-10",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Module 2 Exam",
+      "readings": "",
+      "due": "",
+      "period": 32
+    },
+    {
+      "date": "2026-04-13",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "File I/O",
+      "readings": "Lecture, In-class Example",
+      "due": "",
+      "period": 33
+    },
+    {
+      "date": "2026-04-15",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "File I/O",
+      "readings": "Participation",
+      "due": "",
+      "period": 34
+    },
+    {
+      "date": "2026-04-17",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "File I/O",
+      "readings": "Participation",
+      "due": "",
+      "period": 35
+    },
+    {
+      "date": "2026-04-20",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "JSON",
+      "readings": "Lecture, In-class Example",
+      "due": "",
+      "period": 36
+    },
+    {
+      "date": "2026-04-22",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "JSON",
+      "readings": "Participation",
+      "due": "",
+      "period": 37
+    },
+    {
+      "date": "2026-04-24",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "JSON",
+      "readings": "Participation",
+      "due": "Homework 7",
+      "period": 38
+    },
+    {
+      "date": "2026-04-27",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "API",
+      "readings": "Lecture, In-class Example",
+      "due": "",
+      "period": 39
+    },
+    {
+      "date": "2026-04-29",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "API",
+      "readings": "Participation",
+      "due": "",
+      "period": 40
+    },
+    {
+      "date": "2026-05-01",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "API",
+      "readings": "Participation",
+      "due": "",
+      "period": 41
+    },
+    {
+      "date": "2026-05-04",
+      "day": "Mon",
+      "type": "class",
+      "name": "",
+      "topic": "API",
+      "readings": "Participation",
+      "due": "",
+      "period": 42
+    },
+    {
+      "date": "2026-05-06",
+      "day": "Wed",
+      "type": "class",
+      "name": "",
+      "topic": "API",
+      "readings": "Participation",
+      "due": "",
+      "period": 43
+    },
+    {
+      "date": "2026-05-08",
+      "day": "Fri",
+      "type": "class",
+      "name": "",
+      "topic": "Module 3 Review",
+      "readings": "File I/O, API",
+      "due": "Homework 8 & 9",
+      "period": 44
+    },
+    {
+      "date": "2026-05-12",
+      "day": "Tue",
+      "type": "final-exam",
+      "name": "Final Exam",
+      "topic": "Room: MFPH 3065 \u2014 Module 3 Exam",
+      "readings": "",
+      "due": "8:00 AM \u2013 10:00 AM"
+    }
+  ],
+  "calendarView": "grid"
+}
