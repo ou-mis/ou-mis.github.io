@@ -178,21 +178,6 @@
       ]
     },
     {
-      "code": "MIS 4970",
-      "title": "Bitcoin & Blockchain",
-      "instructor": "TBD",
-      "semesters": ["Fall", "Spring"],
-      "syllabus": "mis-4970.pdf",
-      "prerequisites": [],
-      "learningOutcomes": [
-        "Grasp Bitcoin and Blockchain Essentials",
-        "Understand Economic, Legal, and Ethical Landscapes of Bitcoin",
-        "Identify and Address Bitcoin's Technological Challenges",
-        "Compare Bitcoin with Conventional Financial Systems",
-        "Explore Industry Trends and Practical Bitcoin Applications"
-      ]
-    },
-    {
       "code": "MIS G4723",
       "title": "Information Security",
       "instructor": "Luke Harris",
