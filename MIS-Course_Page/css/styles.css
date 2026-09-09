@@ -437,6 +437,7 @@ code {
   letter-spacing: -0.02em;
   line-height: 1.2;
   min-height: 2.4em;
+  min-height: 2lh;
 }
 
 .course__instructor {
@@ -444,6 +445,8 @@ code {
   font-size: 0.86rem;
   color: var(--ink-soft);
   line-height: 1.3;
+  min-height: 1.3em;
+  min-height: 1lh;
 }
 
 .course__instructor strong {
@@ -872,7 +875,6 @@ body.is-embed .footer {
 }
 
 body.is-embed .course__title {
-  min-height: 0;
   font-size: 1.02rem;
 }
 
@@ -914,7 +916,8 @@ body.is-embed .course__title {
     font-size: 1.45rem;
   }
 
-  .course__title {
+  .course__title,
+  .course__instructor {
     min-height: 0;
   }
 

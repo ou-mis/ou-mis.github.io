@@ -77,7 +77,7 @@
     {
       "code": "MIS 3353",
       "title": "Databases",
-      "instructor": "John James",
+      "instructor": "John James & Amber Young",
       "semesters": ["Fall", "Spring"],
       "syllabus": "mis-3353.pdf",
       "prerequisites": ["MIS 2113"],
@@ -123,7 +123,7 @@
       "code": "MIS G4013",
       "title": "E-Commerce Web Design",
       "instructor": "Adam Ackerman",
-      "semesters": ["Fall", "Spring"],
+      "semesters": ["Fall"],
       "syllabus": "mis-g401.pdf",
       "prerequisites": ["MIS 3013"],
       "learningOutcomes": [
@@ -137,7 +137,7 @@
     {
       "code": "MIS G4363",
       "title": "Business Infrastructure and Cyber Security",
-      "instructor": "Luke Harris",
+      "instructor": "Luke Harris & Patricia Angle",
       "semesters": ["Fall", "Spring"],
       "syllabus": "mis-g4363.pdf",
       "prerequisites": ["MIS 2113"],
@@ -166,8 +166,8 @@
     {
       "code": "MIS G4633",
       "title": "Intelligent Robotic Automation",
-      "instructor": "Jonathan Ye",
-      "semesters": ["Fall", "Spring"],
+      "instructor": "",
+      "semesters": ["Spring"],
       "syllabus": "mis-g4693.pdf",
       "prerequisites": ["MIS 2113"],
       "learningOutcomes": [
