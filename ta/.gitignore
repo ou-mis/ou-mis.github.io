@@ -1,0 +1,9 @@
+# Student data must never be committed (FERPA).
+*.csv
+!samples/schedule-template.csv
+*.json
+*.zip
+
+# Generated outputs
+*Filled.xlsx
+*TA Offer*.docx
